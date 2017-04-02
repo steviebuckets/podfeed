@@ -34,7 +34,7 @@ export const fetchDescription = podcast => dispatch => {
     })
     .then(response => response.json())
     .then(data =>{
-      
+
         dispatch(fetchDescriptionSuccess(podcast, data))
       }
 
