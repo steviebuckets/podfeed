@@ -6,7 +6,7 @@ export const podcastsReducer = (state = initialPodcastsState, action) => {
     if (action.type === actions.ADD_PODCAST) {
 
       return Object.assign(state,{name: action.podcast});
-  
+
     }
     else if (action.type === actions.FETCH_DESCRIPTION_SUCCESS) {
       return Object.assign(state,{data: action.description.data})

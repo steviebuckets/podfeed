@@ -3,17 +3,31 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 
 export class Podcast extends React.Component {
-  // this.state = {
-  //   slug: ''
+  // constructor(props) {
+  //   super(props);
+  //   // console.log('steves', props)
+  //   // this.state = {
+  //   //   name: ' ',
+  //   //   slug: ' ',
+  //   //   created: ' '
+  //   //
+  //   // }
   // }
+// somefunction() {
+//   console.log('steves', this.state)
+// }
 
-  // componentDidMount() {
-  //   this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
-  // }
+  componentDidMount() {
+    console.log(this.props.podcasts)
+    this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
+
+  }
   render() {
     return(
       <div className="podcast">
       {this.props.podcast.name}
+      {this.props.podcast.description}
+      {this.props.podcast.created}
       </div>
     )
   }

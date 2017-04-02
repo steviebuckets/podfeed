@@ -12,15 +12,15 @@ export class PodcastList extends React.Component {
     console.log(this.props.podcasts)
   }
   addPodcast() {
+    // console.log('my state', this.props)
     const podcastName = this.podcastNameInput.value;
     this.props.dispatch(actions.addPodcast(podcastName));
     this.props.dispatch(actions.fetchDescription(podcastName));
-    //TODO: Add the podcast to the state
+
   }
   render() {
-
     const podcasts = this.props.podcasts.data.map(podcast => {
-    return <Podcast podcast={podcast} key={podcast.name} />;
+    return <Podcast podcast={podcast} key={podcast.name} name={podcast.podcast} description={podcast.data.slug} created={podcast.created_time} />;
 
      });
 
