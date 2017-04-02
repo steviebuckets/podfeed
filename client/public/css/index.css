@@ -1,0 +1,11 @@
+.landing-content h1, h2{
+  text-align: center;
+}
+
+.logo h3{
+  text-align: left;
+}
+
+.navbar link {
+  text-align: right;
+}
