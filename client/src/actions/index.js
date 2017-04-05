@@ -21,7 +21,6 @@ export const fetchDescriptionError = (podcast, error) => ({
 });
 
 export const fetchDescription = podcast => dispatch => {
-
     const url = `https://api.mixcloud.com/search/?q=/${podcast}/&type=cloudcast`;
     return fetch(url).then(response => {
         if (!response.ok) {

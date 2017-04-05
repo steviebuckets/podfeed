@@ -9,6 +9,8 @@ import SignIn from './components/signin';
 import Register from './components/register';
 import LandingPage from './components/landing-page';
 // import App from './components/app';
+// import Podcast from './components/podcast';
+// import Test from './components/test.js'
 import PodcastList from './components/podcast-list';
 
 const routes = (

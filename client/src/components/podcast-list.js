@@ -8,23 +8,32 @@ export class PodcastList extends React.Component {
     super(props);
     this.addPodcast = this.addPodcast.bind(this);
   }
-  componentWillMount(){
-    console.log(this.props.podcasts)
-  }
-  addPodcast() {
-    // console.log('my state', this.props)
-    const podcastName = this.podcastNameInput.value;
-    this.props.dispatch(actions.addPodcast(podcastName));
-    this.props.dispatch(actions.fetchDescription(podcastName));
 
+  componentDidMount(){
+    // console.log("What do my props/this look like", this);
   }
+
+  addPodcast() {
+    // console.log('my props, this.props')
+    const podcastName = this.podcastNameInput.value;
+    this.props.dispatch(actions.fetchDescription(podcastName));
+    // this.props.dispatch(actions.addPodcast(podcastName));
+  }
+
   render() {
+    // console.log(this.props, 'what is props?');
+    // console.log(this.props.data.slug)
     const podcasts = this.props.podcasts.data.map(podcast => {
-    return <Podcast podcast={podcast} key={podcast.name} name={podcast.podcast} description={podcast.data.slug} created={podcast.created_time} />;
+      return <Podcast podcast={podcast} key={podcast.name} slug={podcast.slug} />;
 
      });
+      //  return Object.assign(state, {data: action.description.data});
 
-
+    // const podcasts = this.props.podcasts.data.map(podcast => {
+    //   return <Podcast podcast={podcast} key={podcast.name} slug={podcast.slug} created={podcast.created_time} />;
+    //
+    //  });
+    //  console.log('podcasts', podcasts);
     return (
       <div className="podcast-list">
       {podcasts}
