@@ -10,28 +10,30 @@ export class PodcastList extends React.Component {
   }
 
   componentDidMount(){
-    console.log("What do my props/this look like", this);
+    // console.log("What do my props/this look like", this);
   }
 
   addPodcast() {
-    // console.log('my props', this.props)
+    // console.log('my props, this.props')
     const podcastName = this.podcastNameInput.value;
     this.props.dispatch(actions.fetchDescription(podcastName));
-    // dispatch over here
+    // this.props.dispatch(actions.addPodcast(podcastName));
   }
 
   render() {
-    // map is piciking this data out for me from the podcast object
-    // this.podcasts.data.name
-    // this.podcasts.data.slug
-    // this.podcasts.data.created_time
-    // now I use the data I want out, using podcast.whatever (no more this because its declared at the begining of the const)
-    console.log(this.props, 'render);')
+    // console.log(this.props, 'what is props?');
+    // console.log(this.props.data.slug)
     const podcasts = this.props.podcasts.data.map(podcast => {
-      return <Podcast podcast={podcast} key={podcast.name} slug={podcast.slug} created={podcast.created_time} />;
+      return <Podcast podcast={podcast} key={podcast.name} slug={podcast.slug} />;
 
      });
-     console.log('podcasts', podcasts);
+      //  return Object.assign(state, {data: action.description.data});
+
+    // const podcasts = this.props.podcasts.data.map(podcast => {
+    //   return <Podcast podcast={podcast} key={podcast.name} slug={podcast.slug} created={podcast.created_time} />;
+    //
+    //  });
+    //  console.log('podcasts', podcasts);
     return (
       <div className="podcast-list">
       {podcasts}
