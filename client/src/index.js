@@ -11,7 +11,8 @@ import LandingPage from './components/landing-page';
 // import App from './components/app';
 // import Podcast from './components/podcast';
 // import Test from './components/test.js'
-import PodcastList from './components/podcast-list';
+// import PodcastList from './components/podcast-list';
+import { PodcastList } from './components/container';
 
 const routes = (
   <Provider store={store}>
