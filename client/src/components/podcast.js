@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import * as actions from '../actions/index';
 
+
 // export class Podcast extends React.Component {
 //   constructor(props) {
 //     super(props);
@@ -13,10 +14,10 @@ import {connect} from 'react-redux';
 //     // }
 //   }
 //
-//   componentDidMount() {
-//     console.log('steve', this.props.podcasts)
-//     this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
-//   }
+  // componentDidMount() {
+  //   console.log('steve', this.props.podcasts)
+  //   this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
+  // }
 //   render() {
 //     return(
 //       <div className="podcast">
@@ -28,18 +29,20 @@ import {connect} from 'react-redux';
 //   }
 // }
 
-
 function Podcast(props) {
-  // componentDidMount() {
-  //   console.log('steve', this.props.podcasts)
-  //   this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
-  // }
+    // componentDidMount() {
+    //   console.log('steve', this.props.podcasts)
+    //   this.props.dispatch(actions.fetchDescription(this.props.podcast.name));
+    // }
 
-  return(
-    <div className="podcast">
-    {this.props.podcast.name}
-    {this.props.podcast.slug}
-    </div>
-  )
+    return (
+        <div className="podcast">
+            {props.podcast.name}
+            {props.podcast.slug}
+        </div>
+    )
 }
-export default connect()(Podcast);
+
+const mapStateToProps = (state, props) => ({podcasts: state});
+
+export default connect(mapStateToProps)(Podcast);
