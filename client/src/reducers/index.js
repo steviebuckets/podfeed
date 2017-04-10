@@ -1,20 +1,27 @@
-import * as actions from '../actions/index';
-
-const initialPodcastsState = {
-    name: '',
-    data: []
-}; // name to temporarily hold what the user is searching for!!
-
-export const podcastsReducer = (state = initialPodcastsState, action) => {
-    if (action.type === actions.ADD_PODCAST) {
-        // return Object.assign(state, {name: action.podcast});
-        return Object.assign(state, {name: action.podcast})
-    } else if (action.type === actions.FETCH_DESCRIPTION_SUCCESS) {
-        console.log('we are here now... it was successful', action, 'my state', state);
-        return Object.assign(state, {data: action.description.data});
-    } else if (action.type === actions.FETCH_DESCRIPTION_ERROR) {
-        console.log('Could not find podcast');
-    }
-    return state;
-
-}
+// // import * as actions from '../actions/index';
+//
+// // const initialPodcastsState = {
+// //     name: '',
+// //     data: []
+// // }; // name to temporarily hold what the user is searching for!!
+//
+// // const init = List([]);
+// const Feeds = {name: 'podcast'};
+// const init = Feeds;
+//
+// export default function reducer(todos=init, action) {
+//   switch(action.type) {
+//     case 'ADD_PODCAST':
+//       return todos.push(Map(action.payload));
+//     case 'TOGGLE_TODO':
+//       return todos.map(t => {
+//         if(t.get('id') === action.payload) {
+//           return t.update('isDone', isDone => !isDone);
+//         } else {
+//           return t;
+//         }
+//       });
+//     default:
+//       return todos;
+//   }
+// }
