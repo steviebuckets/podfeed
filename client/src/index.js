@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 // import {Router, Route, IndexRoute, hashHistory} from 'react-router';
-import { PodcastList } from './containers';
+import { PodcastList } from '../containers/podcast-list-container';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 

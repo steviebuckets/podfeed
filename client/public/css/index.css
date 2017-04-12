@@ -9,3 +9,11 @@
 .navbar link {
   text-align: right;
 }
+
+.podcast {
+  background-color: black;
+}
+
+.podcast-list li {
+  list-style: none;
+}
