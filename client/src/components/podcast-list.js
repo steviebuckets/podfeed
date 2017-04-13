@@ -1,4 +1,5 @@
 import React from 'react';
+import Podcast from './podcast';
 
 export function PodcastList(props) {
     // console.log(podcast, 'my podcasts');

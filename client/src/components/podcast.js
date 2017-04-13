@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Podcast(props) {
+export default function Podcast(props) {
     console.log('my props', props)
     const {podcast} = props;
     return (

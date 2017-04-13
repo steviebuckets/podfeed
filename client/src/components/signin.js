@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function SignIn(props) {
+export default function SignIn(props) {
     return (
         <div className="login-container">
             <p>Welcome to Pod-Feed. Please sign in with your Pod-Feed Account to continue.</p>
