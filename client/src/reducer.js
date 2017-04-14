@@ -1,14 +1,8 @@
 import {List, Map} from 'immutable';
 
-// const init = List([]);
 const init = [];
 
-// const initialPodcastsState = {
-//    name: '',
-//     data: []
-//  };
-
-export default function reducer(podcasts = init, action) { /// <<<<--- state, what it looks like
+export default function reducer(podcasts = init, action) { 
     console.log('what does action', action)
     switch (action.type) {
         case 'ADD_PODCAST':
@@ -26,5 +20,5 @@ export default function reducer(podcasts = init, action) { /// <<<<--- state, wh
             });
         default:
             return podcasts;
-    } /// we are retungin tsatet
+    }
 }
