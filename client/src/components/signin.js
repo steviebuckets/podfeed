@@ -1,24 +1,42 @@
 import React from 'react';
+import { Card, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
-export default function SignIn(props) {
-    return (
-        <div className="login-container">
-            <p>Welcome to Pod-Feed. Please sign in with your Pod-Feed Account to continue.</p>
-            <div className="form-container">
-                <form>
-                    <div className='form-group'>
-                        <label>Email<span>*</span>
-                        </label>
+export function SignIn(props) {
+const {onSubmit, onChange, errors, user} = props;
 
-                        <input className='form-control' type="email" id="email" name="email"></input><br/><br/>
-                    </div>
-                    <label>Password<span>*</span>
-                    </label>
-                    <input type="password" id="password" name="password"></input>
+return (
 
-                    <input type="submit" name="login-button" id="login" value="Sign in"></input>
-                </form>
-            </div>
-        </div>
-    )
+  <Card className='container'>
+    <form action='/' onSubmit={onSubmit}>
+      <h2 className='card-heading'>Sign In</h2>
+
+      <div className='field-name'>
+        <TextField
+          floatingLabelText='Name'
+          name='name'
+          onChange={onChange}
+          value={user}
+        />
+      </div>
+
+      <div className='field-line'>
+        <TextField
+          floatingLabelText='Email'
+          name='email'
+          onChange={onChange}
+          value={user}
+        />
+      </div>
+
+      <div className='button-line'>
+        <RaisedButton type='submit' label='Create New Account' primary />
+      </div>
+
+      <CardText>Already have an account?</CardText>
+
+      </form>
+    </Card>
+  );
 }

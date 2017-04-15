@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Register(props) {
+export default function Register(props) {
     const {user} = props
 
     const onSubmit = (event) => {
@@ -16,23 +16,24 @@ export function Register(props) {
             // addPodcast(name);
         }
     };
+    return (
+        <div className="register-container">
+            <p>Welcome to Pod-Feed. Please sign up if you don't already have a Pod-Feed Account.</p>
+            <div className="form-container">
+            <form>
+              <div className='form-group'>
+                <label>Email<span>*</span>
+                </label>
+                  <input className='form-control' type="email" id="email" name="email"></input><br/><br/>
+                </div>
+                <label>Password<span>*</span>
+                </label>
+                <input className='form-control' type="text" id="password" name="password"></input><br/>
 
-}
-
-return (
-    <div className="register-container">
-        <p>Welcome to Pod-Feed. Please sign up if you don't already have a Pod-Feed Account.</p>
-        <div className="form-container">
-            <label>Email<span>*</span>
-            </label>
-            <input type="text" id="email" name="email"></input><br/><br/>
-
-            <label>Password<span>*</span>
-            </label>
-            <input type="text" id="password" name="password"></input>
-
-            <input type="text" name="login-button" id="login" value="Sign in" onClick={onSubmit}></input>
+                <input type="submit" name="login-button" id="login" value="Sign in" onClick={onSubmit}></input>
+                </form>
+            </div>
         </div>
-    </div>
-)
+    )
+
 }
