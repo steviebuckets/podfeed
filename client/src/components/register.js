@@ -1,39 +1,42 @@
 import React from 'react';
+import { Card, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
-export default function Register(props) {
-    const {user} = props
+export function Register(props) {
+const {onSubmit, onChange, user} = props;
 
-    const onSubmit = (event) => {
-        const input = event.target;
-        const email = input.value;
-        const password = input.value;
+return (
 
-        const isEnterKey = (event.which === 13);
-        const isLongEnough = name.length > 0;
-        if (isEnterKey && isLongEnough) {
-            // console.log("my props", props)
-            input.value = '';
-            // addPodcast(name);
-        }
-    };
-    return (
-        <div className="register-container">
-            <p>Welcome to Pod-Feed. Please sign up if you don't already have a Pod-Feed Account.</p>
-            <div className="form-container">
-            <form>
-              <div className='form-group'>
-                <label>Email<span>*</span>
-                </label>
-                  <input className='form-control' type="email" id="email" name="email"></input><br/><br/>
-                </div>
-                <label>Password<span>*</span>
-                </label>
-                <input className='form-control' type="text" id="password" name="password"></input><br/>
+  <Card className='container'>
+    <form action='/' onSubmit={onSubmit}>
+      <h2 className='card-heading'>Register</h2>
 
-                <input type="submit" name="login-button" id="login" value="Sign in" onClick={onSubmit}></input>
-                </form>
-            </div>
-        </div>
-    )
+      <div className='field-name'>
+        <TextField
+          floatingLabelText='Email'
+          email='email'
+          onChange={onChange}
+          value={user}
+        />
+      </div>
 
+      <div className='field-line'>
+        <TextField
+          floatingLabelText='Password'
+          password='password'
+          onChange={onChange}
+          value={user}
+        />
+      </div>
+
+      <div className='button-line'>
+        <RaisedButton type='submit' label='Create New Account' primary />
+      </div>
+
+      <CardText>Already have an account?</CardText>
+
+      </form>
+    </Card>
+  );
 }

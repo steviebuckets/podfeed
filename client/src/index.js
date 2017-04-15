@@ -11,7 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducer';
 // import SignIn from './components/signin';
 import { SignIn } from './components/signin';
-import Register from './components/register';
+import { Register } from './components/register';
 import { LandingPage } from './components/landing-page';
 import { App } from './components/app';
 

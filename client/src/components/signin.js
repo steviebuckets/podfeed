@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 export function SignIn(props) {
-const {onSubmit, onChange, errors, user} = props;
+const {onSubmit, onChange, user} = props;
 
 return (
 
@@ -14,8 +14,8 @@ return (
 
       <div className='field-name'>
         <TextField
-          floatingLabelText='Name'
-          name='name'
+          floatingLabelText='Email'
+          email='email'
           onChange={onChange}
           value={user}
         />
@@ -23,18 +23,18 @@ return (
 
       <div className='field-line'>
         <TextField
-          floatingLabelText='Email'
-          name='email'
+          floatingLabelText='Password'
+          password='password'
           onChange={onChange}
           value={user}
         />
       </div>
 
-      <div className='button-line'>
-        <RaisedButton type='submit' label='Create New Account' primary />
+      <div className="button-line">
+        <RaisedButton type="submit" label="Log in" primary />
       </div>
 
-      <CardText>Already have an account?</CardText>
+      <CardText>Don't have an account? Create one.</CardText>
 
       </form>
     </Card>
