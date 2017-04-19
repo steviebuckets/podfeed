@@ -28,24 +28,25 @@ app.post('/login', (req, res) => {
         if (err) {
             return res.status(404).json({message: 'User not found'})
         };
-        if else
-            (!user) {
-                return res.status(500).json({success: false, message: 'User does not exist'});
-            }
-            if (!user.comparePassword(req.body.password)) {
-                res.json({success: false, message: 'Wrong password'});
-            } else {
-                let myToken = jwt.sign({
-                    email: user.email,
-                    id: user._id
-                }, secret, {expiresIn: "24h"});
-                res.json({
-                    success: true,
-                    message: 'Your token! ' + myToken,
-                    token: myToken
-                });
-            }
-        });});
+
+        if (!user) {
+            return res.status(500).json({success: false, message: 'User does not exist'});
+        }
+        if (!user.comparePassword(req.body.password)) {
+            res.json({success: false, message: 'Wrong password'});
+        } else {
+            let myToken = jwt.sign({
+                email: user.email,
+                id: user._id
+            }, secret, {expiresIn: "24h"});
+            res.json({
+                success: true,
+                message: 'Your token! ' + myToken,
+                token: myToken
+            });
+        }
+    });
+  });
 
     //register route
     app.post('/register', (req, res) => {
@@ -71,23 +72,23 @@ app.post('/login', (req, res) => {
     });
 
     /// anything below is "PROTECTED"
-    app.use((req, res, next) => {
-        let token = req.body.token || req.query.token || req.params['token'] || req.headers['x-access-token'];
-        if (token) {
-            jwt.verify(token, secret, (error, decoded) => {
-                if (error) {
-                    return res.json({success: false, message: 'failed to authenticate token.'});
-                } else {
-                    req.decoded = decoded;
-                    req.person = "Steve rocks!"
-                    next();
-                }
-
-            });
-        } else {
-            return res.status(403).send({success: false, message: 'No token provided'});
-        }
-    });
+    // app.use((req, res, next) => {
+    //     let token = req.body.token || req.query.token || req.params['token'] || req.headers['x-access-token'];
+    //     if (token) {
+    //         jwt.verify(token, secret, (error, decoded) => {
+    //             if (error) {
+    //                 return res.json({success: false, message: 'failed to authenticate token.'});
+    //             } else {
+    //                 req.decoded = decoded;
+    //                 req.person = "Steve rocks!"
+    //                 next();
+    //             }
+    //
+    //         });
+    //     } else {
+    //         return res.status(403).send({success: false, message: 'No token provided'});
+    //     }
+    // });
 
     //find a user
     app.get('/users', (req, res) => {
@@ -104,7 +105,6 @@ app.post('/login', (req, res) => {
                 console.log(err)
                 res.json(user.podcasts.sort((prev, next) => {
                     return new Date(next.created) - new Date(prev.created);
-
                 }));
 
             });
@@ -112,7 +112,7 @@ app.post('/login', (req, res) => {
 
     });
 
-//if user let me search for podcasts
+    //if user let me search for podcasts
     app.get('/search', (req, res) => {
         console.log(req.query)
         if (req.query) {
@@ -126,6 +126,7 @@ app.post('/login', (req, res) => {
                 res.json(JSON.parse(response.body));
             });
         }
-    })app.listen(app.get('port'), () => {
+    })
+    app.listen(app.get('port'), () => {
         console.log(`Find the server at: http://localhost:${app.get('port')}/`);
     });

@@ -2,7 +2,7 @@ import React from 'react';
 import Podcast from './podcast';
 
 export function PodcastList(props) {
-    // console.log(podcast, 'my podcasts');
+    console.log('props', props);
     const {audio, addPodcast} = props; // {audio: 'blah', addPodcast: 'meh'}
 
     const onSubmit = (event) => {
@@ -22,7 +22,7 @@ export function PodcastList(props) {
         <div className='podcast-list'>
             <input type='text' className='podcast__name' placeholder='Search Podcast' onKeyDown={onSubmit}/>
             <ul className='podcast__list'>
-                {audio.map(podcast => (
+                {audio.podcastReducer.map(podcast => (
                     <li key={podcast.url} className='podcast__item'>
                         <Podcast podcast={podcast}/>
                     </li>

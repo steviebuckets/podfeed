@@ -13,19 +13,15 @@
 //
 // }
 
-
-
+// create object for user reducer
 const init = {};
 
-// create object for user
-// another for podcasts
-// create another red
-export default function userReducer(users = init, action) {
-    console.log('what does action', action)
+export default function userReducer(user = init, action) {
+    console.log('My userReducer', action)
     switch (action.type) {
-            case 'VERIFY_USER':
-                return action.user(action.payload);
+        case 'VERIFY_USER':
+            return action.user;
         default:
-            return users;
+            return user;
     }
 }

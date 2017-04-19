@@ -6,7 +6,7 @@ const init = [];
 // create object for user
 // another for podcasts
 // create another red
-export default function reducer(podcasts = init, action) {
+export default function podcastReducer(podcasts = init, action) {
     // console.log('what does action', action)
     switch (action.type) {
         case 'ADD_PODCAST':

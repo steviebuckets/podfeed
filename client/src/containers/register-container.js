@@ -1,26 +1,21 @@
-import { connect } from 'react-redux';
-import { verifyUser } from './actions';
+import {connect} from 'react-redux';
+import {verifyUser} from './actions';
 import * as components from '../components/register';
 
 const mapStateToProps = (state) => {
-  return { user: state}
+  console.log('working?', state);
+    return {user: state}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    verifyUser: text => dispatch(verifyUser(text)),
-  }
+    return {
+        verifyUser: text => dispatch(verifyUser(text))
+    }
 }
 
-const Register = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(components.PodcastList)
+const Register = connect(mapStateToProps, mapDispatchToProps)(components.Register)
 
 export default Register
-
-
-
 
 // import {connect} from 'react-redux';
 // import * as components from '../components/register';
