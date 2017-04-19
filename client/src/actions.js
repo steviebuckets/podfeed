@@ -14,3 +14,19 @@ export const addPodcast = podcast => dispatch => {
         console.log(error)
       })
 }
+
+// verify user action
+export const verifyUser = user => dispatch => {
+  console.log('my user', user)
+  axios.post('/register', {
+    email: 'user.email',
+    password: 'user.password'
+  })
+  .then(function (response) {
+    dispatch(verifyUser(user))
+    console.log('my user', response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+}

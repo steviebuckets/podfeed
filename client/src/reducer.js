@@ -1,9 +1,13 @@
-import {List, Map} from 'immutable';
+// import {List, Map} from 'immutable';
+// import * as actions from './actions.js';
 
 const init = [];
 
-export default function reducer(podcasts = init, action) { 
-    console.log('what does action', action)
+// create object for user
+// another for podcasts
+// create another red
+export default function reducer(podcasts = init, action) {
+    // console.log('what does action', action)
     switch (action.type) {
         case 'ADD_PODCAST':
             return podcasts.push(action.payload);
