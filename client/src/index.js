@@ -9,7 +9,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducers/index';
-// import SignIn from './components/signin';
 import {SignIn} from './components/signin';
 import {Register} from './components/register';
 import {LandingPage} from './components/landing-page';
@@ -32,7 +31,6 @@ const routes = (
                     <Route path="/signin" component={SignIn}/>
                     <Route path="/register" component={Register}/>
                     <Route path="/podcast-lists" component={PodcastList}/>
-
                 </Route>
             </Router>
         </Provider>

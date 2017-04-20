@@ -14,14 +14,6 @@ export class Register extends React.Component {
       password: ''
   };
 
-
-
-  // const podcastsSchema = new mongoose.Schema({
-  //   "username": {type: String, required: true},
-  //   "name": {type: String, required: true},
-  //   "image": { type: String, required: true },
-  //   "image_id": { type: String }
-  // });
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,15 +25,14 @@ export class Register extends React.Component {
     this.setState({
       [name]: value
     });
-    // this.setState({
-    //   email: event.target.value,
-    //   password: event.target.value
-    // });
+
   }
   handleSubmit(event) {
     console.log('A email was submitted:' + this.state.email);
     console.log('A password was submitted:' + this.state.password);
     event.preventDefault();
+    //call action here to verify user?
+    //if user show them podcasts, use react-router to show page?
   }
   render() {
     return (
@@ -70,51 +61,3 @@ export class Register extends React.Component {
     )
   }
 }
-
-// export function Register(props) {
-//   console.log(props);
-//     const { email, password } = props;
-//
-//     //process form
-//     const handleSubmit = (event) => {
-//       console.log(email);
-//       console.log(password);
-//       //call my action to verifyUser here verifyUser(email, pass) etc
-//     };
-//
-//     // //process from this way?
-//     // processForm(event) {
-//     //     event.preventDefault();
-//     //     console.log('email:' this.state.user.email);
-//     //     console.log('password:' this.state.user.password);
-//     // }
-//
-//     ////refs form input values
-//     //event targets
-//     //redux-form
-//
-//     return (
-//
-//         <Card className='container'>
-//             <form action='/podcast-list' onSubmit={handleSubmit} >
-//                 <h2 className='card-heading'>Register</h2>
-//
-//                 <div className='field-name'>
-//                     <TextField floatingLabelText='Email' name='email' value='email'/>
-//                 </div>
-//
-//                 <div className='field-line'>
-//                     <TextField floatingLabelText='Password' type='password' name='password' value='password'/>
-//                 </div>
-//
-//
-//                 <div className='button-line'>
-//                     <RaisedButton type='submit' label='Create New Account' primary/>
-//                 </div>
-//
-//                 <CardText>Already have an account?</CardText>
-//
-//             </form>
-//         </Card>
-//     );
-// }
