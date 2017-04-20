@@ -14,14 +14,33 @@ export class Register extends React.Component {
       password: ''
   };
 
+
+
+  // const podcastsSchema = new mongoose.Schema({
+  //   "username": {type: String, required: true},
+  //   "name": {type: String, required: true},
+  //   "image": { type: String, required: true },
+  //   "image_id": { type: String }
+  // });
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInputChange(event) {
-    this.setState({value: event.target.value});
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+    // this.setState({
+    //   email: event.target.value,
+    //   password: event.target.value
+    // });
   }
   handleSubmit(event) {
-    console.log('A email was submitted:' + this.state.value);
+    console.log('A email was submitted:' + this.state.email);
+    console.log('A password was submitted:' + this.state.password);
     event.preventDefault();
   }
   render() {
@@ -31,11 +50,11 @@ export class Register extends React.Component {
               <h2 className='card-heading'>Register</h2>
 
               <div className='field-name'>
-                  <TextField floatingLabelText='Email' name="email" type="text" value={this.state.value} onChange={this.handleInputChange}/>
+                  <TextField floatingLabelText='Email' name="email" type="text" value={this.state.email} onChange={this.handleInputChange}/>
               </div>
 
               <div className='field-name'>
-                  <TextField floatingLabelText='Password' name="password" type="text" value={this.state.value} onChange={this.handleInputChange}/>
+                  <TextField floatingLabelText='Password' name="password" type="text" value={this.state.password} onChange={this.handleInputChange}/>
               </div>
 
               <div className='button-line'>
