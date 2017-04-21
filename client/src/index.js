@@ -10,11 +10,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducers/index';
 import {SignIn} from './components/signin';
-import {Register} from './components/register';
 import {LandingPage} from './components/landing-page';
 import {App} from './components/app';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
+import Register from './containers/register-container';
+
 // import { RegisterUser } from './containers/register-container';
 
 //remove tap delay, essential for MaterialUI to work properly

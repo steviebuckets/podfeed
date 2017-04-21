@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {verifyUser} from './actions';
+import {verifyUser} from '../actions';
 import * as components from '../components/register';
 
 const mapStateToProps = (state) => {

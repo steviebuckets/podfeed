@@ -17,12 +17,33 @@ export const addPodcast = podcast => dispatch => {
 export const verifyUser = user => dispatch => {
     console.log('my user action in actions', user)
     axios.post('/register', {
-        email: 'user.email',
-        password: 'user.password'
+        email: user.email,
+        password: user.password
     }).then(function(response) {
         console.log('my user', response)
-        dispatch(verifyUser(user))
     }).catch(function(error) {
         console.log(error);
     })
 }
+
+// recursive function
+// function factorial(n){
+//   if (n == 0){
+//     return 1;
+//   } else {
+//     return n * factorial(n-1);
+//   }
+// }
+//
+//
+// 3 - 1000?
+// x y z
+// x z y
+// z x y
+// z y x
+// y z x
+// y x z
+//
+// 3 people, 3 x 2 x 1  x 1 => 6???
+// 4 people? 4 X 3 X 2 X 1 =>
+// Pascal - Pascal's

@@ -16,5 +16,4 @@ const PodcastList = connect(
   mapStateToProps,
   mapDispatchToProps
 )(components.PodcastList)
-
 export default PodcastList
