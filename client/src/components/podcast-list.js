@@ -2,7 +2,7 @@ import React from 'react';
 import Podcast from './podcast';
 
 export function PodcastList(props) {
-    console.log('props', props);
+    // console.log('props', props);
     const {audio, addPodcast} = props; // {audio: 'blah', addPodcast: 'meh'}
 
     const onSubmit = (event) => {

@@ -17,7 +17,7 @@
 const init = {};
 
 export default function userReducer(user = init, action) {
-    console.log('My userReducer', action)
+    // console.log('My userReducer', action)
     switch (action.type) {
         case 'VERIFY_USER':
             return action.user;

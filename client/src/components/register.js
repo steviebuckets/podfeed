@@ -5,37 +5,48 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 export function Register(props) {
-    console.log('props', props);
-    // const {verifyUser} = props; // {audio: 'blah', addPodcast: 'meh'}
-    const handleInputChange = (event) => {
-      const target = event.target;
-      const value = target.value;
-      const name = target.name;
-    }
+
+  let email = "";
+  let password = "";
+    // console.log('props', props);
+    const {verifyUser} = props;
+
+    // const handleInputChange = (event) => {
+    //   // console.log('my props!', props)
+    //   const target = event.target;
+    //   const value = target.value;
+    //   const name = target.name;
+    // }
 
 
     const handleSubmit = (event) => {
-      console.log('A email was submitted:' + props.email);
-      console.log('A password was submitted:' + props.password);
+      // console.log(props)
+      // console.log('A email was submitted:' + props.email);
+      // console.log('A password was submitted:' + props.password);
+      // const user = input.value; { a, b} - {a: a, b: b}
       event.preventDefault();
+      // use call back to action here, insert some data from form
+      verifyUser({email, password});
+      // verifyUser({email: email, password: password});
+      console.log('my email', email)
     }
 
 
     return (
         <Card className='container'>
-            <form action='/podcast-list' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <h2 className='card-heading'>Register</h2>
 
                 <div className='field-name'>
-                    <TextField floatingLabelText='Email' name='email' type="text" value={props.email} onChange={handleInputChange}/>
+                    <TextField floatingLabelText='Email' name='email' type="text" value={props.email} onChange={e => email = e.target.value}/>
                 </div>
 
                 <div className='field-name'>
-                    <TextField floatingLabelText='Password' name='password' type="text" value={props.password} onChange={handleInputChange}/>
+                    <TextField floatingLabelText='Password' name='password' type="text" value={props.password} onChange={e => password = e.target.value}/>
                 </div>
 
                 <div className='button-line'>
-                    <RaisedButton type='submit' value={handleSubmit} label='Create New Account' primary/>
+                    <RaisedButton type='submit' label='Create New Account' primary/>
                 </div>
 
                 <CardText>Already have an account?</CardText>

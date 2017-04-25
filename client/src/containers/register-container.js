@@ -3,13 +3,13 @@ import {verifyUser} from '../actions';
 import * as components from '../components/register';
 
 const mapStateToProps = (state) => {
-  console.log('working?', state);
+  // console.log('working?', state);
     return {user: state}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        verifyUser: text => dispatch(verifyUser(text))
+        verifyUser: emailPasswordObject => dispatch(verifyUser(emailPasswordObject))
     }
 }
 

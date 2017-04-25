@@ -13,16 +13,16 @@ export const addPodcast = podcast => dispatch => {
     })
 }
 
-// verify user action
+// verify user action { email: 'blah', password: 'meh'}
 export const verifyUser = user => dispatch => {
     console.log('my user action in actions', user)
     axios.post('/register', {
         email: user.email,
         password: user.password
     }).then(function(response) {
-        console.log('my user', response)
+        console.log('my user is working!', response)
     }).catch(function(error) {
-        console.log(error);
+        console.log('problem here', error);
     })
 }
 
