@@ -22,7 +22,7 @@ export const verifyUser = user => dispatch => {
     }).then(function(response) {
         console.log('my user is working!', response)
     }).catch(function(error) {
-        console.log('problem here', error);
+        console.log('User already exists', error);
     })
 }
 

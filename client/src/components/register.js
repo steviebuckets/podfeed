@@ -29,6 +29,7 @@ export function Register(props) {
       verifyUser({email, password});
       // verifyUser({email: email, password: password});
       console.log('my email', email)
+      console.log('my password', password)
     }
 
 
