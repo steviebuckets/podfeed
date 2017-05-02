@@ -20,11 +20,18 @@ export const verifyUser = user => dispatch => {
         email: user.email,
         password: user.password
     }).then(function(response) {
+      localStorage.setItem('token', response.token);
+      location.reload();//may not need reload
+
+      //show me podcasts page here
         console.log('my user is working!', response)
     }).catch(function(error) {
         console.log('User already exists', error);
     })
 }
+
+let myToken = localStorage.getItem('token');
+
 
 // recursive function
 // function factorial(n){
