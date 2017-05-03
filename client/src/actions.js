@@ -1,4 +1,7 @@
 import axios from 'axios';
+import Auth from './modules/Auth';
+import {App} from './components/app';
+import PodcastList from './containers/podcast-list-container';
 
 export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcast, description});
 
@@ -15,12 +18,20 @@ export const addPodcast = podcast => dispatch => {
 
 // verify user action { email: 'blah', password: 'meh'}
 export const verifyUser = user => dispatch => {
-    console.log('my user action in actions', user)
+    // console.log('my user action in actions', user)
     axios.post('/register', {
         email: user.email,
         password: user.password
     }).then(function(response) {
-        console.log('my user is working!', response)
+        // console.log('my user is working!', response)
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          // callback(null, PodcastList);
+        } else {
+          console.log('not auth')
+          // callback(null, APP);
+        }
+        /// store the token!!!
     }).catch(function(error) {
         console.log('User already exists', error);
     })
