@@ -26,7 +26,9 @@ import { Card, CardText } from 'material-ui/Card';
 export const App = (props) => {
   return(
       <Card className='container-links'>
-      <CardText><Link to={'/signin'}>Sign in</Link></CardText>
+      <CardText>
+        <Link to={'/signin'}>Sign in</Link>
+      </CardText>
       <CardText><Link to={'/register'}>Register</Link></CardText>
       {props.children}
       </Card>

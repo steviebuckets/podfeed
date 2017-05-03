@@ -15,7 +15,8 @@ import {App} from './components/app';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 import Register from './containers/register-container';
-
+import Auth from './modules/Auth';
+import { browserHistory } from 'react-router';
 // import { RegisterUser } from './containers/register-container';
 
 //remove tap delay, essential for MaterialUI to work properly
@@ -23,21 +24,60 @@ injectTapEventPlugin();
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
-const routes = (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Provider store={store}>
-            <Router history={hashHistory}>
-                <Route path="/" component={App}>
-                    <IndexRoute component={LandingPage}/>
-                    <Route path="/signin" component={SignIn}/>
-                    <Route path="/register" component={Register}/>
-                    <Route path="/podcast-lists" component={PodcastList}/>
-                </Route>
-            </Router>
-        </Provider>
-    </MuiThemeProvider>
-);
+// const routes = (
+//     <MuiThemeProvider muiTheme={getMuiTheme()}>
+//         <Provider store={store}>
+//             <Router history={hashHistory}>
+//                 <Route path="/" component={App}>
+//                     <IndexRoute component={LandingPage}/>
+//                     <Route path="/signin" component={SignIn}/>
+//                     <Route path="/register" component={Register}/>
+//                     <Route path="/podcast-lists" component={PodcastList}/>
+//                 </Route>
+//             </Router>
+//         </Provider>
+//     </MuiThemeProvider>
+// );
+
+const routes = {
+    component: App,
+    childRoutes: [
+
+        {
+            path: '/',
+            getComponent: (location, callback) => {
+                if (Auth.isUserAuthenticated()) {
+                  console.log('auth')
+                    callback(null, PodcastList);
+                } else {
+                  console.log('not auth')
+                    callback(null, LandingPage);
+                }
+            }
+        }, {
+            path: '/signin',
+            component: SignIn
+        }, {
+            path: '/register',
+            component: Register
+        }, {
+
+            path: '/logout',
+            onEnter: (nextState, replace) => {
+                Auth.deauthenticateUser();
+
+                //changes the current URL to /
+                replace('/');
+            }
+        }
+    ]
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(routes, document.getElementById('app'));
-});
+    ReactDOM.render(
+
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Provider store={store}>
+            <Router history={browserHistory} routes={routes}/>
+            </Provider>
+        </MuiThemeProvider>, document.getElementById('app')); });
