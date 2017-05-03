@@ -12,7 +12,7 @@ import reducer from './reducers/index';
 import {SignIn} from './components/signin';
 import {LandingPage} from './components/landing-page';
 import {App} from './components/app';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 import Register from './containers/register-container';
 import Auth from './modules/Auth';
