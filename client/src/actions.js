@@ -4,7 +4,11 @@ import axios from 'axios';
 export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcast, description});
 
 export const addPodcast = podcast => dispatch => {
-    const url = `/search?q=${encodeURI(podcast)}` // backend request.query['q']
+    const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
+
+
+
+
     console.log(url, 'url');
     return axios.get(url).then(function(data) {
         console.log('my data', data)
@@ -22,11 +26,12 @@ export const verifyUser = user => dispatch => {
         password: user.password
     }).then(function(response) {
         // console.log('my user is working!', response.data.token)
-        return response.data.token;
-        // response.data.token;
-        // user.token;
-        // localStorage.setItem('token', token);
         /// store the token!!!
+        let myToken = response.data.token;
+        localStorage.setItem('token', myToken);
+        location.replace('/');
+        // or return data like below
+        // return response.data.token;s
     })
 
     .catch(function(error) {

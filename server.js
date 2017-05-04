@@ -65,7 +65,9 @@ app.post('/register/', (req, res) => {
             email: user.email,
             id: user._id
         }, secret, {expiresIn: "24h"});
+        console.log("my response in server!")
         res.json({
+
             success: true,
             message: "User successfully registered!" + myToken,
             token: myToken

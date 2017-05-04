@@ -27,13 +27,18 @@ export function Register(props) {
       event.preventDefault();
       // use call back to action here, insert some data from form
       verifyUser({email, password});
+      // location.replace('/'); // risky??
+      // make a redirect here after action is processed and user verified
+    //  router.replace('/podcast-lists');
+    console.log(localStorage); // location.i
       // verifyUser({email: email, password: password});
     }
 
 
+//added action for form for redirect below
     return (
         <Card className='container'>
-            <form onSubmit={handleSubmit}>
+            <form action="/" onSubmit={handleSubmit}>
                 <h2 className='card-heading'>Register</h2>
 
                 <div className='field-name'>

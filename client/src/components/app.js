@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
+import Auth from '../modules/Auth';
 
 // export const App = (props) => {
 //     return (
@@ -26,15 +27,20 @@ import { Card, CardText } from 'material-ui/Card';
 export const App = (props) => {
   return(
       <Card className='container-links'>
-      <CardText>
-        <Link to={'/signin'}>Sign in</Link>
-      </CardText>
-      <CardText><Link to={'/register'}>Register</Link></CardText>
-      {props.children}
-      </Card>
 
-  )
-}
+
+        {
+          Auth.isUserAuthenticated() ?
+          (<CardText><Link to="/logout">Sign out</Link></CardText>):
+          (
+            <div><CardText><Link to="/signin">sigin</Link></CardText>
+            <CardText><Link to="/register">register</Link></CardText></div>
+          )
+        }
+      {props.children}
+
+      </Card>
+)}
 
 // <Link to={'/signin'}</Link>
 //
