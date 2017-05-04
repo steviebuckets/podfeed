@@ -1,62 +1,45 @@
 import React from 'react';
-import { Card, CardText } from 'material-ui/Card';
+import {Card, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-export class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state= {value: ''};
+export function SignIn(props) {
 
-    this.state = {
-      email: '',
-      password: ''
-  };
+    let email = "";
+    let password = "";
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const {identifyUser} = props;
 
-    this.setState({
-      [name]: value
-    });
+    const handleSubmit = (event) => {
 
-  }
-  handleSubmit(event) {
-    console.log('A email was submitted:' + this.state.email);
-    console.log('A password was submitted:' + this.state.password);
-    event.preventDefault();
-    //call action here to verify user?
-    //if user show them podcasts, use react-router to show page?
-  }
-  render() {
+        event.preventDefault();
+
+        identifyUser({email, password});
+
+        console.log(localStorage);
+    }
+
     return (
-      <Card className='container'>
-          <form action='/podcast-list' onSubmit={this.handleSubmit} >
-              <h2 className='card-heading'>Sign in</h2>
+        <Card className='container'>
+            <form action="/" onSubmit={handleSubmit}>
+                <h2 className='card-heading'>Sign in</h2>
 
-              <div className='field-name'>
-                  <TextField floatingLabelText='Email' name="email" type="text" value={this.state.email} onChange={this.handleInputChange}/>
-              </div>
+                <div className='field-name'>
+                    <TextField floatingLabelText='Email' name='email' type="text" value={props.email} onChange={e => email = e.target.value}/>
+                </div>
 
-              <div className='field-name'>
-                  <TextField floatingLabelText='Password' name="password" type="text" value={this.state.password} onChange={this.handleInputChange}/>
-              </div>
+                <div className='field-name'>
+                    <TextField floatingLabelText='Password' name='password' type="text" value={props.password} onChange={e => password = e.target.value}/>
+                </div>
 
-              <div className='button-line'>
-                  <RaisedButton type='submit' value="Submit" label='Sign in' primary/>
-              </div>
+                <div className='button-line'>
+                    <RaisedButton type='submit' label='Log in' primary/>
+                </div>
 
-              <CardText>Don't have an account?</CardText>
+                <CardText>Don't have an account?</CardText>
 
-          </form>
-      </Card>
+            </form>
+        </Card>
 
-
-    )
-  }
+    );
 }

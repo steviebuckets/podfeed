@@ -6,9 +6,6 @@ export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_
 export const addPodcast = podcast => dispatch => {
     const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
 
-
-
-
     console.log(url, 'url');
     return axios.get(url).then(function(data) {
         console.log('my data', data)
@@ -30,34 +27,24 @@ export const verifyUser = user => dispatch => {
         let myToken = response.data.token;
         localStorage.setItem('token', myToken);
         location.replace('/');
-        // or return data like below
-        // return response.data.token;s
-    })
-
-    .catch(function(error) {
+    }).catch(function(error) {
         console.log('User already exists', error);
     })
 }
 
-
-// recursive function
-// function factorial(n){
-//   if (n == 0){
-//     return 1;
-//   } else {
-//     return n * factorial(n-1);
-//   }
-// }
-//
-//
-// 3 - 1000?
-// x y z
-// x z y
-// z x y
-// z y x
-// y z x
-// y x z
-//
-// 3 people, 3 x 2 x 1  x 1 => 6???
-// 4 people? 4 X 3 X 2 X 1 =>
-// Pascal - Pascal's
+// verifies a user on SignIn
+export const identifyUser = user => dispatch => {
+    // console.log('my user', user)
+    axios.post('/login', {
+        email: user.email,
+        password: user.password
+    }).then(function(response) {
+        // console.log('my user is working!', response.data.token)
+        /// store the token!!!
+        let myToken = response.data.token;
+        localStorage.setItem('token', myToken);
+        location.replace('/');
+    }).catch(function(error) {
+        console.log('User already exists', error);
+    })
+}

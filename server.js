@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-dotenv.config({ silent: true });
+dotenv.config({silent: true});
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 let secret = 'mysecret';
@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 3001));
 
 //signin route
-app.post('/login', (req, res) => {
+app.post('/login/', (req, res) => {
     User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
         if (err) {
             return res.status(404).json({message: 'User not found'})
@@ -133,18 +133,15 @@ app.get('/search', (req, res) => {
     }
 })
 
-
 //catch-all endpoint if client makes request to non existent endpoint
 app.use('*', function(req, res) {
-    res.status(404).json({ message: 'Not Found' });
+    res.status(404).json({message: 'Not Found'});
 });
-
-
 
 //connect to database here
 // catch-all endpoint if client makes request to non existent endpoint
 app.use('*', function(req, res) {
-    res.status(404).json({ message: 'Not Found' });
+    res.status(404).json({message: 'Not Found'});
 });
 
 let server;
@@ -158,13 +155,12 @@ function runServer() {
                 return reject(err);
             }
             server = app.listen(3001, () => {
-                   /* console.log(`Your app is listening on port ${PORT}`);*/
-                    resolve();
-                })
-                .on('error', err => {
-                    mongoose.disconnect();
-                    reject(err);
-                });
+                /* console.log(`Your app is listening on port ${PORT}`);*/
+                resolve();
+            }).on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
         });
     });
 }
@@ -173,7 +169,7 @@ function runServer() {
 function closeServer() {
     return mongoose.disconnect().then(() => {
         return new Promise((resolve, reject) => {
-         /*   console.log('Closing server');*/
+            /*   console.log('Closing server');*/
             server.close(err => {
                 if (err) {
                     return reject(err);
@@ -185,9 +181,12 @@ function closeServer() {
 
 }
 
-
 if (require.main === module) {
     runServer().catch(err => console.error(err));
 };
 
-module.exports = { app, runServer, closeServer };
+module.exports = {
+    app,
+    runServer,
+    closeServer
+};
