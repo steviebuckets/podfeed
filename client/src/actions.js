@@ -41,10 +41,11 @@ export const identifyUser = user => dispatch => {
     }).then(function(response) {
         // console.log('my user is working!', response.data.token)
         /// store the token!!!
+        console.log(response.data);
         let myToken = response.data.token;
         localStorage.setItem('token', myToken);
         location.replace('/');
     }).catch(function(error) {
-        console.log('User already exists', error);
+        console.log('User not found', error);
     })
 }

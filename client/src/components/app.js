@@ -33,24 +33,11 @@ export const App = (props) => {
           Auth.isUserAuthenticated() ?
           (<CardText><Link to="/logout">Sign out</Link></CardText>):
           (
-            <div><CardText><Link to="/signin">sigin</Link></CardText>
-            <CardText><Link to="/register">register</Link></CardText></div>
+            <div><CardText><Link to="/signin">Sign in</Link></CardText>
+            <CardText><Link to="/register">Register</Link></CardText></div>
           )
         }
       {props.children}
 
       </Card>
 )}
-
-// <Link to={'/signin'}</Link>
-//
-// // Link={'/signin'}
-//
-// // <Link to={'/signin'}</Link>
-// //
-// //
-// // // <div className="button-line">
-// // //         <RaisedButton type="submit" label="Log in" primary />
-// // //       </div>
-// // //
-// // //       <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>

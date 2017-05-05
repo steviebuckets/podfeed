@@ -20,6 +20,7 @@ const Podcasts = require('./models').Podcasts;
 const User = require('./models').User;
 const bcrypt = require('bcrypt-nodejs');
 
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -27,6 +28,7 @@ app.set('port', (process.env.PORT || 3001));
 
 //signin route
 app.post('/login/', (req, res) => {
+  console.log(req.body)
     User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
         if (err) {
             return res.status(404).json({message: 'User not found'})

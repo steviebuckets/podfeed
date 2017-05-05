@@ -4,9 +4,11 @@ class Auth {
     static authenticateUser(token) {
         localStorage.setItem('token', token);
     }
+
+
     //checks to see if user is aunthenticated
     static isUserAuthenticated() {
-        return localStorage.getItem('token') !== null;
+        return localStorage.getItem('token') !== null && localStorage.getItem('token') !== 'undefined';
     }
     //removes a token from local storage when user signs out
     static deauthenticateUser() {

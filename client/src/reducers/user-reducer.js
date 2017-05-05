@@ -14,14 +14,31 @@
 // }
 
 // create object for user reducer
-const init = {};
+// const init = {};
+//
+// export default function userReducer(user = init, action) {
+//     // console.log('My userReducer', action)
+//     switch (action.type) {
+//         case 'VERIFY_USER': // logging?
+//             return action.user;
+//
+//         case 'IDENTIFY_USER':
+//               return action.user;
+//         default:
+//             return user;
+//     }
+// }
 
-export default function userReducer(user = init, action) {
-    // console.log('My userReducer', action)
-    switch (action.type) {
-        case 'VERIFY_USER':
-            return action.user;
-        default:
-            return user;
-    }
-}
+// export default function userReducer(user = init, action) {
+//     // console.log('My userReducer', action)
+//     switch (action.type) {
+//         case 'VERIFY_USER':
+//             return action.user;
+//
+//             case 'IDENTIFY_USER':
+//             return action.user;
+//
+//             default:
+//               return user;
+//     }
+// }

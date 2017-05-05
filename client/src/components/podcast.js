@@ -10,7 +10,7 @@ export default function Podcast(props) {
                 <br/>
                 <img src={podcast.pictures.large} alt="cover"/>
             </a><br/>
-            <button type="button" Subscribe>Subscribe</button>
+            <button type="button">Subscribe</button>
         </div>
     )
 }

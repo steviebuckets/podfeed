@@ -15,8 +15,6 @@ export function SignIn(props) {
         event.preventDefault();
 
         identifyUser({email, password});
-
-        console.log(localStorage);
     }
 
     return (
