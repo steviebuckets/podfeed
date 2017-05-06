@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  // console.log("is this working?")
     return {
         identifyUser: emailPasswordObject => dispatch(identifyUser(emailPasswordObject))
     }

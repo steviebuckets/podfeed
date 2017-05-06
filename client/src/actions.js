@@ -34,12 +34,12 @@ export const verifyUser = user => dispatch => {
 
 // verifies a user on SignIn
 export const identifyUser = user => dispatch => {
-    // console.log('my user', user)
+    console.log('my user', user)
     axios.post('/login', {
         email: user.email,
         password: user.password
     }).then(function(response) {
-        // console.log('my user is working!', response.data.token)
+        console.log('my user is working!', response.data.token)
         /// store the token!!!
         console.log(response.data);
         let myToken = response.data.token;

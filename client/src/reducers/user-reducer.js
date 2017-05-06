@@ -21,9 +21,6 @@
 //     switch (action.type) {
 //         case 'VERIFY_USER': // logging?
 //             return action.user;
-//
-//         case 'IDENTIFY_USER':
-//               return action.user;
 //         default:
 //             return user;
 //     }
