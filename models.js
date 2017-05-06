@@ -13,10 +13,10 @@ const podcastSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, index: true },
   password: { type: String, select: false, required: true},
-  podcasts: [podcastsSchema] // One User has Many Podcasts
+  podcasts: [podcastSchema] // One User has Many Podcasts
 });
 
-/// shashing before saves
+/// hashing before saves
 // pre-save
 userSchema.pre('save', function(next) {
   var user = this;
