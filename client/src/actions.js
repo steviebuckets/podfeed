@@ -6,9 +6,8 @@ export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_
 export const addPodcast = podcast => dispatch => {
     const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
 
-    console.log(url, 'url');
     return axios.get(url).then(function(data) {
-        console.log('my data', data)
+
         dispatch(fetchDescriptionSuccess(podcast, data))
     }).catch(function(error) {
         console.log(error)
@@ -27,6 +26,8 @@ export const verifyUser = user => dispatch => {
         let myToken = response.data.token;
         localStorage.setItem('token', myToken);
         location.replace('/');
+
+
     }).catch(function(error) {
         console.log('User already exists', error);
     })
@@ -41,10 +42,13 @@ export const identifyUser = user => dispatch => {
     }).then(function(response) {
         console.log('my user is working!', response.data.token)
         /// store the token!!!
-        console.log(response.data);
+
         let myToken = response.data.token;
         localStorage.setItem('token', myToken);
         location.replace('/');
+    
+
+
     }).catch(function(error) {
         console.log('User not found', error);
     })

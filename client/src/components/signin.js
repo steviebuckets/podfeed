@@ -10,11 +10,13 @@ export function SignIn(props) {
 
     const {identifyUser} = props;
 
+
     const handleSubmit = (event) => {
 
         event.preventDefault();
-
         identifyUser({email, password});
+
+
     }
 
     return (
