@@ -12,8 +12,8 @@
 }
 
 .landing-container, .landing-content {
-    margin-top: 250px;
-    margin-bottom: 250px;
+    margin-top: 225px;
+    margin-bottom: 150px;
 }
 
 .landing-content h2 {
@@ -40,8 +40,8 @@
     font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     text-align: center;
-    margin-left: 50px;
-    margin-right: 100px;
+    margin-left: 115px;
+    margin-right: 115px;
 }
 
 
@@ -114,16 +114,31 @@ div.container .navbar {
     color: #f44336;
 }
 
+.navbar p {
+  float: left;
+  height: 72px;
+  color: black;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
 
 .navbar .logo {
     float: left;
-    padding-top: 20px;
-    margin-left: 25px;
+    padding-top: px;
+    margin-left: 80px;
     height: 72px;
     color: black;
     font-size: 20px;
     letter-spacing: 1px;
     font-family: 'Raleway', sans-serif;
+    display: inline-block;
+}
+
+.navbar .fa {
+margin-left: -60px;
+margin-top: -8px;
 }
 
 .GridTile ul {

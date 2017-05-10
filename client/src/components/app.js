@@ -31,8 +31,9 @@ export const App = (props) => {
       <div className='container'>
       <div className='navbar'>
       <div className="logo">
-      <p>Pod-Feed</p>
+        <i className="fa fa-headphones fa-2x" aria-hidden="true"></i>
       </div>
+        <p>Pod-Feed</p>
         {
           Auth.isUserAuthenticated() ?
           (<Link to="/logout"><button type="button" className="btn" to="/signinout">Sign Out</button></Link>):
