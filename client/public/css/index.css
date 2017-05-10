@@ -1,4 +1,3 @@
-
 /*.animated {
   animation-name: slideInUp;
   transform-origin: center top;
@@ -10,10 +9,9 @@
     font-family: 'Work Sans', sans-serif;
 }
 
-.landing-container{
-  margin-left: 200px;
-  margin-right: 200px;
-
+.landing-container {
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 .mui-container-fluid, .col-md-4 {
@@ -53,6 +51,7 @@
     margin-left: 50px;
     margin-right: 50px;
 }
+
 
 /*.landing-container .row .mui-col-md-4 {
   padding-left: 100px;
@@ -97,7 +96,9 @@ div.container .navbar {
   background-color: yellow;
 }*/
 
+
 /*Sign in & Sign out button*/
+
 .navbar .btn {
     float: right;
     margin-top: 3px;
@@ -113,7 +114,9 @@ div.container .navbar {
     color: white;
 }
 
+
 /*Register button*/
+
 .navbar .btn-outline {
     float: right;
     margin-top: 3px;
@@ -130,14 +133,13 @@ div.container .navbar {
 }
 
 .navbar p {
-  float: left;
-  height: 72px;
-  color: black;
-  font-size: 20px;
-  letter-spacing: 1px;
-  font-family: 'Raleway', sans-serif;
+    float: left;
+    height: 72px;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: 'Raleway', sans-serif;
 }
-
 
 .navbar .logo {
     float: left;
@@ -152,8 +154,8 @@ div.container .navbar {
 }
 
 .navbar .fa {
-margin-left: -60px;
-margin-top: -8px;
+    margin-left: -60px;
+    margin-top: -8px;
 }
 
 .GridTile ul {
@@ -169,76 +171,51 @@ margin-top: -8px;
 }*/
 
 
-/* addeded for material ui styles */
+/* Sign In Container Styles */
 
-
-/*body {
-  margin: 0;
-  font-size: 16px;
-}*/
-
-
-/*a {
-  color: #00bcd4;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.4s;
-}*/
-
-
-/*a:hover {
-  color: #1976d2;
+.container-signin {
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 600px;
+    margin-right: 600px;
 }
 
-.text-center {
-  text-align: center;
-}*/
-
-
-/*.top-bar {
-  padding: 10px 15px;
-  margin-bottom: 50px;
-}
-.top-bar::after {
-  content: '';
-  display: block;
-  clear: both;
+.container-signin p {
+    font-size: 18px;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    color: #585c61;
+    font-size: 18px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    line-height: 28px;
+    margin-left: 70px;
+    margin-right: 70px;
 }
 
-.top-bar-left {
+.container-signin .fa {
   float: left;
-  font-size: 1.5em;
+  margin-top: 25px;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  padding-left: 110px;
+  line-height: 50px;
+}
+.container-signin h1 {
+    padding-top: 40px;
+    padding-right: 100px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: #343a3e;
 }
 
-.top-bar-right {
-  float: right;
+ .btn-signin {
+  margin-top: 40px;
+  /*background-color: #f44336;*/
+
 }
 
-.top-bar a,
-.nav a {
-  margin: 0 8px;
+.form {
+    background-color: ;
 }
-
-.container {
-  margin: 0 auto;
-  text-align: center;
-  width: 700px;
-}
-
-.card-heading {
-  padding: 16px;
-}
-
-.field-line, .button-line {
-  padding: 16px;
-}
-
-.error-message {
-  padding: 0 16px;
-  color: tomato;
-}
-
-.success-message {
-  padding: 0 16px;
-  color: green;
-}*/

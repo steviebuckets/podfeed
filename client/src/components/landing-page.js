@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const LandingPage = (props) => {
+export class LandingPage extends React.Component {
+//   componentWillMount() {
+//   localStorage.removeItem('display');
+// }
+    render() {
     return (
         <div className="landing-container">
             <div className="landing-content">
@@ -38,4 +42,5 @@ export const LandingPage = (props) => {
             </div>
         </div>
     )
+  }
 }

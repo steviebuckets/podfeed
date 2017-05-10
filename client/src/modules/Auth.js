@@ -19,5 +19,13 @@ class Auth {
     static getToken() {
         return localStorage.getItem('token');
     }
+
+
+    // what would such a method be called?
+    // static hideNavbar(){
+    //   //hide the navbar component here
+    //   console.log(localStorage.getItem('display'));
+    //   return localStorage.getItem('display');
+    // }
 }
 export default Auth;

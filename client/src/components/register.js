@@ -29,7 +29,7 @@ export function Register(props) {
                 </div>
 
                 <div className='field-name'>
-                    <TextField floatingLabelText='Password' name='password' type="text" value={props.password} onChange={e => password = e.target.value}/>
+                    <TextField floatingLabelText='Password' name='password' type="password" value={props.password} onChange={e => password = e.target.value}/>
                 </div>
 
                 <div className='button-line'>
