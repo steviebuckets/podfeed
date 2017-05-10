@@ -1,9 +1,10 @@
 import React from 'react';
 import Podcast from './podcast';
 import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
+// import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 
 const styles = {
   root: {
@@ -12,8 +13,8 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: 800,
+    height: 800,
     overflowY: 'auto',
   },
 };
@@ -40,30 +41,24 @@ export class PodcastList extends React.Component {
         }
     };
 
-    render() {
-      return (
 
-
+render() {
+  return (
     <div style={styles.root}>
       <GridList
-        cellHeight={180}
+        cellHeight={400}
         style={styles.gridList}
       >
-        <Subheader>Featured</Subheader>
-        {this.props.audio.podcastReducer.map(podcast => (
-          <GridTile>
-            key={podcast.url}
+      <Subheader>Featured</Subheader>
+      {this.props.audio.podcastReducer.map(podcast => (
+        <GridTile>
+        <ul key={podcast.url} className='podcast__item'>
             <Podcast podcast={podcast}/>
-            title={podcast.title}
-            subtitle={<span>by <b>{podcast.name}</b></span>}
-
-            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-          
-
-          </GridTile>
-        ))}
-      </GridList>
-    </div>
+        </ul>
+        </GridTile>
+      ))}
+    </GridList>
+  </div>
 
 )
 }
@@ -85,5 +80,4 @@ export class PodcastList extends React.Component {
 //         </div>
 //     );
 //   }
- // }
-}
+  }

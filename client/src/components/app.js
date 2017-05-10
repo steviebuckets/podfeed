@@ -24,20 +24,25 @@ import Auth from '../modules/Auth';
 //     )
 // }
 
+<a href="/users/sign_up" class="btn btn-success sign_up_button">Register</a>
+
 export const App = (props) => {
   return(
-      <Card className='container-links'>
-
-
+      <div className='container'>
+      <div className='navbar'>
+      <div className="logo">
+      <p>Pod-Feed</p>
+      </div>
         {
           Auth.isUserAuthenticated() ?
-          (<CardText><Link to="/logout">Sign out</Link></CardText>):
+          (<Link to="/logout">Sign out</Link>):
           (
-            <div><CardText><Link to="/signin">Sign in</Link></CardText>
-            <CardText><Link to="/register">Register</Link></CardText></div>
+            <div><Link to="/signin">Sign in</Link>
+            <Link to="/register">Register</Link></div>
           )
         }
+        </div>
       {props.children}
 
-      </Card>
+      </div>
 )}
