@@ -35,10 +35,14 @@ export const App = (props) => {
       </div>
         {
           Auth.isUserAuthenticated() ?
-          (<Link to="/logout">Sign out</Link>):
+          (<Link to="/logout"><button type="button" className="btn" to="/signinout">Sign Out</button></Link>):
+
+
           (
-            <div><Link to="/signin">Sign in</Link>
-            <Link to="/register">Register</Link></div>
+            <div><Link to="/signin"><button type="button" className="btn" class="signin" to="/signin">Sign In</button></Link>
+            <Link to="/register"><button type="button" className="btn-outline" to="/register">Register</button></Link>
+            </div>
+
           )
         }
         </div>
