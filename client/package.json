@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.16.1",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",

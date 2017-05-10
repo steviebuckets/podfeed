@@ -1,10 +1,20 @@
+
+/*.animated {
+  animation-name: slideInUp;
+  transform-origin: center top;
+}*/
+
 .landing-content h1, h2 {
     text-align: center;
     margin-top: 80px;
     font-family: 'Work Sans', sans-serif;
 }
 
-.row {}
+.landing-container{
+  margin-left: 200px;
+  margin-right: 200px;
+
+}
 
 .mui-container-fluid, .col-md-4 {
     display: inline;
@@ -13,7 +23,7 @@
 
 .landing-container, .landing-content {
     margin-top: 225px;
-    margin-bottom: 150px;
+    margin-bottom: 170px;
 }
 
 .landing-content h2 {
@@ -40,9 +50,14 @@
     font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     text-align: center;
-    margin-left: 115px;
-    margin-right: 115px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
+/*.landing-container .row .mui-col-md-4 {
+  padding-left: 100px;
+  padding-right: 100px;
+}*/
 
 
 /*.logo h3{

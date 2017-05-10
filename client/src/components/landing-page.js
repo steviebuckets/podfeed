@@ -4,8 +4,8 @@ export const LandingPage = (props) => {
     return (
         <div className="landing-container">
             <div className="landing-content">
-                <h1>All your podcasts, available in one place on the web.</h1>
-                <h2>Available anytime, anywhere.</h2>
+                <h1 className="animated slideInUp">All your podcasts, right here on the web.</h1>
+                <h2 className="animated slideInUp">Available anytime, anywhere.</h2>
             </div>
             <div className="mui-container-fluid">
                 <div className="mui-row">
@@ -23,7 +23,7 @@ export const LandingPage = (props) => {
                             <i className="fa fa-play-circle fa-3x" aria-hidden="true"></i>
                         </div>
                         <h2>Full Playback</h2>
-                        <p>Play, pause, or rewind. All your favorite podcasts are avilable to stream on the web.</p>
+                        <p>Play, pause, or rewind. All your favorite podcasts are available to stream on the web.</p>
                     </div>
 
                     <div className="mui-col-md-4">
