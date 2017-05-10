@@ -4,10 +4,45 @@
   font-family: 'Work Sans', sans-serif;
 }
 
+.row{
+
+}
+.mui-container-fluid, .col-md-4 {
+  display: inline;
+  text-align: center;
+
+}
+
+.landing-container, .landing-content {
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
 .landing-content h2 {
   font-weight: 100;
   color: #a6a6a6;
   font-family: 'Work Sans', sans-serif;
+}
+
+.fa {
+  color: #f44336;
+  padding-bottom: 10px;
+}
+
+.landing-container, .mui-col-md-4 h2 {
+font-size: 20px;
+font-family: 'Work Sans', sans-serif;
+letter-spacing: .5px;
+padding-bottom: 6px;
+}
+
+.mui-col-md-4 p {
+  font-weight: 100;
+  color: #a6a6a6;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 17px;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 /*.logo h3{
