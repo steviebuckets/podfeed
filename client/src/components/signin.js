@@ -1,7 +1,6 @@
 import React from 'react';
-import {Card, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+
+
 
 export class SignIn extends React.Component {
    constructor(props) {
@@ -30,28 +29,26 @@ export class SignIn extends React.Component {
  // }
     render() {
     return (
-        <Card className='container-signin'>
+        <div className='container-signin'>
             <form action="/" onSubmit={this.handleSubmit} className="form">
             <i className="fa fa-headphones fa-4x" aria-hidden="true"></i>
               <h1>Pod Feed</h1>
                 <p>Welcome to Pod Feed. Please sign in with your Pod Feed Account to continue.</p>
 
-                <div className='field-name'>
-                    <TextField floatingLabelText='Email' name='email' type="text" value={this.props.email} onChange={e => this.email = e.target.value}/>
+                <div className='field'>
+                    <input name='email' placeholder="Email" className="email" type="text" value={this.props.email} onChange={e => this.email = e.target.value}/>
                 </div>
 
-                <div className='field-name'>
-                    <TextField floatingLabelText='Password' name='password' type="password" value={this.props.password} onChange={e => this.password = e.target.value}/>
+                <div className='field'>
+                    <input name='password' placeholder="Password" className="password" type="password" value={this.props.password} onChange={e => this.password = e.target.value}/>
                 </div>
 
-                <div className='btn-signin'>
-                    <RaisedButton type='submit' label='Log in' primary/>
-                </div>
+                <div><button type='submit' className="btn-signin" label='Log in'>Sign In</button></div>
 
-                <CardText>Don't have an account?</CardText>
+                <p>Don't have an account?</p>
 
             </form>
-        </Card>
+        </div>
 
     );
   }
