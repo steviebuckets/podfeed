@@ -176,8 +176,8 @@ div.container .navbar {
 .container-signin {
     margin-top: 100px;
     text-align: center;
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-left: 550px;
+    margin-right: 550px;
 }
 
 .container-signin p {
@@ -189,8 +189,8 @@ div.container .navbar {
     padding-bottom: 15px;
     padding-top: 30px;
     line-height: 28px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 55px;
+    margin-right: 55px;
     letter-spacing: 0.5px;
 }
 
@@ -228,7 +228,7 @@ div.container .navbar {
 
 .field .email {
     padding: 0 15px;
-    height: 40px;
+    height: 50px;
     width: 375px;
     background: #f1f1f2;
     -webkit-border-radius: 5px;
@@ -249,7 +249,7 @@ div.container .navbar {
 
 .field .password {
     padding: 0 15px;
-    height: 40px;
+    height: 50px;
     width: 375px;
     background: #f1f1f2;
     -webkit-border-radius: 5px;
@@ -264,6 +264,4 @@ div.container .navbar {
     color: #8a9199;
     font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
     margin-bottom: 13px;
-
-
 }
