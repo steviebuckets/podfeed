@@ -19,8 +19,14 @@ const styles = {
   },
 };
 
-
 export class PodcastList extends React.Component {
+  constructor(props) {
+    super(props)
+      this.audio = "";
+      this.addPodcast = "";
+      this.onSubmit = this.onSubmit.bind(this);
+
+  }
     // console.log('props', props);
 
     // this.props = {audio, addPodcast}// {audio: 'blah', addPodcast: 'meh'}
@@ -34,7 +40,7 @@ export class PodcastList extends React.Component {
         const isEnterKey = (event.which === 13);
         const isLongEnough = name.length > 0;
         if (isEnterKey && isLongEnough) {
-            // console.log("my props", props)
+
             input.value = '';
             this.props.addPodcast(name);
 
@@ -50,6 +56,7 @@ render() {
         style={styles.gridList}
       >
       <Subheader>Featured</Subheader>
+      <input type='text' className='podcast__name' placeholder='Search Podcast' onKeyDown={this.onSubmit}/>
       {this.props.audio.podcastReducer.map(podcast => (
         <GridTile>
         <ul key={podcast.url} className='podcast__item'>
