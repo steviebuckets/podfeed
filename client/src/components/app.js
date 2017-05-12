@@ -12,7 +12,7 @@ export const App = (props) => {
       <div className='container'>
        <div className='navbar'>
       <div className="logo">
-        <i className="fa fa-headphones fa-2x" aria-hidden="true"></i>
+        <Link to="/"><i className="fa fa-headphones fa-2x" aria-hidden="true"></i></Link>
       </div>
         <p>Pod Feed</p>
         {

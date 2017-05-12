@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router';
 
 
 export class SignIn extends React.Component {
@@ -10,8 +10,6 @@ export class SignIn extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-    // const {identifyUser} = props;
-
 
     handleSubmit(event) {
 
@@ -21,16 +19,11 @@ export class SignIn extends React.Component {
 
 
     }
-    // is being run!!
-    //componentdidMount
- //  componentDidMount() {
- //    localStorage.setItem('display', "cat");  // placeholder we have arrived!!
- //
- // }
+
     render() {
     return (
         <div className='container-signin'>
-            <form action="/" onSubmit={this.handleSubmit} className="form">
+          <form action="/" onSubmit={this.handleSubmit} className="form">
             <i className="fa fa-headphones fa-4x" aria-hidden="true"></i>
               <h1>Pod Feed</h1>
                 <p>Welcome to Pod Feed. Please sign in with your Pod Feed Account to continue.</p>
@@ -45,7 +38,7 @@ export class SignIn extends React.Component {
 
                 <div><button type='submit' className="btn-signin" label='Log in'>Sign In</button></div>
 
-                <p>Don't have an account?</p>
+                <Link to="/register"><p>Don't have an account?</p></Link>
 
             </form>
         </div>

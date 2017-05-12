@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export class LandingPage extends React.Component {
 //   componentWillMount() {
 //   localStorage.removeItem('display');
@@ -16,7 +17,8 @@ export class LandingPage extends React.Component {
 
                     <div className="mui-col-md-4">
                         <div>
-                            <i className="fa fa-podcast fa-3x" aria-hidden="true"></i>
+                          <i className="fa fa-podcast fa-3x" aria-hidden="true"></i>
+
                         </div>
                         <h2>Discover New Favorites</h2>
                         <p>Amazing podcasts are released almost every day. We help you find the best ones.</p>

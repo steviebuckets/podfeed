@@ -1,7 +1,6 @@
 import React from 'react';
-import {Card, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import {Link} from 'react-router';
+
 
 export function Register(props) {
     let email = "";
@@ -20,26 +19,26 @@ export function Register(props) {
     }
 
     return (
-        <Card className='container'>
-            <form action="/" onSubmit={handleSubmit}>
-                <h2 className='card-heading'>Register</h2>
+      <div className='container-signin'>
+        <form action="/" onSubmit={handleSubmit} className="form">
+          <i className="fa fa-headphones fa-4x" aria-hidden="true"></i>
+            <h1>Pod Feed</h1>
+              <p>Welcome to Pod Feed. Please sign up if you don't already have a Pod Feed Account.</p>
 
-                <div className='field-name'>
-                    <TextField floatingLabelText='Email' name='email' type="text" value={props.email} onChange={e => email = e.target.value}/>
-                </div>
+              <div className='field'>
+                  <input name='email' placeholder="Email" className="email" type="text" value={props.email} onChange={e => email = e.target.value}/>
+              </div>
 
-                <div className='field-name'>
-                    <TextField floatingLabelText='Password' name='password' type="password" value={props.password} onChange={e => password = e.target.value}/>
-                </div>
+              <div className='field'>
+                  <input name='password' placeholder="Password" className="password" type="password" value={props.password} onChange={e => password = e.target.value}/>
+              </div>
 
-                <div className='button-line'>
-                    <RaisedButton type='submit' label='Create New Account' primary/>
-                </div>
+              <div><button type='submit' className="btn-signin" label='Log in'>Register</button></div>
 
-                <CardText>Already have an account?</CardText>
+              <Link to="/signin"><p>Already have an account?</p></Link>
 
-            </form>
-        </Card>
+          </form>
+      </div>
 
     );
 }
