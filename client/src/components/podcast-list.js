@@ -80,49 +80,19 @@ export class PodcastList extends React.Component {
 
     render() {
         return (
-            <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
-
-              {this.props.audio.podcastReducer.map(podcast => (
+          <div className='podcast-list-conatiner'>
+          <div className="featured-header">
+        <p>FEATURED</p>
+        <p>YOUR PODCASTS</p>
+        </div>
+          <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
+                {this.props.audio.podcastReducer.map(podcast => (
                 <a key={podcast.url} className='podcast__item'>
                    <Podcast podcast={podcast}/>
                    </a>
                    ))}
             </Masonry>
-
-
-        //3rd component with podcasts in a bootstrap grid
-        // <div className="mui-container-fluid">
-        // {this.props.audio.podcastReducer.map(podcast => (
-        //     <div className="mui-row">
-        //       <ul key={podcast.url} className='podcast__item'>
-        //         <div className="mui-col-md-4">
-        //             <Podcast podcast={podcast}/>
-        //         </div>
-        //          </ul>
-        //
-        //     </div>
-        //   ))}
-        // </div>
-
-        // second component with podcasts in a GridList
-        //   <div style={styles.root}>
-        //     <GridList
-        //       cellHeight={400}
-        //       style={styles.gridList}
-        //     >
-        //     <Subheader><p>FEATURED</p></Subheader>
-        //     <Subheader><p>YOUR PODCASTS</p></Subheader>
-        //
-        //     {this.props.audio.podcastReducer.map(podcast => (
-        //       <GridTile>
-        //       <ul key={podcast.url} className='podcast__item'>
-        //           <Podcast podcast={podcast}/>
-        //       </ul>
-        //       </GridTile>
-        //     ))}
-        //   </GridList>
-        // </div>
-
+              </div>
         )
     }
 

@@ -267,6 +267,14 @@ div.container .navbar {
 }
 
 /*Styles for Podcast-List Component */
+
+.my-gallery-class {
+    margin: auto;
+    width: 80%;
+    /*border: 3px solid green;*/
+    padding: 10px;
+}
+
 p {
   font-size: 14px;
   font-weight: 500;
@@ -274,21 +282,44 @@ p {
 }
 
 .my-gallery-class {
+  margin-top: 10px;
 }
 
 .podcast__item {
-  padding: 10px;
+  /*padding: 5px;*/
   width: 400px;
   text-align: center;
+  border: 1px solid #e9e9e9;
+  background-color: #e9e9e9;
 }
 
 .podcast img {
-  border-radius: 150px;
+  /*border: 1px solid #e9e9e9;*/
+  border-radius: 3px;
   vertical-align: middle;
   text-align: center;
+
+}
+
+/*.featured-header {
+text-align: center;
+
+
+}*/
+
+.featured-header p {
+  text-align: center;
+  display: inline;
+  padding-right: 15px;
+
 }
 
 /*.podcast__item a {
   text-align: center;
   width: 2px;
 }*/
+
+.podcast .fa {
+color: #343a3e;
+padding-top: 10px;
+}
