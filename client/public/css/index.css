@@ -323,3 +323,7 @@ text-align: center;
 color: #343a3e;
 padding-top: 10px;
 }
+
+.test {
+  display: none;
+}

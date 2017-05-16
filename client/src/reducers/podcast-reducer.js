@@ -13,7 +13,7 @@ export default function podcastReducer(podcasts = init, action) {
             return podcasts.push(action.payload);
         case 'FETCH_DESCRIPTION_SUCCESS':
             // action
-            console.log('what?', action.podcast,action.description.data);
+            // console.log('what?', action.podcast,action.description.data);
             return action.description.data.data;
         case 'TOGGLE_TODO':
             return podcasts.map(t => {

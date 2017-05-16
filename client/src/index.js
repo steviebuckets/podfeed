@@ -46,6 +46,10 @@ const routes = {
         }, {
             path: '/register',
             component: Register
+        },
+        {  path: '/podcast-list',
+           component: PodcastList
+
         }, {
 
             path: '/logout',

@@ -4,11 +4,12 @@ const bcrypt = require('bcrypt-nodejs');
 //podcasts Schema
 const podcastSchema = new mongoose.Schema({
   // "username": {type: String, required: true},
-  "name": {type: String, required: true},
-  "image": { type: String, required: true },
-  "image_id": { type: String }
+  // "name": {type: String, required: true},
+  // "image": { type: String, required: true },
+  "key": { type: String, required: true}
 });
 
+  // "key": { type: String, required: true, unique: true}
 //user schema
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, index: true },

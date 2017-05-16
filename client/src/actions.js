@@ -33,6 +33,19 @@ export const verifyUser = user => dispatch => {
     })
 }
 
+//New subscription
+export const newSubscription = podcast => dispatch => {
+    console.log('you reached new subscription action', podcast)
+  axios.post('/subscribe', {
+    key: podcast.key
+  }).then(function(response) {
+    console.log('you have subscribed!');
+  }).catch(function(error) {
+    console.log('oops, you did not subscribe')
+  })
+}
+
+
 // verifies a user on SignIn
 export const identifyUser = user => dispatch => {
     console.log('my user', user)
@@ -46,7 +59,7 @@ export const identifyUser = user => dispatch => {
         let myToken = response.data.token;
         localStorage.setItem('token', myToken);
         location.replace('/');
-    
+
 
 
     }).catch(function(error) {

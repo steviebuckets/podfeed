@@ -108,18 +108,35 @@ app.get('/users', (req, res) => {
 
 //if user show me podcasts
 app.get('/podcasts', (req, res) => {
-    if (User) {
-
-        User.findById(req.decoded.id, (err, user) => {
+  User.findById(req.decoded.id, (err, user) => {
             console.log(err)
             res.json(user.podcasts.sort((prev, next) => {
                 return new Date(next.created) - new Date(prev.created);
             }));
 
         });
-    }
 
 });
+
+app.post('/subscribe', (req, res) => {
+  const required = 'key';
+  console.log('reached again!');
+
+  User.findById(req.decoded.id, (err, user) => {
+    user.podcasts.push({
+      key: req.body.key
+
+    });
+      console.log(user);
+    user.save((err) => {
+      if (err) return res.json({});
+    res.json(user);
+  })
+})
+
+});
+
+
 
 //if user let me search for podcasts
 app.get('/search', (req, res) => {

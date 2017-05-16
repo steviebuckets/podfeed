@@ -1,32 +1,16 @@
 import React from 'react';
 import Podcast from './podcast';
 const Masonry = require('react-masonry-component');
+import {Link} from 'react-router';
 // import {GridList, GridTile} from 'material-ui/GridList';
 // import IconButton from 'material-ui/IconButton';
 // import Subheader from 'material-ui/Subheader';
 // import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-// const styles = {
-//   root: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//     justifyContent: 'space-around',
-//   },
-//   gridList: {
-//     width: 800,
-//     height: 800,
-//     overflowY: 'auto',
-//   },
-// };
-
 const masonryOptions = {
-
-
-
 };
 
 const style = {
-
 };
 
 export class PodcastList extends React.Component {
@@ -36,10 +20,6 @@ export class PodcastList extends React.Component {
         this.addPodcast = "";
         this.onSubmit = this.onSubmit.bind(this);
 
-        //trying to append a row and column
-        // this.cast = '<Podcast podcast={podcast}/>';
-        // this.items = '<div className="mui-col-md-4">';
-        // this.row = '<div className="mui-row">';
 
     }
 
@@ -53,6 +33,8 @@ export class PodcastList extends React.Component {
     componentDidMount() {
         this.props.addPodcast('Interview')
     }
+
+
 
     // podcastGrid(props) {
     //   // const cast= '<Podcast podcast={podcast}/>';
@@ -74,33 +56,38 @@ export class PodcastList extends React.Component {
         }
     };
 
-    // <input type='text' className='podcast__name' placeholder='Search Podcast' onKeyDown={this.onSubmit}/>
-    // // returns a podcast
-    // <Podcast podcast={podcast}/>
-
     render() {
         return (
           <div className='podcast-list-conatiner'>
           <div className="featured-header">
-        <p>FEATURED</p>
+        <Link to="/podcast-list"><p>FEATURED</p></Link>
         <p>YOUR PODCASTS</p>
+        </div>
+
+        <div className="test">
+        <h2>Test</h2>
         </div>
           <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
                 {this.props.audio.podcastReducer.map(podcast => (
-                <a key={podcast.url} className='podcast__item'>
+                <span key={podcast.url} className='podcast__item'>
                    <Podcast podcast={podcast}/>
-                   </a>
+                   </span>
                    ))}
             </Masonry>
               </div>
         )
     }
+}
+
+
+
 
     //original component with podcasts
     //     render(){
     //     return (
     //         <div className='podcast-list'>
     //         <h2>Featured</h2>
+    //             SEARCH BAR BELOW - Don't Delete
     //             <input type='text' className='podcast__name' placeholder='Search Podcast' onKeyDown={this.onSubmit}/>
     //             <ul className='podcast__list'>
     //                 {this.props.audio.podcastReducer.map(podcast => (
@@ -112,4 +99,3 @@ export class PodcastList extends React.Component {
     //         </div>
     //     );
     //   }
-}

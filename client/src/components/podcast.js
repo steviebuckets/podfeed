@@ -1,16 +1,51 @@
 import React from 'react';
 
+export default class Podcast extends React.Component {
+  constructor(props) {
+    super(props)
+    this.podcast = "";
+    this.newSubscription = "";
+    this.someClickFunction = this.someClickFunction.bind(this);
 
-export default function Podcast(props) {
-    const {podcast} = props;
+  }
+    // const {podcast, someClickFunction} = props;
+
+
+    // someClickFunction(event) {
+    //   event.preventDefault();
+    //
+    // // this.props.podcast.key
+    //
+    //
+    // }
+    // function for adding podcasts on Subscribe
+    someClickFunction(event) {
+      event.preventDefault()
+      //identify the id of the podcast being clicked
+      //on button click the id of the podcast
+      // const data = {
+      //   podcast: this.props.podcast.url
+      // }
+      const data = this.props.podcast.key;
+
+      this.props.newSubscription(data);
+
+    }
+
+
+
+
+    render() {
+
     return (
         <div className="podcast">
-            <a href={podcast.url} className="link">
+            <a href={this.props.podcast.url} className="link">
                 <br/>
-                <img src={podcast.pictures.large} alt="cover"/>
+                <img src={this.props.podcast.pictures.large} alt="cover"/>
             </a><br/>
 
-          <a href="#"><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+          <a href="#" onClick={this.someClickFunction}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
         </div>
     )
+}
 }
