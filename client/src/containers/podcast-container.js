@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { newSubscription } from '../actions';
+import {newSubscription} from '../actions';
 import * as components from '../components/podcast';
 
 const mapStateToProps = (state) => {
@@ -8,8 +8,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  console.log('we are here!!');
     return {
-        newSubscription: podcast => dispatch(newSubscription(podcast)),
+        newSubscription: key => dispatch(newSubscription(key)),
     }
 }
 
@@ -18,10 +19,3 @@ const Podcast = connect(
   mapDispatchToProps
 )(components.Podcast)
 export default Podcast
-
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    addPodcast: text => dispatch(addPodcast(text)),
-  }
-}

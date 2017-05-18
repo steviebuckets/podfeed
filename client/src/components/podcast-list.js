@@ -1,5 +1,5 @@
 import React from 'react';
-import Podcast from './podcast';
+import {Podcast} from './podcast';
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
 // import {GridList, GridTile} from 'material-ui/GridList';
@@ -32,6 +32,7 @@ export class PodcastList extends React.Component {
     // this.props = {audio, addPodcast}// {audio: 'blah', addPodcast: 'meh'}
     componentDidMount() {
         this.props.addPodcast('Interview')
+
     }
 
 

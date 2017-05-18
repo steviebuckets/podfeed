@@ -30,7 +30,7 @@ app.set('port', (process.env.PORT || 3001));
 //signin route
 app.post('/login/', (req, res) => {
   // console.log(req.body)
-  console.log("hello from server")
+  // console.log("hello from server")
     User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
         if (err) {
             return res.status(404).json({message: 'User not found'})

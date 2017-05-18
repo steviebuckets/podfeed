@@ -35,11 +35,12 @@ export const verifyUser = user => dispatch => {
 
 //New subscription
 export const newSubscription = podcast => dispatch => {
-    console.log('you reached new subscription action', podcast)
+    // console.log('you reached new subscription action', podcast)
+    // how does the server know which user wants to subscribe to podcast?
   axios.post('/subscribe', {
     key: podcast.key
   }).then(function(response) {
-    console.log('you have subscribed!');
+    console.log('you have subscribed!', response.data.key);
   }).catch(function(error) {
     console.log('oops, you did not subscribe')
   })

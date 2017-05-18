@@ -14,7 +14,10 @@ import {LandingPage} from './components/landing-page';
 import {App} from './components/app';
 import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
+
+import Podcast from './containers/podcast-container';
 import Register from './containers/register-container';
+
 import SignIn from './containers/login-container';
 import Auth from './modules/Auth';
 import {browserHistory} from 'react-router';
@@ -34,7 +37,7 @@ const routes = {
             getComponent: (location, callback) => {
                 if (Auth.isUserAuthenticated()) {
                     console.log('auth')
-                    callback(null, PodcastList);
+                    callback(null, PodcastList, Podcast);
                 } else {
                     console.log('not auth')
                     callback(null, LandingPage);
@@ -46,6 +49,9 @@ const routes = {
         }, {
             path: '/register',
             component: Register
+        },
+        {  path: '/podcast',
+           component: Podcast
         },
         {  path: '/podcast-list',
            component: PodcastList
