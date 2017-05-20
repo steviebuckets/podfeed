@@ -17,7 +17,10 @@ export class PodcastList extends React.Component {
     constructor(props) {
         super(props)
         this.audio = "";
+        this.user = "";
+        this.newSubscription = "";
         this.addPodcast = "";
+        this.clickSubscribe = this.clickSubscribe.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -31,7 +34,22 @@ export class PodcastList extends React.Component {
 
     // this.props = {audio, addPodcast}// {audio: 'blah', addPodcast: 'meh'}
     componentDidMount() {
+      // console.log(this, "what do I have here?")
         this.props.addPodcast('Interview')
+
+    }
+
+    clickSubscribe(event) {
+        event.preventDefault()
+        //identify the id of the podcast being clicked
+        //on button click the id of the podcast
+        const key = {
+            podcast: this.props.podcast.key
+        }
+        // const data = this.props.podcast.key;
+        // alert("Hello World")
+        // console.log(this)
+        this.props.newSubscription(key);
 
     }
 
@@ -72,6 +90,7 @@ export class PodcastList extends React.Component {
                 {this.props.audio.podcastReducer.map(podcast => (
                 <span key={podcast.url} className='podcast__item'>
                    <Podcast podcast={podcast}/>
+                     <i className="fa fa-plus-circle fa-2x" aria-hidden="true" onClick={this.clickSubscribe}></i>
                    </span>
                    ))}
             </Masonry>

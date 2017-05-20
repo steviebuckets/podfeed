@@ -15,7 +15,7 @@ import {App} from './components/app';
 import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 
-import Podcast from './containers/podcast-container';
+import {Podcast} from './containers/podcast-container';
 import Register from './containers/register-container';
 
 import SignIn from './containers/login-container';
