@@ -40,13 +40,17 @@ export class PodcastList extends React.Component {
     }
 
     clickSubscribe(event) {
-      // console.log("my props", this.props)
+      // console.log("my props", this.props.audio.podcastReducer.map(podcast => (
+      //    podcast.key
+      // )))
         event.preventDefault()
         //identify the id of the podcast being clicked
-        //on button click the id of the podcast
-        const key = {
-            podcast: this.props.key
-        }
+
+        const key = this.props.audio.podcastReducer.map(podcast => (
+           podcast.key
+        ));
+
+        // console.log(key, "my key")
         // const data = this.props.podcast.key;
         // alert("Hello World")
         // console.log(this)

@@ -120,14 +120,14 @@ app.get('/podcasts', (req, res) => {
 
 app.post('/subscribe', (req, res) => {
   const required = 'key';
-  console.log('reached again!');
+  console.log('reached subscribe route in server!');
 
   User.findById(req.decoded.id, (err, user) => {
     user.podcasts.push({
       key: req.body.key
 
     });
-      console.log(user);
+    console.log(user);
     user.save((err) => {
       if (err) return res.json({});
     res.json(user);
@@ -135,6 +135,31 @@ app.post('/subscribe', (req, res) => {
 })
 
 });
+
+// app.post('/register/', (req, res) => {
+//     let user = new User();
+//     user.email = req.body.email;
+//     user.password = req.body.password;
+//     user.save((err) => {
+//         if (err) {
+//             console.log(err);
+//             return res.status(500).json({message: "User already exists here!"})
+//         }
+//         let myToken = jwt.sign({
+//             email: user.email,
+//             id: user._id
+//         }, secret, {expiresIn: "24h"});
+//         console.log("my response in server!")
+//         res.json({
+//
+//             success: true,
+//             message: "User successfully registered!" + myToken,
+//             token: myToken
+//         });
+//     })
+//
+// });
+
 
 
 
