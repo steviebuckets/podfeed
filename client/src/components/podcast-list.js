@@ -29,14 +29,30 @@ export class PodcastList extends React.Component {
 
   }
 
+
+  // jQuery
+  //
+  // <div>
+  //   <span>Eggs</span>
+  //   <a href="#" id="3" data-id="34">Delete</a>
+  // </div>
+  //
+  // $('a').click(function(event){
+  //   // this?? ---> event.target
+  //   $(this).parent().remove();
+  // })
+  //
+
   clickSubscribe(event) {
-
+    console.log(event.target.id, 'event');
     event.preventDefault()
+    // cont myKey = this.props.audio.user.key;
+    // console.
 
-    const key = this.props.audio.podcastReducer.map(podcast => (podcast.key));
-
+    // const key = this.props.audio.podcastReducer.map(podcast => (eventpodcast.key));
+    const key = event.target.id;
     this.props.newSubscription(key);
-
+  
   }
 
   onSubmit(event) {
@@ -69,7 +85,7 @@ export class PodcastList extends React.Component {
           {this.props.audio.podcastReducer.map(podcast => (
             <span key={podcast.url} className='podcast__item'>
               <Podcast podcast={podcast}/>
-              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" onClick={this.clickSubscribe}></i>
+              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={podcast.key} onClick={this.clickSubscribe}></i>
             </span>
           ))}
         </Masonry>

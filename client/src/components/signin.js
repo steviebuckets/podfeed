@@ -12,7 +12,7 @@ export class SignIn extends React.Component {
   handleSubmit(event) {
 
     event.preventDefault();
-    console.log('my identifyUser', this)
+    // console.log('my identifyUser', this)
     this.props.identifyUser({email: this.email, password: this.password});
 
   }

@@ -32,18 +32,27 @@ export const verifyUser = user => dispatch => {
 }
 
 //New subscription
-export const newSubscription = podcast => dispatch => {
+export const newSubscription = podcastKey => dispatch => {
 
-  let myToken = Storage.token;
 
-  axios.post('/subscribe?token=' + myToken, {key: podcast.key}).then(function(response) {
+  let myToken = localStorage.getItem('token');
 
-    console.log('you have subscribed!', response.data.key);
+  axios.post('/subscribe?token=' + myToken, {key: podcastKey}).then(function(response) {
+    console.log('you have subscribed!', response.data);
 
   }).catch(function(error) {
     console.log('oops, you did not subscribe', error)
   })
 }
+
+// success: function(responseData, status, jqXHR) {
+//                console.log(responseData);
+//
+//                var div_data =
+//                    '<div class="col-md-4"><img src="' + responseData.image + '"><br/>' + responseData.title + "<br/> " + responseData.recordstore + "<br/>" + responseData.description + "<br/>" + responseData.user + "<br/>" + responseData.created + "</div>";
+//
+//                $('.row').append(div_data);
+//            },
 
 // verifies a user on SignIn
 export const identifyUser = user => dispatch => {

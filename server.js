@@ -119,14 +119,17 @@ app.get('/podcasts', (req, res) => {
 app.post('/subscribe', (req, res) => {
   const required = 'key';
   console.log('reached subscribe route in server!');
-
+  console.log('body', req.body);
   User.findById(req.decoded.id, (err, user) => {
+    console.log(req.body, 'body')
     user.podcasts.push({key: req.body.key});
-    console.log(user);
+    // console.log(user);
     user.save((err) => {
-      if (err)
-        return res.json({});
-      res.json(user);
+      if (err){
+        console.log(err);
+        return res.status(404).json({message: 'Failed to subscribe'}); // this is an aer
+      }
+      res.status(200).json(user.podcasts);
     })
   })
 
