@@ -14,15 +14,14 @@ export const addPodcast = podcast => dispatch => {
   })
 }
 
-// verify user action { email: 'blah', password: 'meh'}
+// verify user action
 export const verifyUser = user => dispatch => {
   // console.log('my user', user)
   axios.post('/register', {
     email: user.email,
     password: user.password
   }).then(function(response) {
-    // console.log('my user is working!', response.data.token)
-    /// store the token!!!
+
     let myToken = response.data.token;
     localStorage.setItem('token', myToken);
     location.replace('/');
@@ -34,18 +33,11 @@ export const verifyUser = user => dispatch => {
 
 //New subscription
 export const newSubscription = podcast => dispatch => {
-  console.log(localStorage, 'my token')
-  // console.log('you reached new subscription action', podcast)
-  // how does the server know which user wants to subscribe to podcast?
+
   let myToken = Storage.token;
-  // localStorage.getItem('token', myToken);
-  // location.replace('/');
 
   axios.post('/subscribe?token=' + myToken, {key: podcast.key}).then(function(response) {
-    // '/posts?token=' + myToken
 
-    // let myToken = response.data.token;
-    // localStorage.getItem('token', myToken);
     console.log('you have subscribed!', response.data.key);
 
   }).catch(function(error) {
@@ -55,13 +47,11 @@ export const newSubscription = podcast => dispatch => {
 
 // verifies a user on SignIn
 export const identifyUser = user => dispatch => {
-  // console.log('my user now', user)
+
   axios.post('/login', {
     email: user.email,
     password: user.password
   }).then(function(response) {
-    // console.log('my user is working!', response.data.token)
-    /// store the token!!!
 
     let myToken = response.data.token;
     localStorage.setItem('token', myToken);
