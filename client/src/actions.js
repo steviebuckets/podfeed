@@ -1,21 +1,7 @@
 import axios from 'axios';
 // import Auth from './modules/Auth';
 
-export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcast, description});
-
-export const addPodcast = podcast => dispatch => {
-  const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
-
-  return axios.get(url).then(function(data) {
-
-    dispatch(fetchDescriptionSuccess(podcast, data))
-  }).catch(function(error) {
-    console.log(error)
-  })
-}
-
-
-// verify user action
+// Register User
 export const verifyUser = user => dispatch => {
   // console.log('my user', user)
   axios.post('/register', {
@@ -32,30 +18,7 @@ export const verifyUser = user => dispatch => {
   })
 }
 
-//New subscription
-export const newSubscription = podcastKey => dispatch => {
-
-
-  let myToken = localStorage.getItem('token');
-
-  axios.post('/subscribe?token=' + myToken, {key: podcastKey}).then(function(response) {
-    console.log('you have subscribed!', response.data);
-
-  }).catch(function(error) {
-    console.log('oops, you did not subscribe', error)
-  })
-}
-
-// success: function(responseData, status, jqXHR) {
-//                console.log(responseData);
-//
-//                var div_data =
-//                    '<div class="col-md-4"><img src="' + responseData.image + '"><br/>' + responseData.title + "<br/> " + responseData.recordstore + "<br/>" + responseData.description + "<br/>" + responseData.user + "<br/>" + responseData.created + "</div>";
-//
-//                $('.row').append(div_data);
-//            },
-
-// verifies a user on SignIn
+// Sign In User
 export const identifyUser = user => dispatch => {
 
   axios.post('/login', {
@@ -69,5 +32,40 @@ export const identifyUser = user => dispatch => {
 
   }).catch(function(error) {
     console.log('User not found', error);
+  })
+}
+
+// Returns Podcast Data From API
+export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcast, description});
+
+// Search For Podcast
+export const addPodcast = podcast => dispatch => {
+  const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
+
+  return axios.get(url).then(function(data) {
+
+    dispatch(fetchDescriptionSuccess(podcast, data))
+  }).catch(function(error) {
+    console.log(error)
+  })
+}
+
+// New Podcast Subscription
+export const newSubscription = podcastKey => dispatch => {
+  let myToken = localStorage.getItem('token');
+  axios.post('/subscribe?token=' + myToken, {key: podcastKey}).then(function(response) {
+    console.log('you have subscribed!', response.data);
+  }).catch(function(error) {
+    console.log('oops, you did not subscribe', error)
+  })
+}
+
+//Retrieve User Podcasts
+export const userSubscriptions = podcasts => dispatch => {
+  let myToken = localStorage.getItem('token');
+  axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
+    console.log("User Podcasts Here!", response.data);
+  }).catch(function(error) {
+    console.log("Sorry, no podcasts here", error)
   })
 }

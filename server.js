@@ -98,11 +98,24 @@ app.use((req, res, next) => {
 });
 
 //find a user
-app.get('/users', (req, res) => {
-  User.find().then(users => {
-    res.json(users);
-  });
+// app.get('/users', (req, res) => {
+//   User.find().then(users => {
+//     res.json(user.podcasts);
+//   });
+// })
+
+app.get('/subscriptions', (req, res) => {
+  User.findById(req.decoded.id, (err, user) => {
+    if(err) {
+      console.log(err);
+      return res.status(404).json({message: 'Sorry, no podcasts found'});
+    } else {
+      res.status(200).json(user.podcasts);
+    }
+  })
 })
+//original res.json for /users
+// res.json(users);
 
 //if user show me podcasts
 app.get('/podcasts', (req, res) => {

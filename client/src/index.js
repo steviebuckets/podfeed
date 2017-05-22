@@ -19,9 +19,10 @@ import {Podcast} from './containers/podcast-container';
 import Register from './containers/register-container';
 
 import SignIn from './containers/login-container';
+import Subscriptions from './containers/user-subscriptions-container'
 import Auth from './modules/Auth';
 import {browserHistory} from 'react-router';
-import {Subscriptions} from './components/subscriptions';// import { RegisterUser } from './containers/register-container';
+// import {Subscriptions} from './components/subscriptions';
 
 //remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();

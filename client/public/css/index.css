@@ -323,10 +323,25 @@ text-align: center;
     margin-left: 341px;
 }
 
+/*a:active {
+    text-decoration: underline;
+    color: black;
+}*/
+
+a:visited {
+  color: grey;
+}
+
+a:link {
+  color: black;
+}
+
+
 .featured-header p {
     display: inline;
     padding-right: 10px;
     padding-left: 1r5px;
+    /*color: black;*/
 }
 
 

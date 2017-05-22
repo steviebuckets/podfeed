@@ -3,28 +3,29 @@ import React from 'react';
 import {Podcast} from './podcast';
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
-// import {GridList, GridTile} from 'material-ui/GridList';
-// import IconButton from 'material-ui/IconButton';
-// import Subheader from 'material-ui/Subheader';
-// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 
 const masonryOptions = {};
 
 const style = {};
 
 export class Subscriptions extends React.Component {
-  // constructor(props) {
-  //   // super(props)
-  //
-  //
-  // }
+  constructor(props) {
+    super(props)
+    this.audio = "";
+    this.user = "";
+    this.userSubscriptions = "";
+
+  }
 
 
   componentDidMount() {
+    console.log(this.props, "my subscription props")
+    this.props.userSubscriptions();
     //this will be my call to my subscriptions action to bring back subscribed podcasts
     // this.props.mySubscriptions()
-
   }
+
 
   render() {
     return (

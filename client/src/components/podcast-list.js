@@ -2,13 +2,8 @@ import React from 'react';
 import {Podcast} from './podcast';
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
-// import {GridList, GridTile} from 'material-ui/GridList';
-// import IconButton from 'material-ui/IconButton';
-// import Subheader from 'material-ui/Subheader';
-// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const masonryOptions = {};
-
 const style = {};
 
 export class PodcastList extends React.Component {
@@ -23,36 +18,17 @@ export class PodcastList extends React.Component {
 
   }
 
-
   componentDidMount() {
     this.props.addPodcast('Interview')
 
   }
 
-
-  // jQuery
-  //
-  // <div>
-  //   <span>Eggs</span>
-  //   <a href="#" id="3" data-id="34">Delete</a>
-  // </div>
-  //
-  // $('a').click(function(event){
-  //   // this?? ---> event.target
-  //   $(this).parent().remove();
-  // })
-  //
-
   clickSubscribe(event) {
-    console.log(event.target.id, 'event');
+    // console.log(event.target.id, 'event');
     event.preventDefault()
-    // cont myKey = this.props.audio.user.key;
-    // console.
-
-    // const key = this.props.audio.podcastReducer.map(podcast => (eventpodcast.key));
     const key = event.target.id;
     this.props.newSubscription(key);
-  
+
   }
 
   onSubmit(event) {
@@ -75,7 +51,9 @@ export class PodcastList extends React.Component {
           <Link to="/podcast-list">
             <p>FEATURED</p>
           </Link>
-          <p>YOUR PODCASTS</p>
+          <Link to="/subscriptions">
+            <p>YOUR PODCASTS</p>
+          </Link>
         </div>
 
         <div className="test">
