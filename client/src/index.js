@@ -21,7 +21,7 @@ import Register from './containers/register-container';
 import SignIn from './containers/login-container';
 import Auth from './modules/Auth';
 import {browserHistory} from 'react-router';
-// import { RegisterUser } from './containers/register-container';
+import {Subscriptions} from './components/subscriptions';// import { RegisterUser } from './containers/register-container';
 
 //remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
@@ -56,7 +56,12 @@ const routes = {
         {  path: '/podcast-list',
            component: PodcastList
 
-        }, {
+        },
+        {  path: '/subscriptions',
+           component: Subscriptions
+
+        },
+         {
 
             path: '/logout',
             onEnter: (nextState, replace) => {
