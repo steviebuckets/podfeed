@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {addPodcast, newSubscription} from '../actions';
+import {addPodcast, newSubscription, userSubscriptions} from '../actions';
 import * as components from '../components/podcast-list';
 
 const mapStateToProps = (state) => {
@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addPodcast: text => dispatch(addPodcast(text)),
-    newSubscription: key => dispatch(newSubscription(key))
+    newSubscription: key => dispatch(newSubscription(key)),
+    userSubscriptions: user => dispatch(userSubscriptions(user)),
   }
 }
 

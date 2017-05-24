@@ -11,9 +11,7 @@ export const App = (props) => {
   return(
       <div className='container'>
        <div className='navbar'>
-       <div className="search">
-       <input type="text" className="form-control"  onKeyDown={props.onSubmit} placeholder="Search"></input>
-       </div>
+
       <div className="logo">
         <Link to="/"><i className="fa fa-headphones fa-2x" aria-hidden="true"></i></Link>
       </div>
@@ -22,7 +20,9 @@ export const App = (props) => {
           Auth.isUserAuthenticated() ?
 
           (
-            <Link to="/logout"><button type="button" className="btn" to="/signinout">Sign Out</button></Link>):
+            <div><Link to="/logout"><button type="button" className="btn" to="/signinout">Sign Out</button></Link>
+          <input type="text" className="form-control"  onKeyDown={props.onSubmit} placeholder="Search"></input></div>):
+
 
           (
             <div><Link to="/signin"><button type="button" className="btn signin" to="/signin">Sign In</button></Link>
@@ -31,6 +31,7 @@ export const App = (props) => {
 
           )
         }
+
         </div>
       {props.children}
 
@@ -39,3 +40,8 @@ export const App = (props) => {
 
 //props for search bar
 // onKeyDown={props.onSubmit}
+
+//search bar
+// <div className="search">
+// <input type="text" className="form-control"  onKeyDown={props.onSubmit} placeholder="Search"></input>
+// </div>

@@ -6,62 +6,64 @@
 
 /*Navbar Search*/
 
-.search {
+
+/*.search {
     border-radius: 2px;
     margin: auto;
     width: 50%;
     padding: 10px;
     text-align: center;
     display: none;
-}
+
+}*/
 
 .landing-content h1, h2 {
-    text-align: center;
-    margin-top: 80px;
-    font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  margin-top: 80px;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .landing-container {
-    margin-left: 200px;
-    margin-right: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .mui-container-fluid, .col-md-4 {
-    display: inline;
-    text-align: center;
+  display: inline;
+  text-align: center;
 }
 
 .landing-container, .landing-content {
-    margin-top: 225px;
-    margin-bottom: 170px;
+  margin-top: 225px;
+  margin-bottom: 170px;
 }
 
 .landing-content h2 {
-    font-weight: 100;
-    color: #a6a6a6;
-    font-family: 'Work Sans', sans-serif;
+  font-weight: 100;
+  color: #a6a6a6;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .fa {
-    color: #f44336;
-    padding-bottom: 10px;
+  color: #f44336;
+  padding-bottom: 10px;
 }
 
 .landing-container, .mui-col-md-4 h2 {
-    font-size: 20px;
-    font-family: 'Work Sans', sans-serif;
-    letter-spacing: .5px;
-    padding-bottom: 6px;
+  font-size: 20px;
+  font-family: 'Work Sans', sans-serif;
+  letter-spacing: .5px;
+  padding-bottom: 6px;
 }
 
 .mui-col-md-4 p {
-    font-weight: 100;
-    color: #a6a6a6;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 17px;
-    text-align: center;
-    margin-left: 50px;
-    margin-right: 50px;
+  font-weight: 100;
+  color: #a6a6a6;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 17px;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 
@@ -79,16 +81,24 @@
 /*Styles for Navbar*/
 
 div.container {
-    width: 100%;
-    padding: 0px;
+  width: 100%;
+  padding: 0px;
 }
 
 div.container .navbar {
-    padding-top: 20px;
-    height: 72px;
-    border-bottom: 2px solid #e9e9e9;
-    /*background-color: black;
-  opacity: 0.86;*/
+  padding-top: 20px;
+  height: 72px;
+  border-bottom: 2px solid #e9e9e9;
+  padding-bottom: 60px;
+}
+
+.navbar .form-control {
+  width: 40%;
+  text-align: center;
+  margin: auto;
+  height: 40px;
+  vertical-align: middle;
+  /*margin-top: 3px;*/
 }
 
 
@@ -112,67 +122,67 @@ div.container .navbar {
 /*Sign in & Sign out button*/
 
 .navbar .btn {
-    float: right;
-    margin-top: 3px;
-    margin-right: 20px;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 300;
-    width: 84px;
-    height: 33px;
-    border-radius: 4px;
-    border: 1px solid #f44336;
-    background-color: #f44336;
-    color: white;
+  float: right;
+  margin-top: 4px;
+  margin-right: 20px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 300;
+  width: 84px;
+  height: 33px;
+  border-radius: 4px;
+  border: 1px solid #f44336;
+  background-color: #f44336;
+  color: white;
 }
 
 
 /*Register button*/
 
 .navbar .btn-outline {
-    float: right;
-    margin-top: 3px;
-    margin-right: 7px;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 300;
-    width: 84px;
-    height: 33px;
-    border-radius: 4px;
-    border: 1px solid #f44336;
-    background-color: white;
-    color: #f44336;
+  float: right;
+  margin-top: 3px;
+  margin-right: 7px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 300;
+  width: 84px;
+  height: 33px;
+  border-radius: 4px;
+  border: 1px solid #f44336;
+  background-color: white;
+  color: #f44336;
 }
 
 .navbar p {
-    float: left;
-    height: 72px;
-    color: black;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-family: 'Raleway', sans-serif;
+  float: left;
+  height: 72px;
+  color: black;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+    padding-top: 6.5px;
 }
 
 .navbar .logo {
-    float: left;
-    padding-top: px;
-    margin-left: 80px;
-    height: 72px;
-    color: black;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-family: 'Raleway', sans-serif;
-    display: inline-block;
+  float: left;
+  margin-left: 80px;
+  height: 72px;
+  color: black;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
 }
 
 .navbar .fa {
-    margin-left: -60px;
-    margin-top: -8px;
+  margin-left: -60px;
+
 }
 
 .GridTile ul {
-    list-style: none;
-    display: none;
+  list-style: none;
+  display: none;
 }
 
 
@@ -186,130 +196,130 @@ div.container .navbar {
 /* Sign In Container Styles */
 
 .container-signin {
-    margin-top: 100px;
-    text-align: center;
-    margin-left: 550px;
-    margin-right: 550px;
+  margin-top: 100px;
+  text-align: center;
+  margin-left: 550px;
+  margin-right: 550px;
 }
 
 .container-signin p {
-    font-size: 18px;
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    color: #585c61;
-    font-size: 18px;
-    padding-bottom: 15px;
-    padding-top: 30px;
-    line-height: 28px;
-    margin-left: 55px;
-    margin-right: 55px;
-    letter-spacing: 0.5px;
+  font-size: 18px;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: #585c61;
+  font-size: 18px;
+  padding-bottom: 15px;
+  padding-top: 30px;
+  line-height: 28px;
+  margin-left: 55px;
+  margin-right: 55px;
+  letter-spacing: 0.5px;
 }
 
 .container-signin .fa {
-    float: left;
-    margin-top: 25px;
-    background-repeat: no-repeat;
-    background-size: 50px 50px;
-    padding-left: 125px;
-    line-height: 50px;
+  float: left;
+  margin-top: 25px;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  padding-left: 125px;
+  line-height: 50px;
 }
 
 .container-signin h1 {
-    padding-top: 43px;
-    padding-right: 140px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 30px;
-    font-weight: 300;
-    color: #343a3e;
+  padding-top: 43px;
+  padding-right: 140px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #343a3e;
 }
 
 .container-signin .btn-signin {
-    margin-top: 40px;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 300;
-    width: 100px;
-    height: 50px;
-    border-radius: 4px;
-    border: 1px solid #f44336;
-    background-color: #f44336;
-    color: white;
-    letter-spacing: 1px;
+  margin-top: 40px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 300;
+  width: 100px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #f44336;
+  background-color: #f44336;
+  color: white;
+  letter-spacing: 1px;
 }
 
 .field .email {
-    padding: 0 15px;
-    height: 50px;
-    width: 375px;
-    background: #f1f1f2;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    outline: 0;
-    font-size: 20px;
-    font-weight: 100;
-    color: #8a9199;
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: 13px;
+  padding: 0 15px;
+  height: 50px;
+  width: 375px;
+  background: #f1f1f2;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  margin: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  font-size: 20px;
+  font-weight: 100;
+  color: #8a9199;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 13px;
 }
 
 .field .password {
-    padding: 0 15px;
-    height: 50px;
-    width: 375px;
-    background: #f1f1f2;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    outline: 0;
-    font-size: 20px;
-    font-weight: 100;
-    color: #8a9199;
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: 13px;
+  padding: 0 15px;
+  height: 50px;
+  width: 375px;
+  background: #f1f1f2;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  margin: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  font-size: 20px;
+  font-weight: 100;
+  color: #8a9199;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 13px;
 }
 
 
 /*Styles for Podcast-List Component */
 
 .my-gallery-class {
-    margin: auto;
-    width: 80%;
-    /*border: 3px solid green;*/
-    padding: 10px;
-    margin-right: 50px;
+  margin: auto;
+  width: 80%;
+  /*border: 3px solid green;*/
+  padding: 10px;
+  margin-right: 50px;
 }
 
 p {
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
 }
 
 .my-gallery-class {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .podcast__item {
-    /*padding: 5px;*/
-    width: 400px;
-    text-align: center;
-    border: 1px solid #e9e9e9;
-    background-color: #e9e9e9;
+  /*padding: 5px;*/
+  width: 400px;
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  background-color: #e9e9e9;
 }
 
 .podcast img {
-    /*border: 1px solid #e9e9e9;*/
-    border-radius: 3px;
-    vertical-align: middle;
-    text-align: center;
+  /*border: 1px solid #e9e9e9;*/
+  border-radius: 3px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 
@@ -320,8 +330,9 @@ text-align: center;
 }*/
 
 .featured-header {
-    margin-left: 341px;
+  margin-left: 341px;
 }
+
 
 /*a:active {
     text-decoration: underline;
@@ -336,12 +347,11 @@ a:link {
   color: black;
 }
 
-
 .featured-header p {
-    display: inline;
-    padding-right: 10px;
-    padding-left: 1r5px;
-    /*color: black;*/
+  display: inline;
+  padding-right: 10px;
+  padding-left: 1r5px;
+  /*color: black;*/
 }
 
 
@@ -351,10 +361,10 @@ a:link {
 }*/
 
 .podcast .fa {
-    color: #343a3e;
-    padding-top: 10px;
+  color: #343a3e;
+  padding-top: 10px;
 }
 
 .test {
-    display: none;
+  display: none;
 }

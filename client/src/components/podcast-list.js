@@ -13,13 +13,16 @@ export class PodcastList extends React.Component {
     this.user = "";
     this.newSubscription = "";
     this.addPodcast = "";
+    this.userSubscriptions = "";
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
   }
 
   componentDidMount() {
+    // console.log(this.props.user.podcasts, "new sub props")
     this.props.addPodcast('Interview')
+    // this.props.userSubscriptions()
 
   }
 
@@ -30,6 +33,10 @@ export class PodcastList extends React.Component {
     this.props.newSubscription(key);
 
   }
+
+  // clickYourPodcasts() {
+  // this.props.userSubscriptions("steviebuckets33@gmail.com");
+  // }
 
   onSubmit(event) {
     const input = event.target;
@@ -71,3 +78,11 @@ export class PodcastList extends React.Component {
     )
   }
 }
+
+
+//re write subscription component, make it a dumb function, or get rid of it?
+//bring newSubscription action into PodcastList Component, make sure to wrap the component in the index.
+//create a onClick function when you click the YOUR PODCASTS LINK that runs the newSubscription ACTION which takes in a User
+//THEN DO a console.log to see if you are getting back user data
+
+//IF You KEEP Subscription component, MAP through this.props.user.podcasts? to return a user's podcasts in the masonry grid. - just an idea

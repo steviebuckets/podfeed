@@ -53,7 +53,12 @@ export const addPodcast = podcast => dispatch => {
 // New Podcast Subscription
 export const newSubscription = podcastKey => dispatch => {
   let myToken = localStorage.getItem('token');
-  axios.post('/subscribe?token=' + myToken, {key: podcastKey}).then(function(response) {
+  axios.post('/subscribe?token=' + myToken, {
+    key: podcastKey
+    // name: name,
+    // usernName: userName,
+    // image: image
+  }).then(function(response) {
     console.log('you have subscribed!', response.data);
   }).catch(function(error) {
     console.log('oops, you did not subscribe', error)
@@ -63,7 +68,9 @@ export const newSubscription = podcastKey => dispatch => {
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
   let myToken = localStorage.getItem('token');
-  axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
+  axios.get('/subscriptions?token=' + myToken, {
+    user: podcasts
+  }).then(function(response) {
     console.log("User Podcasts Here!", response.data);
   }).catch(function(error) {
     console.log("Sorry, no podcasts here", error)
