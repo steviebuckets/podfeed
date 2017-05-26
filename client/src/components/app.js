@@ -1,47 +1,75 @@
 import React from 'react';
 import {Link} from 'react-router';
-// import { Card, CardText } from 'material-ui/Card';
+import {connect} from 'react-redux';
+import {addPodcast} from '../actions';
+
 import Auth from '../modules/Auth';
 
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
+  onSubmit(event) {
+    event.preventDefault();
+    const name = this.refs.search.value;
+    const isLongEnough = name.length > 0;
+    if (isLongEnough) {
+      this.refs.search.value = '';
+      this.props.addPodcast(name);
 
-// <a href="/users/sign_up" class="btn btn-success sign_up_button">Register</a>
-
-export const App = (props) => {
-  return(
+    }
+  };
+  render() {
+    return (
       <div className='container'>
-       <div className='navbar'>
+        <div className='navbar'>
 
-      <div className="logo">
-        <Link to="/"><i className="fa fa-headphones fa-2x" aria-hidden="true"></i></Link>
-      </div>
-        <p>Pod Feed</p>
-        {
-          Auth.isUserAuthenticated() ?
+          <div className="logo">
+            <Link to="/">
+              <i className="fa fa-headphones fa-2x" aria-hidden="true"></i>
+            </Link>
+          </div>
+          <p>Pod Feed</p>
+          {Auth.isUserAuthenticated()
+            ? (
+              <div>
+                <Link to="/logout">
+                  <button type="button" className="btn" to="/signinout">Sign Out</button>
+                </Link>
+                <form onSubmit={this.onSubmit}><input type="text" className="form-control" ref="search" placeholder="Search"/></form>
+              </div>
+            )
+            : (
+              <div>
+                <Link to="/signin">
+                  <button type="button" className="btn signin" to="/signin">Sign In</button>
+                </Link>
+                <Link to="/register">
+                  <button type="button" className="btn-outline" to="/register">Register</button>
+                </Link>
+              </div>
 
-          (
-            <div><Link to="/logout"><button type="button" className="btn" to="/signinout">Sign Out</button></Link>
-          <input type="text" className="form-control"  onKeyDown={props.onSubmit} placeholder="Search"></input></div>):
-
-
-          (
-            <div><Link to="/signin"><button type="button" className="btn signin" to="/signin">Sign In</button></Link>
-            <Link to="/register"><button type="button" className="btn-outline" to="/register">Register</button></Link>
-            </div>
-
-          )
-        }
+            )
+}
 
         </div>
-      {props.children}
+        {this.props.children}
 
       </div>
-)}
+    )
+  }
+}
 
-//props for search bar
-// onKeyDown={props.onSubmit}
+const mapStateToProps = (state) => {
+  return {audio: state, user: state}
+}
 
-//search bar
-// <div className="search">
-// <input type="text" className="form-control"  onKeyDown={props.onSubmit} placeholder="Search"></input>
-// </div>
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addPodcast: text => dispatch(addPodcast(text))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

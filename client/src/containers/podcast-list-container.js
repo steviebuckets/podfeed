@@ -15,6 +15,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const PodcastList = connect(mapStateToProps, mapDispatchToProps)(components.PodcastList)
-export default PodcastList
+export default PodcastList;
 
 //adding newSubscription action to PodcastList Component

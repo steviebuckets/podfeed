@@ -17,6 +17,9 @@
 
 }*/
 
+.landing-content h1 {
+  padding-top: 10px;
+}
 .landing-content h1, h2 {
   text-align: center;
   margin-top: 80px;
@@ -24,8 +27,9 @@
 }
 
 .landing-container {
-  margin-left: 200px;
-  margin-right: 200px;
+  /*background-color: #f44336;*/
+  background-color: #fafafa;
+
 }
 
 .mui-container-fluid, .col-md-4 {
@@ -34,7 +38,7 @@
 }
 
 .landing-container, .landing-content {
-  margin-top: 225px;
+  margin-top: 150px;
   margin-bottom: 170px;
 }
 
@@ -44,9 +48,18 @@
   font-family: 'Work Sans', sans-serif;
 }
 
+.landing-container .landing-content h1 {
+  padding-top: 28px;
+}
+
 .fa {
   color: #f44336;
+}
+
+.my-gallery-class .fa {
+  color: #03A9F4;;
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .landing-container, .mui-col-md-4 h2 {
@@ -62,8 +75,7 @@
   font-family: 'Work Sans', sans-serif;
   font-size: 17px;
   text-align: center;
-  margin-left: 50px;
-  margin-right: 50px;
+
 }
 
 
@@ -82,7 +94,7 @@
 
 div.container {
   width: 100%;
-  padding: 0px;
+  /*margin: auto;*/
 }
 
 div.container .navbar {
@@ -93,11 +105,12 @@ div.container .navbar {
 }
 
 .navbar .form-control {
-  width: 40%;
+  width: 30%;
   text-align: center;
   margin: auto;
   height: 40px;
   vertical-align: middle;
+  border-radius: 20px;
   /*margin-top: 3px;*/
 }
 
@@ -161,12 +174,12 @@ div.container .navbar {
   font-size: 20px;
   letter-spacing: 1px;
   font-family: 'Raleway', sans-serif;
-    padding-top: 6.5px;
+  padding-top: 6.5px;
 }
 
 .navbar .logo {
   float: left;
-  margin-left: 80px;
+  /*margin-left: 40px;*/
   height: 72px;
   color: black;
   font-size: 20px;
@@ -289,30 +302,31 @@ div.container .navbar {
 
 /*Styles for Podcast-List Component */
 
-.my-gallery-class {
+/*.my-gallery-class {
   margin: auto;
-  width: 80%;
-  /*border: 3px solid green;*/
-  padding: 10px;
-  margin-right: 50px;
-}
+  width: 100%;
+}*/
 
-p {
+/*p {
   font-size: 14px;
   font-weight: 500;
   text-align: left;
-}
+}*/
 
-.my-gallery-class {
+/*.my-gallery-class {
   margin-top: 10px;
-}
+  margin-left: 80px;
+}*/
 
 .podcast__item {
-  /*padding: 5px;*/
-  width: 400px;
+  width: 300px;
   text-align: center;
-  border: 1px solid #e9e9e9;
-  background-color: #e9e9e9;
+  border: 1px solid #fafafa;
+  margin: 30px;
+  margin-left: 50px;
+
+
+
 }
 
 .podcast img {
@@ -330,9 +344,20 @@ text-align: center;
 }*/
 
 .featured-header {
-  margin-left: 341px;
+  margin-top: 15px;
+  height: 40px;
+ /*background-color: #f1f1f1;*/
+  /*border-radius: 40px;*/
+  text-align: center;
+  margin-left: 90px;
 }
 
+/*width: 40%;
+text-align: center;
+margin: auto;
+height: 40px;
+vertical-align: middle;
+border-radius: 20px;*/
 
 /*a:active {
     text-decoration: underline;
@@ -348,10 +373,12 @@ a:link {
 }
 
 .featured-header p {
-  display: inline;
-  padding-right: 10px;
-  padding-left: 1r5px;
-  /*color: black;*/
+  display: inline-block;
+  margin-left: -20px;
+  padding-right: 54px;
+  /*text-align: center;*/
+
+  color: #262626;
 }
 
 
@@ -363,8 +390,4 @@ a:link {
 .podcast .fa {
   color: #343a3e;
   padding-top: 10px;
-}
-
-.test {
-  display: none;
 }

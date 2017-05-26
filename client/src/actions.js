@@ -42,6 +42,7 @@ export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_
 export const addPodcast = podcast => dispatch => {
   const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
 
+
   return axios.get(url).then(function(data) {
 
     dispatch(fetchDescriptionSuccess(podcast, data))
@@ -54,8 +55,8 @@ export const addPodcast = podcast => dispatch => {
 export const newSubscription = podcastKey => dispatch => {
   let myToken = localStorage.getItem('token');
   axios.post('/subscribe?token=' + myToken, {
-    key: podcastKey
-    // name: name,
+    key: podcastKey,
+    name: name
     // usernName: userName,
     // image: image
   }).then(function(response) {

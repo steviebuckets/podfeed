@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {userSubscriptions} from '../actions';
 
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
@@ -8,16 +10,32 @@ const masonryOptions = {};
 
 const style = {};
 
-export function Subscriptions(props) {
+class Subscriptions extends React.Component {
+  constructor(props) {
+  super(props)
+  this.someFunction = this.someFunction.bind(this);
+
+  }
+
+componentDidMount() {
+  console.log("my subscription", this.props)
+}
+
 
   // componentDidMount() {
-  //   // console.log(this.props.userSubscriptions, "my user subscription props")
-  //   // const user = this.props.user;
-  //   this.props.userSubscriptions("steviebuckets33@gmail.com");
-  //   //this will be my call to my subscriptions action to bring back subscribed podcasts
-  //   // this.props.mySubscriptions()
+  //   console.log(this.props.user.podcastReducer, "my user subscription props")
+  //   // // const user = this.props.user;
+  //   // this.props.userSubscriptions("steviebuckets33@gmail.com");
+  //   // //this will be my call to my subscriptions action to bring back subscribed podcasts
+  //   this.props.mySubscriptions()
   // }
 
+  someFunction() {
+    console.log(this.props)
+    this.props.userSubscriptions();
+  }
+
+    render() {
     return (
       <div className='podcast-list-conatiner'>
         <div className="featured-header">
@@ -29,9 +47,10 @@ export function Subscriptions(props) {
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} options={masonryOptions} elementType={'ul'}>
-        <div className="podcast">
-
+        <div className="user stuff">
+        <ul>{this.props.user.podcasts}</ul>
             <p>Show me Stuff!</p>
+
                 <br/>
 
       <br/>
@@ -41,3 +60,16 @@ export function Subscriptions(props) {
     )
 
 }
+}
+
+const mapStateToProps = (state) => {
+  return {audio: state, user: state}
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    userSubscriptions: user => dispatch(userSubscriptions(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Subscriptions);

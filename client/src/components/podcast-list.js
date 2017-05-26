@@ -8,6 +8,7 @@ const style = {};
 
 export class PodcastList extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props)
     this.audio = "";
     this.user = "";
@@ -15,16 +16,18 @@ export class PodcastList extends React.Component {
     this.addPodcast = "";
     this.userSubscriptions = "";
     this.clickSubscribe = this.clickSubscribe.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
 
   }
 
   componentDidMount() {
-    // console.log(this.props.user.podcasts, "new sub props")
+    // console.log(this.props.user.podcasts.name, "new sub props")
     this.props.addPodcast('Interview')
     // this.props.userSubscriptions()
 
   }
+
+
 
   clickSubscribe(event) {
     // console.log(event.target.id, 'event');
@@ -38,18 +41,20 @@ export class PodcastList extends React.Component {
   // this.props.userSubscriptions("steviebuckets33@gmail.com");
   // }
 
-  onSubmit(event) {
-    const input = event.target;
-    const name = input.value;
-    const isEnterKey = (event.which === 13);
-    const isLongEnough = name.length > 0;
-    if (isEnterKey && isLongEnough) {
-
-      input.value = '';
-      this.props.addPodcast(name);
-
-    }
-  };
+//Search for Podcast Func
+    // onSubmit(event) {
+    //   console.log('hitting search')
+    //   const input = event.target;
+    //   const name = input.value;
+    //   const isEnterKey = (event.which === 13);
+    //   const isLongEnough = name.length > 0;
+    //   if (isEnterKey && isLongEnough) {
+    //
+    //     input.value = '';
+    //     this.props.addPodcast(name);
+    //
+    //   }
+    // };
 
   render() {
     return (
@@ -61,10 +66,6 @@ export class PodcastList extends React.Component {
           <Link to="/subscriptions">
             <p>YOUR PODCASTS</p>
           </Link>
-        </div>
-
-        <div className="test">
-          <h2>Test</h2>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcastReducer.map(podcast => (

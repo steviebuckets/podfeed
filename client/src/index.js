@@ -11,7 +11,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducers/index';
 // import {SignIn} from './components/signin';
 import {LandingPage} from './components/landing-page';
-import {App} from './components/app';
+
+import App from './components/app';
 import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 
@@ -19,7 +20,7 @@ import {Podcast} from './containers/podcast-container';
 import Register from './containers/register-container';
 
 import SignIn from './containers/login-container';
-import {Subscriptions} from './components/subscriptions';
+import Subscriptions from './components/subscriptions';
 import Auth from './modules/Auth';
 import {browserHistory} from 'react-router';
 // import {Subscriptions} from './components/subscriptions';
