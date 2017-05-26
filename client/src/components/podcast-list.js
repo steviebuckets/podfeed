@@ -64,7 +64,7 @@ export class PodcastList extends React.Component {
             <p>FEATURED</p>
           </Link>
           <Link to="/subscriptions">
-            <p>YOUR PODCASTS</p>
+            <p>SUBSCRIBED</p>
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
