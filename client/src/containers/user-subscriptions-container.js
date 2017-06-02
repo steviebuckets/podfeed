@@ -3,7 +3,7 @@ import {userSubscriptions} from '../actions';
 import * as components from '../components/subscriptions';
 
 const mapStateToProps = (state) => {
-  return {audio: state, user: state}
+  return {audio: state}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -38,9 +38,8 @@ export class SignIn extends React.Component {
           </div>
 
           <Link to="/register">
-            <p>Don't have an account?</p>
+            <p className="secondary">Don't have an account?</p>
           </Link>
-
         </form>
       </div>
 

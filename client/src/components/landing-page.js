@@ -12,13 +12,15 @@ export class LandingPage extends React.Component {
             <div className="landing-content">
                 <h1 className="animated lightSpeedIn">All your podcasts, right here on the web.</h1>
                 <h2 className="animated lightSpeedIn">Available anytime, anywhere.</h2>
-            </div>
-            <div className="mui-container-fluid">
-                <div className="mui-row">
 
-                    <div className="mui-col-md-4">
+                </div>
+
+            <div className="mui-container-fluid" id="section-2">
+                <div className="mui-row" id="section-2">
+
+                    <div className="mui-col-md-4" id="section-2">
                         <div>
-                          <i className="fa fa-podcast fa-3x" aria-hidden="true"></i>
+                          <i className="fa fa-podcast fa-3x" aria-hidden="true" id="section-2"></i>
 
                         </div>
                         <h2>Discover New Favorites</h2>
@@ -38,7 +40,7 @@ export class LandingPage extends React.Component {
                             <i className="fa fa-rss fa-3x" aria-hidden="true"></i>
                         </div>
                         <h2>Subscribe</h2>
-                        <p>Subscribe to your favoirte podcasts, or checkout our featured section to discover new ones.</p>
+                        <p>Subscribe to your favoirte podcasts, or checkout the featured section.</p>
                     </div>
 
                 </div>

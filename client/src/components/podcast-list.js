@@ -8,55 +8,35 @@ const style = {};
 
 export class PodcastList extends React.Component {
   constructor(props) {
-    console.log(props)
     super(props)
-    this.audio = "";
-    this.user = "";
-    this.newSubscription = "";
-    this.addPodcast = "";
-    this.userSubscriptions = "";
     this.clickSubscribe = this.clickSubscribe.bind(this);
-    // this.onSubmit = this.onSubmit.bind(this);
-
   }
 
   componentDidMount() {
-    // console.log(this.props.user.podcasts.name, "new sub props")
     this.props.addPodcast('Interview')
-    // this.props.userSubscriptions()
-
   }
 
-
-
-  clickSubscribe(event) {
-    // console.log(event.target.id, 'event');
-    event.preventDefault()
-    const key = event.target.id;
-    this.props.newSubscription(key);
-
-  }
-
-  // clickYourPodcasts() {
-  // this.props.userSubscriptions("steviebuckets33@gmail.com");
+  // componentWillMount() {
+  //   this.props.addPodcast('Interview')
+  //   // history.pushState(null, '/');
+  //   // this.props.addPodcast('The Verge')
+  //
   // }
 
-//Search for Podcast Func
-    // onSubmit(event) {
-    //   console.log('hitting search')
-    //   const input = event.target;
-    //   const name = input.value;
-    //   const isEnterKey = (event.which === 13);
-    //   const isLongEnough = name.length > 0;
-    //   if (isEnterKey && isLongEnough) {
-    //
-    //     input.value = '';
-    //     this.props.addPodcast(name);
-    //
-    //   }
-    // };
+  clickSubscribe(event) {
+    event.preventDefault()
+    this.props.newSubscription(event.target.id);
+  }
 
+  //okay loop through userSubscriptions to pick out the data like you did in podcastLists to get the podcasts.
+  //right now render below doesn't have any data because you need to loop through!
   render() {
+    console.log('reducer', this.props);
+    if (!this.props.audio.podcastReducer){
+      return (<div>Loading</div>)
+
+    }
+
     return (
       <div className='podcast-list-conatiner'>
         <div className="featured-header">
@@ -68,18 +48,29 @@ export class PodcastList extends React.Component {
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
-          {this.props.audio.podcastReducer.map(podcast => (
-            <span key={podcast.url} className='podcast__item'>
+          {this.props.audio.podcastReducer.map(podcast => { /// mixcloud!!
+            let imgUrl = "";
+            if (podcast.pictures){
+              imgUrl = podcast.pictures.large;
+            } else {
+              imgUrl = podcast.image;
+            }
+            // const pic = {podcast.pictures + 'https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/3/f/2/b/23ac-421d-4179-876d-16a7def9ec14'}
+            const id = `${podcast.key},${imgUrl}`; // old school: podcast.key + "," + podcast.pictures.large
+
+            return (
+            <span key={id} className='podcast__item'>
               <Podcast podcast={podcast}/>
-              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={podcast.key} onClick={this.clickSubscribe}></i>
+              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} onClick={this.clickSubscribe}></i>
             </span>
-          ))}
+          )
+        }
+        )}
         </Masonry>
       </div>
-    )
+    );
   }
 }
-
 
 //re write subscription component, make it a dumb function, or get rid of it?
 //bring newSubscription action into PodcastList Component, make sure to wrap the component in the index.

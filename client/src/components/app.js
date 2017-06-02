@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {addPodcast} from '../actions';
+import {userSubscriptions} from '../actions';
 
 import Auth from '../modules/Auth';
 
@@ -21,9 +22,14 @@ class App extends React.Component {
 
     }
   };
+
+
+
+
+
   render() {
     return (
-      <div className='container'>
+      <div className='container-1'>
         <div className='navbar'>
 
           <div className="logo">
@@ -68,7 +74,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addPodcast: text => dispatch(addPodcast(text))
+    addPodcast: text => dispatch(addPodcast(text)),
+    userSubscriptions: user => dispatch(userSubscriptions(user))
   }
 }
 

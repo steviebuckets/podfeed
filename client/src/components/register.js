@@ -37,7 +37,7 @@ export function Register(props) {
         </div>
 
         <Link to="/signin">
-          <p>Already have an account?</p>
+          <p className="secondary">Already have an account?</p>
         </Link>
 
       </form>

@@ -4,111 +4,15 @@
 }*/
 
 
-/*Navbar Search*/
-
-
-/*.search {
-    border-radius: 2px;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-    display: none;
-
-}*/
-
-.landing-content h1 {
-  padding-top: 10px;
-}
-.landing-content h1, h2 {
-  text-align: center;
-  margin-top: 80px;
-  font-family: 'Work Sans', sans-serif;
-}
-
-.landing-container {
-  width: 100%;
-  /*background-color: #f44336;*/
-  /*background-color: #fafafa;*/
-
-}
-
-.mui-col-md-4 p {
-  /*background-color: black;*/
-  margin-left: 80px;
-  margin-right: 110px;
-}
-
-
-.mui-container-fluid, .col-md-4 {
-  display: inline;
-  text-align: center;
-}
-
-.landing-container, .landing-content {
-  margin-top: 275px;
-  margin-bottom: 170px;
-}
-
-.landing-content h2 {
-  font-weight: 100;
-  color: #a6a6a6;
-  font-family: 'Work Sans', sans-serif;
-}
-
-.landing-container .landing-content h1 {
-  padding-top: 28px;
-}
-
-.fa {
-  color: #f44336;
-}
-
-.my-gallery-class .fa {
-  color: #03A9F4;;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-.landing-container, .mui-col-md-4 h2 {
-  font-size: 20px;
-  font-family: 'Work Sans', sans-serif;
-  letter-spacing: .5px;
-  padding-bottom: 6px;
-}
-
-.mui-col-md-4 p {
-  font-weight: 100;
-  color: #a6a6a6;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 17px;
-  text-align: center;
-
-}
-
-
-/*.landing-container .row .mui-col-md-4 {
-  padding-left: 100px;
-  padding-right: 100px;
-}*/
-
-
-/*.logo h3{
-  text-align: left;
-}*/
-
-
-/*Styles for Navbar*/
+/*Styles for App Component (Navbar)*/
 
 div.container {
   width: 100%;
   /*margin: auto;*/
 }
 
-
-
 div.container .navbar {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 50px;
   height: 72px;
   /*border-bottom: 2px solid #e9e9e9;*/
@@ -122,25 +26,8 @@ div.container .navbar {
   height: 40px;
   vertical-align: middle;
   border-radius: 20px;
-  /*margin-top: 3px;*/
+  margin-right: 470px;
 }
-
-
-/*.navbar .btn {
-  float: right;
-  padding-top: 20px;
-  margin-right: 25px;
-  height: 72px;
-  color: #f44336;
-  padding-right: 10px;
-  font-weight: bold;
-  font-family: 'Work Sans', sans-serif;
-}*/
-
-
-/*.navbar .btn btn-outline-primary {
-  background-color: yellow;
-}*/
 
 
 /*Sign in & Sign out button*/
@@ -190,7 +77,6 @@ div.container .navbar {
 
 .navbar .logo {
   float: left;
-  /*margin-left: 40px;*/
   height: 72px;
   color: black;
   font-size: 20px;
@@ -200,30 +86,104 @@ div.container .navbar {
 }
 
 .navbar .fa {
-  margin-left: -60px;
-
-}
-
-.GridTile ul {
-  list-style: none;
-  display: none;
+  margin-left: -45px;
+  padding-right: 20px;
 }
 
 
-/*.header, .container-links{
-  padding-top: 20px;
-  height: 72px;
-  border-bottom: 2px solid #e9e9e9;
-}*/
+/*Media Styles for App Component (Navbar)*/
+
+@media only screen and (max-width: 400px) {
+  .navbar .fa {
+    margin-left: -60px;
+  }
+  .navbar p {
+    margin-left: -14px;
+  }
+  .navbar .btn {
+    width: 20%;
+    padding: 1px;
+    margin-right: -5px;
+    font-size: 13px;
+  }
+  .navbar .btn-outline {
+    width: 20%;
+    padding: 1px;
+    font-size: 13px;
+  }
+}
+
+
+/*Landing Page Component Styles*/
+
+.landing-content h1 {
+  padding-top: 10px;
+}
+
+.landing-content h1, h2 {
+  text-align: center;
+  margin-top: 80px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.landing-container {
+  width: 100%;
+  /*background-color: #f44336;*/
+  /*background-color: #fafafa;*/
+}
+
+.mui-col-md-4 p {
+  /*background-color: black;*/
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.mui-container-fluid, .col-md-4 {
+  display: inline;
+  text-align: center;
+}
+
+.landing-container, .landing-content {
+  margin-top: 275px;
+  margin-bottom: 170px;
+}
+
+.landing-content h2 {
+  font-weight: 100;
+  color: #a6a6a6;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.landing-container .landing-content h1 {
+  padding-top: 28px;
+}
+
+.fa {
+  color: #f44336;
+}
+
+
+/*Media Styles for Landing Page Component*/
+
+@media only screen and (max-width: 400px) {
+  .mui-col-md-4 {
+    margin-left: -80px;
+    margin-right: -60px;
+  }
+  .mui-col-md-4 p {
+    text-align: center;
+    padding-bottom: 50px;
+  }
+}
 
 
 /* Sign In Container Styles */
 
 .container-signin {
-  margin-top: 100px;
+  max-width: 380px;
+  margin: 0 auto;
+  margin-top: 50px;
   text-align: center;
-  margin-left: 550px;
-  margin-right: 550px;
 }
 
 .container-signin p {
@@ -231,27 +191,26 @@ div.container .navbar {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   color: #585c61;
-  font-size: 18px;
   padding-bottom: 15px;
   padding-top: 30px;
   line-height: 28px;
-  margin-left: 55px;
-  margin-right: 55px;
+  margin: 0 0 10px;
   letter-spacing: 0.5px;
+
+}
+
+.container-signin .secondary {
+  font-size: 14px;
+  margin-top: -18px;
 }
 
 .container-signin .fa {
-  float: left;
-  margin-top: 25px;
-  background-repeat: no-repeat;
-  background-size: 50px 50px;
-  padding-left: 125px;
-  line-height: 50px;
+  margin-top: 22px;
+  margin-right: 225px;
 }
 
 .container-signin h1 {
-  padding-top: 43px;
-  padding-right: 140px;
+  margin-top: -40px;
   font-family: 'Raleway', sans-serif;
   font-size: 30px;
   font-weight: 300;
@@ -259,7 +218,7 @@ div.container .navbar {
 }
 
 .container-signin .btn-signin {
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 14px;
   line-height: 14px;
   font-weight: 300;
@@ -311,23 +270,53 @@ div.container .navbar {
 }
 
 
-/*Styles for Podcast-List Component */
+/* Media Styles for Sign In Container Styles */
 
-/*.my-gallery-class {
-  margin: auto;
-  width: 100%;
-}*/
+@media only screen and (max-width: 400px) {
+  .container-signin {
+    width: 100%;
+    margin-left: -5px;
+  }
+  .container-signin .fa {
+    /*margin-left: -180px;*/
+    display: none;
+  }
+  .container-signin h1 {
+    display: none;
+  }
+  .container-signin .form {
+    width: 100%;
+  }
+  .container-signin .form p {
+    /*margin-left: -130px;
+    margin-right: -130px;*/
+  }
+}
 
-/*p {
-  font-size: 14px;
-  font-weight: 500;
-  text-align: left;
-}*/
 
-/*.my-gallery-class {
-  margin-top: 10px;
-  margin-left: 80px;
-}*/
+/*Podcast-List Component Styles*/
+
+.my-gallery-class .fa {
+  color: #03A9F4;
+  ;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.landing-container, .mui-col-md-4 h2 {
+  font-size: 20px;
+  font-family: 'Work Sans', sans-serif;
+  letter-spacing: .5px;
+  padding-bottom: 6px;
+}
+
+.mui-col-md-4 p {
+  font-weight: 100;
+  color: #a6a6a6;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 17px;
+  text-align: center;
+}
 
 .podcast-list-conatiner {
   width: 100%;
@@ -336,7 +325,7 @@ div.container .navbar {
 
 .podcast-list-conatiner .my-gallery-class {
   width: 100%;
-  margin-left: -14.2px;
+  margin-left: 65px;
 }
 
 .podcast__item {
@@ -345,7 +334,6 @@ div.container .navbar {
   border: 1px solid #fafafa;
   margin: 30px;
   /*margin-left: 50px;*/
-
 }
 
 .podcast img {
@@ -355,30 +343,6 @@ div.container .navbar {
   /*text-align: center;*/
 }
 
-
-/*.featured-header {
-text-align: center;
-
-
-}*/
-
-.featured-header {
-  /*margin-top: 1px;*/
-  height: 40px;
- background-color: #f1f1f1;
-  border-radius: 10px;
-  text-align: center;
-  margin-left: 825px;
-  width: 250px;
-  vertical-align: middle;
-}
-
-/*width: 40%;
-text-align: center;
-margin: auto;
-height: 40px;
-vertical-align: middle;
-border-radius: 20px;*/
 
 /*a:active {
     text-decoration: underline;
@@ -393,6 +357,11 @@ a:link {
   color: black;
 }
 
+.featured-header {
+  /*margin-left: 1332px;*/
+  text-align: center;
+  margin-right: 148px;
+}
 .featured-header p {
   display: inline-block;
   margin-left: 10px;
@@ -401,7 +370,6 @@ a:link {
   padding-left: 2px;
   padding-top: 9px;
   text-align: center;
-
   color: #262626;
 }
 
@@ -414,4 +382,31 @@ a:link {
 .podcast .fa {
   color: #343a3e;
   padding-top: 10px;
+}
+
+
+
+
+
+
+/*Media Styles for Big Screens*/
+@media only screen and (min-width: 1920px) {
+  .navbar .form-control {
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 20px;
+    /* margin-right: 470px; */
+  }
+  .featured-header {
+    /*margin-left: 1332px;*/
+    text-align: center;
+    margin-right: 107px;
+  }
+  .podcast-list-conatiner .my-gallery-class {
+    width: 100%;
+    margin-left: 2px;
+  }
 }

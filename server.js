@@ -106,7 +106,7 @@ app.use((req, res, next) => {
 
 app.get('/subscriptions', (req, res) => {
   User.findById(req.decoded.id, (err, user) => {
-    if(err) {
+    if (err) {
       console.log(err);
       return res.status(404).json({message: 'Sorry, no podcasts found'});
     } else {
@@ -130,15 +130,19 @@ app.get('/podcasts', (req, res) => {
 });
 
 app.post('/subscribe', (req, res) => {
-  const required = 'key';
-  console.log('reached subscribe route in server!');
-  console.log('body', req.body);
+  // const required = 'key';
+  // const required = ['key', 'image';
+  console.log('reached subscribe route in server!', req.body);
+  // console.log('body', req.body);
   User.findById(req.decoded.id, (err, user) => {
-    console.log(req.body, 'body')
-    user.podcasts.push({key: req.body.key});
+    console.log(req.body.image, 'image')
+    user.podcasts.push({
+      key: req.body.key,
+      image: req.body.image
+    });
     // console.log(user);
     user.save((err) => {
-      if (err){
+      if (err) {
         console.log(err);
         return res.status(404).json({message: 'Failed to subscribe'}); // this is an aer
       }

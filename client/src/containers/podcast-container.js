@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log('we are here!!');
     return {
         newSubscription: key => dispatch(newSubscription(key)),
     }
