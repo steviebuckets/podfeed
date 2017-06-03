@@ -9,8 +9,34 @@ const style = {};
 export class PodcastList extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props)
+    // this.mine = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fstevie-buckets%2Fmsotc09-111614%2F&hide_cover=1&mini=1";
+    // this.mine = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F/`{${props.podcast.user.username}/%2F/${props.podcast.slug}/%2F&hide_cover=1&mini=1}`";
+    // this.mine = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F";
     this.clickSubscribe = this.clickSubscribe.bind(this);
+    this.changeColor = this.changeColor.bind(this);
+    this.state = {
+        color_blue: true
+      }
   }
+
+
+//   getImageURI() {
+//   let mine = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F"
+//   let steve = this.props.podcast.user.username + "%2F";
+//   let martin = this.props.podcast.slug + "%2F&hide_cover=1&mini=1";
+// }
+
+
+
+
+
+
+// <img className="image" src={`images/${this.props.image}`}
+
+
+  //Path to Audio Embed for Each Podcast
+  // api.mixcloud.com/{props.podcast.user.username}/{props.podcast.slug}/embed-html
 
   componentDidMount() {
     this.props.addPodcast('Interview')
@@ -23,32 +49,45 @@ export class PodcastList extends React.Component {
   //
   // }
 
+    // let mine = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fsonos%2Fbe-one-interview%2F&hide_cover=1&mini=1";
+    //
+    // <div><iframe width="100%" height="60"
+    // src={mine}
+    // ></iframe></div>
+
+  changeColor() {
+    this.setState({color_blue: !this.state.color_blue});
+  }
+
   clickSubscribe(event) {
     event.preventDefault()
     this.props.newSubscription(event.target.id);
+    this.changeColor(event.target.id);
   }
 
-  //okay loop through userSubscriptions to pick out the data like you did in podcastLists to get the podcasts.
-  //right now render below doesn't have any data because you need to loop through!
   render() {
+    let bgColor = this.state.color_blue ? "#03A9F4" : "#f44336";
     console.log('reducer', this.props);
     if (!this.props.audio.podcastReducer){
       return (<div>Loading</div>)
-
     }
 
     return (
       <div className='podcast-list-conatiner'>
         <div className="featured-header">
           <Link to="/podcast-list">
-            <p>FEATURED</p>
+            <a href="#" className="current">FEATURED</a>
           </Link>
           <Link to="/subscriptions">
-            <p>SUBSCRIBED</p>
+            <a href="#">SUBSCRIBED</a>
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcastReducer.map(podcast => { /// mixcloud!!
+            let artist = podcast.user.username + "%2F";
+            let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+            const audioPlayer = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F" +`${artist}${title}`;
+
             let imgUrl = "";
             if (podcast.pictures){
               imgUrl = podcast.pictures.large;
@@ -59,9 +98,13 @@ export class PodcastList extends React.Component {
             const id = `${podcast.key},${imgUrl}`; // old school: podcast.key + "," + podcast.pictures.large
 
             return (
+
             <span key={id} className='podcast__item'>
+               <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
               <Podcast podcast={podcast}/>
-              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} onClick={this.clickSubscribe}></i>
+
+              <i className="fa fa-plus-circle fa-2x" aria-hidden="true" style={{color: bgColor}} id={id} onClick={this.clickSubscribe}></i>
+
             </span>
           )
         }
@@ -72,9 +115,6 @@ export class PodcastList extends React.Component {
   }
 }
 
-//re write subscription component, make it a dumb function, or get rid of it?
-//bring newSubscription action into PodcastList Component, make sure to wrap the component in the index.
-//create a onClick function when you click the YOUR PODCASTS LINK that runs the newSubscription ACTION which takes in a User
-//THEN DO a console.log to see if you are getting back user data
 
-//IF You KEEP Subscription component, MAP through this.props.user.podcasts? to return a user's podcasts in the masonry grid. - just an idea
+
+// <iframe width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F sonos %2F be-one-interview %2F&hide_cover=1&mini=1" frameborder="0"></iframe>

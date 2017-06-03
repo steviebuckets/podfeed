@@ -76,10 +76,11 @@ export const newSubscription = podcastKeyImage => dispatch => {
 
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
+  // is it a string? number?
   let myToken = localStorage.getItem('token');
   axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
     dispatch(fetchUserSubscriptionSuccess(response.data))
-  // dispatch? something that changed thed state?
+  // dispatch? something that changed thedstate?
   }).catch(function(error) {
     console.log("Sorry, no podcasts here", error)
   })

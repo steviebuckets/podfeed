@@ -3,6 +3,10 @@
   transform-origin: center top;
 }*/
 
+.audio-widget {
+ padding-top: 20px;
+  border: 0;
+}
 
 /*Styles for App Component (Navbar)*/
 
@@ -95,10 +99,13 @@ div.container .navbar {
 
 @media only screen and (max-width: 400px) {
   .navbar .fa {
-    margin-left: -60px;
+    margin-left: -64px;
+    margin-top: -5px;
+    /*display: none;*/
   }
   .navbar p {
     margin-left: -14px;
+    display: none;
   }
   .navbar .btn {
     width: 20%;
@@ -111,7 +118,17 @@ div.container .navbar {
     padding: 1px;
     font-size: 13px;
   }
+  .navbar .form-control {
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 10px;
+    margin-left: -8px;
+  }
 }
+
 
 
 /*Landing Page Component Styles*/
@@ -297,11 +314,11 @@ div.container .navbar {
 /*Podcast-List Component Styles*/
 
 .my-gallery-class .fa {
-  color: #03A9F4;
-  ;
+  /*color: #03A9F4;*/
   padding-bottom: 10px;
   padding-top: 10px;
 }
+
 
 .landing-container, .mui-col-md-4 h2 {
   font-size: 20px;
@@ -325,7 +342,8 @@ div.container .navbar {
 
 .podcast-list-conatiner .my-gallery-class {
   width: 100%;
-  margin-left: 65px;
+  /*margin-left: 65px;*/
+  margin-left: 58px;
 }
 
 .podcast__item {
@@ -344,25 +362,57 @@ div.container .navbar {
 }
 
 
-/*a:active {
+.podcast-list-conatiner .featured-header a:visited a:active a:hover a:link{
     text-decoration: underline;
-    color: black;
-}*/
+}
 
-a:visited {
+
+/*Media Styles for Podcast List Component*/
+@media only screen and (max-width: 400px) {
+  .podcast-list-conatiner .my-gallery-class {
+    margin-left: -37px;
+  }
+
+  .podcast-list-conatiner .featured-header {
+    /*text-align: center;*/
+    margin-left: 72px;
+    display: inline-flex;
+  }
+  .featured-header a {
+    /*display: inline-block;*/
+    margin-left: 10px;
+    margin-right: 1px;
+    padding-right: 2px;
+    padding-left: 60px;
+    padding-top: 9px;
+    text-align: center;
+    /*color: #262626;*/
+  }
+
+
+}
+
+.podcast-list-container .featured-header .current {
+  color: yellow;
+}
+
+
+
+
+/*a:visited {
   color: grey;
 }
 
 a:link {
-  color: black;
-}
+  color: yellow;
+}*/
 
 .featured-header {
   /*margin-left: 1332px;*/
   text-align: center;
   margin-right: 148px;
 }
-.featured-header p {
+.featured-header a {
   display: inline-block;
   margin-left: 10px;
   margin-right: 1px;
@@ -383,9 +433,6 @@ a:link {
   color: #343a3e;
   padding-top: 10px;
 }
-
-
-
 
 
 

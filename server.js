@@ -132,10 +132,8 @@ app.get('/podcasts', (req, res) => {
 app.post('/subscribe', (req, res) => {
   // const required = 'key';
   // const required = ['key', 'image';
-  console.log('reached subscribe route in server!', req.body);
   // console.log('body', req.body);
   User.findById(req.decoded.id, (err, user) => {
-    console.log(req.body.image, 'image')
     user.podcasts.push({
       key: req.body.key,
       image: req.body.image
@@ -154,7 +152,6 @@ app.post('/subscribe', (req, res) => {
 
 //if user let me search for podcasts
 app.get('/search', (req, res) => {
-  console.log(req.query)
   if (req.query) {
     const search = req.query['q'];
     // your unirest stuff
@@ -162,8 +159,23 @@ app.get('/search', (req, res) => {
     var podcast = encodeURI(req.query['q']);
     var Request = unirest.get(`https://api.mixcloud.com/search/?q=/${podcast}/&type=cloudcast`);
     Request.end(function(response) {
-      // console.log(response.body);
-      res.json(JSON.parse(response.body));
+      let responseData = JSON.parse(response.body)
+      // // # Dummy data
+      // /// what if you had a way tocheck the database, for the existings of the key
+      // // 1. get the user (req.decoded.id)
+      // User.findById(req.decoded.id, (err, user) =>{
+      //   for (user) {
+      //
+      //   }
+      // })
+      // responseData.data[0].subscribed = true; // making a change!! or introducing one
+      // console.log(responseData, 'We are here')
+
+
+
+      
+      /// change the contents of data in side responseData
+      res.json(responseData);
     });
   }
 })

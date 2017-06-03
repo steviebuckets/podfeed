@@ -35,14 +35,14 @@ export class Subscriptions extends React.Component {
 
     return (
       <div className='podcast-list-conatiner'>
-        <div className="featured-header">
-          <Link to="/podcast-list">
-            <p>FEATURED</p>
-          </Link>
-          <Link to="/subscriptions">
-            <p>SUBSCRIBED</p>
-          </Link>
-        </div>
+      <div className="featured-header">
+        <Link to="/podcast-list">
+          <a href="#">FEATURED</a>
+        </Link>
+        <Link to="/subscriptions">
+          <a href="#">SUBSCRIBED</a>
+        </Link>
+      </div>
 
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {
@@ -66,7 +66,7 @@ export class Subscriptions extends React.Component {
         })
       }
         </Masonry>
-
+        <iframe width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fsonos%2Fbe-one-interview%2F&hide_cover=1&mini=1" frameborder="0"></iframe>
       </div>
     )
 }
