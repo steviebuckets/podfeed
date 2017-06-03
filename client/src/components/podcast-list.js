@@ -86,7 +86,7 @@ export class PodcastList extends React.Component {
           {this.props.audio.podcastReducer.map(podcast => { /// mixcloud!!
             let artist = podcast.user.username + "%2F";
             let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-            const audioPlayer = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F" +`${artist}${title}`;
+            const audioPlayer = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F" + `${artist}${title}`;
 
             let imgUrl = "";
             if (podcast.pictures){
