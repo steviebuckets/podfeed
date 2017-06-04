@@ -8,10 +8,17 @@ export function Podcast(props) {
   } else if (props.podcast.image !== undefined) {
     image = props.podcast.image;
   }
+  // let artist = props.podcast.user.username + "%2F";
+  // let title = props.podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+  // const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+
 
   return (
+
     <div className="podcast">
       <a href={props.podcast.url} className="link">
+      <div className="user-stuff">
+      </div>
         <br/>
         <img src={image} alt="cover"/>
       </a><br/>

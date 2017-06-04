@@ -104,6 +104,7 @@ app.use((req, res, next) => {
 //   });
 // })
 
+
 app.get('/subscriptions', (req, res) => {
   User.findById(req.decoded.id, (err, user) => {
     if (err) {
@@ -137,8 +138,10 @@ app.post('/subscribe', (req, res) => {
     user.podcasts.push({
       key: req.body.key,
       image: req.body.image
+      // slug: req.body.slug,
+      // username: req.body.username
     });
-    // console.log(user);
+    console.log(user, "my user data from server");
     user.save((err) => {
       if (err) {
         console.log(err);
@@ -165,6 +168,11 @@ app.get('/search', (req, res) => {
       // // 1. get the user (req.decoded.id)
       // User.findById(req.decoded.id, (err, user) =>{
       //   for (user) {
+//       podcasts:
+// [0]    [ { key: '/DjComplexion/the-future-beats-show-063-maximusmmc-interview/',
+// [0]        image: 'https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/3/f/2/b/23ac-421d-4179-876d-16a7def9ec14',
+// [0]        _id: 592f4fd96acaa072edac2b90 },
+
       //
       //   }
       // })
@@ -173,12 +181,13 @@ app.get('/search', (req, res) => {
 
 
 
-      
+
       /// change the contents of data in side responseData
       res.json(responseData);
     });
   }
 })
+
 
 //catch-all endpoint if client makes request to non existent endpoint
 app.use('*', function(req, res) {

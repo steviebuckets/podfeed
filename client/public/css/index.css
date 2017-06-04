@@ -8,6 +8,10 @@
   border: 0;
 }
 
+.user-stuff {
+  display: none;
+}
+
 /*Styles for App Component (Navbar)*/
 
 div.container {
@@ -17,7 +21,7 @@ div.container {
 
 div.container .navbar {
   padding-top: 20px;
-  padding-bottom: 50px;
+  /*padding-bottom: 50px;*/
   height: 72px;
   /*border-bottom: 2px solid #e9e9e9;*/
   padding-left: 60px;
@@ -418,7 +422,7 @@ a:link {
   margin-right: 1px;
   padding-right: 2px;
   padding-left: 2px;
-  padding-top: 9px;
+  /*padding-top: 9px;*/
   text-align: center;
   color: #262626;
 }

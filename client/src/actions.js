@@ -64,8 +64,6 @@ export const newSubscription = podcastKeyImage => dispatch => {
   axios.post('/subscribe?token=' + myToken, {
     key: podcastKey,
     image: image
-    // usernName: userName,
-    // image: image
   }).then(function(response) {
     //?? feeedback generation
     console.log('you have subscribed!', response.data);
