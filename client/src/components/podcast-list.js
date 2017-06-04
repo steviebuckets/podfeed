@@ -9,7 +9,6 @@ const style = {};
 export class PodcastList extends React.Component {
   constructor(props) {
     super(props)
-    // console.log(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.state = {
@@ -21,20 +20,6 @@ export class PodcastList extends React.Component {
     this.props.addPodcast('Interview')
 
   }
-
-
-  componentWillMount() {
-    // this.props.addPodcast('Interview')
-    // window.location.href = '/xx'
-    // history.pushState(null, '/');
-    // this.props.addPodcast('The Verge')
-
-  }
-
-
-  // render() {
-  //   this.props.addPodcast('The Verge');
-  // }
 
   changeColor() {
     this.setState({
@@ -52,7 +37,6 @@ export class PodcastList extends React.Component {
     let bgColor = this.state.color_blue
       ? "#03A9F4"
       : "#f44336";
-    // console.log('reducer', this.props);
     if (!this.props.audio.podcastReducer) {
       return (
         <div>Loading</div>
@@ -71,15 +55,6 @@ export class PodcastList extends React.Component {
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcastReducer.map(podcast => { /// mixcloud!!
-            // let artist = podcast.user.username + "%2F";
-            // let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-            // const audioPlayer = "https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F" + `${artist}${title}`;
-              // const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-
-            // let artist = podcast.user.username + "%2F";
-            // let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-            // const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-
 
             let imgUrl = "";
             let artist = "";
@@ -94,8 +69,6 @@ export class PodcastList extends React.Component {
 
             if (podcast.user) {
               artist = podcast.user.username + "%2F";
-              // title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-              // audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
             }
             if (podcast) {
               title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
@@ -105,19 +78,10 @@ export class PodcastList extends React.Component {
               title = podcast.slug;
             }
 
-            // let imgUrl = "";
-            // if (podcast.pictures) {
-            //   imgUrl = podcast.pictures.large;
-            // } else {
-            //   imgUrl = podcast.image;
-            // }
-
             let id = `${podcast.key},${imgUrl},${artist},${title},{audioPlayer}`;
 
             return (
-
-                // <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
-                <span key={id} className='podcast__item'>
+              <span key={id} className='podcast__item'>
                 <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
 
                 <Podcast podcast={podcast}/>
@@ -134,6 +98,3 @@ export class PodcastList extends React.Component {
     );
   }
 }
-
-// <iframe width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F sonos %2F be-one-interview
-// %2F&hide_cover=1&mini=1" frameborder="0"></iframe>
