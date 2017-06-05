@@ -9,18 +9,23 @@ const masonryOptions = {};
 const style = {};
 
 export class Subscriptions extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   // this.audio = "";
-  //   // this.user = "";;
-  // }
+  constructor(props) {
+    super(props)
+    this.unSubscribe = this.unSubscribe.bind(this);
+  }
 
   componentDidMount() {
     this.props.userSubscriptions();
   }
 
-  render() {
+  unSubscribe(event) {
+    event.preventDefault()
+    this.props.deleteSubscription(event.target.id);
+    this.changeColor(event.target.id);
+  }
 
+
+  render() {
     if (this.props.audio.podcastReducer.length === 0) { /// check that the array is not zero elemnts!!!!
       return (
         <div>"loadding....."</div>
@@ -43,32 +48,6 @@ export class Subscriptions extends React.Component {
               let artist = podcast.user.username + "%2F";
               let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
               const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-
-
-              // let imgUrl = "";
-              // let artist = "";
-              // let title = "";
-              // let audioPlayer = "";
-              //
-              // if (podcast.pictures) {
-              //   imgUrl = podcast.pictures.large;
-              // } else {
-              //   imgUrl = podcast.image;
-              // }
-              //
-              // if (podcast.user) {
-              //   artist = podcast.user.username + "%2F";
-              //   // title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-              //   // audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-              // }
-              // if (podcast) {
-              //   title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-              //   audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-              // } else {
-              //   artist = podcast.user.username;
-              //   title = podcast.slug;
-              // }
-
               let imgUrl = "";
               if (podcast.pictures) {
                 imgUrl = podcast.pictures.large;
@@ -79,12 +58,11 @@ export class Subscriptions extends React.Component {
               let id = `${podcast.key},${imgUrl}`;
 
               return (
-                  // <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
                 <span key={id} className='podcast__item'>
-                <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
+                  <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
 
                   <Podcast podcast={podcast}/>
-                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={podcast.key} onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={podcast.key} onClick={this.unSubscribe}></i>
                 </span>
               )
             })

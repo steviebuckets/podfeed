@@ -72,6 +72,18 @@ export const newSubscription = podcastKeyImage => dispatch => {
   })
 }
 
+// Delete Podcast Subscription
+export const unSubscribe = podcast => dispatch => {
+  let myToken = localStorage.getItem('token');
+  axios.delete('/subscriptions/:id' + myToken, {
+    podcast: podcast.id
+  }).then(function(response) {
+    console.log("You have un-subscribed!", response.data);
+  }).catch(function(error) {
+    console.log('Oops, something went wrong', error)
+  })
+}
+
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
   // is it a string? number?

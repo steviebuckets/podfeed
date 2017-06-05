@@ -27,13 +27,10 @@ app.set('port', (process.env.PORT || 3001));
 
 //signin route
 app.post('/login/', (req, res) => {
-  // console.log(req.body)
-  // console.log("hello from server")
   User.findOne({email: req.body.email}).select('email password').exec((err, user) => {
     if (err) {
       return res.status(404).json({message: 'User not found'})
     };
-
     if (!user) {
       return res.status(500).json({success: false, message: 'User does not exist'});
     }
@@ -97,14 +94,6 @@ app.use((req, res, next) => {
   }
 });
 
-//find a user
-// app.get('/users', (req, res) => {
-//   User.find().then(users => {
-//     res.json(user.podcasts);
-//   });
-// })
-
-
 app.get('/subscriptions', (req, res) => {
   User.findById(req.decoded.id, (err, user) => {
     if (err) {
@@ -115,8 +104,6 @@ app.get('/subscriptions', (req, res) => {
     }
   })
 })
-//original res.json for /users
-// res.json(users);
 
 //if user show me podcasts
 app.get('/podcasts', (req, res) => {
@@ -130,6 +117,7 @@ app.get('/podcasts', (req, res) => {
 
 });
 
+//New Podcast Subscription
 app.post('/subscribe', (req, res) => {
   // const required = 'key';
   // const required = ['key', 'image';
@@ -151,6 +139,24 @@ app.post('/subscribe', (req, res) => {
     })
   })
 
+});
+
+//Delete Podcast Subscription
+app.delete('/subscriptions/:id', (req, res) => {
+    User.findById(req.decoded.id, (err, user) => {
+        let subscription = user.podcasts.id(req.params.id);
+        if (subscription) {
+            subscription.remove();
+            user.save((err) => {
+                if (err) return res.status(404).json({ message: 'Error, Could not delete' });
+                res.json({});
+            });
+        } else {
+            res.status(404).json({ message: 'Error, not located' });
+        }
+
+
+    });
 });
 
 //if user let me search for podcasts
@@ -225,7 +231,6 @@ function runServer() {
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
-      /*   console.log('Closing server');*/
       server.close(err => {
         if (err) {
           return reject(err);
