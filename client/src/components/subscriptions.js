@@ -20,7 +20,7 @@ export class Subscriptions extends React.Component {
 
   unSubscribe(event) {
     event.preventDefault()
-    this.props.deleteSubscription(event.target.id);
+    this.props.unSubscribe(event.target.id);
     this.changeColor(event.target.id);
   }
 
