@@ -122,10 +122,11 @@ app.post('/subscribe', (req, res) => {
   // const required = 'key';
   // const required = ['key', 'image';
   // console.log('body', req.body);
+  // User.find({_id: req.decoded.id})
+  // or User.find({key: req.params.key})
   User.findById(req.decoded.id, (err, user) => {
     user.podcasts.push({
-      key: req.body.key,
-      image: req.body.image
+      key: req.body.key, image: req.body.image
       // slug: req.body.slug,
       // username: req.body.username
     });
@@ -143,20 +144,46 @@ app.post('/subscribe', (req, res) => {
 
 //Delete Podcast Subscription
 app.delete('/subscriptions/:id', (req, res) => {
-    User.findById(req.decoded.id, (err, user) => {
-        let subscription = user.podcasts.id(req.params.id);
-        if (subscription) {
-            subscription.remove();
-            user.save((err) => {
-                if (err) return res.status(404).json({ message: 'Error, Could not delete' });
-                res.json({});
-            });
-        } else {
-            res.status(404).json({ message: 'Error, not located' });
-        }
+  //  /:ha/:blah --> req.params.ha ,or req.params.blah
+  console.log("my subscriptions")
+  User.findById(req.decoded.id, (err, user) => {
+
+    let subscription = user.podcasts.id(req.params.id); // id is s epcial method in mongoose to access a subdoc by _id
+
+    if (subscription){
+      subscription.remove();
+      user.save(function(err){
+        if (err)
+          res.status(404).json({message: "Cannot save user"});
+        else
+          res.status(200).json({message: 'you deleted'})
+      });
+    } else {
+      res.status(404).json({message: "Not found!"});
+    }
 
 
-    });
+    //
+    // parent.children.id(_id).remove();
+    // // Equivalent to `parent.child = null`
+    // parent.child.remove();
+    // parent.save(function (err) {
+    //   if (err) return handleError(err);
+    //   console.log('the subdocs were removed');
+    // });
+      // you send back a response!!!
+
+    // if (subscription) {
+    //     subscription.remove();
+    //     user.save((err) => {
+    //         if (err) return res.status(404).json({ message: 'Error, Could not delete' });
+    //         res.json({});
+    //     });
+    // } else {
+    //     res.status(404).json({ message: 'Error, not located' });
+    // }
+
+  });
 });
 
 //if user let me search for podcasts
@@ -174,10 +201,10 @@ app.get('/search', (req, res) => {
       // // 1. get the user (req.decoded.id)
       // User.findById(req.decoded.id, (err, user) =>{
       //   for (user) {
-//       podcasts:
-// [0]    [ { key: '/DjComplexion/the-future-beats-show-063-maximusmmc-interview/',
-// [0]        image: 'https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/3/f/2/b/23ac-421d-4179-876d-16a7def9ec14',
-// [0]        _id: 592f4fd96acaa072edac2b90 },
+      //       podcasts:
+      // [0]    [ { key: '/DjComplexion/the-future-beats-show-063-maximusmmc-interview/',
+      // [0]        image: 'https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/3/f/2/b/23ac-421d-4179-876d-16a7def9ec14',
+      // [0]        _id: 592f4fd96acaa072edac2b90 },
 
       //
       //   }
@@ -185,15 +212,11 @@ app.get('/search', (req, res) => {
       // responseData.data[0].subscribed = true; // making a change!! or introducing one
       // console.log(responseData, 'We are here')
 
-
-
-
       /// change the contents of data in side responseData
       res.json(responseData);
     });
   }
 })
-
 
 //catch-all endpoint if client makes request to non existent endpoint
 app.use('*', function(req, res) {

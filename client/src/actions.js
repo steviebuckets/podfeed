@@ -73,10 +73,14 @@ export const newSubscription = podcastKeyImage => dispatch => {
 }
 
 // Delete Podcast Subscription
-export const unSubscribe = podcast => dispatch => {
+export const unSubscribe = podcastId => dispatch => {
+  // console.log(podcastId, 'my cast')
+  //whats in here? find the key and assign it to target
   let myToken = localStorage.getItem('token');
-  axios.delete('/subscriptions/:id' + myToken, {
-    podcast: podcast.id
+  // let target = podcast.key
+
+  axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
+    // subscription: podcasts.key
   }).then(function(response) {
     console.log("You have un-subscribed!", response.data);
   }).catch(function(error) {
@@ -84,11 +88,15 @@ export const unSubscribe = podcast => dispatch => {
   })
 }
 
+
+
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
   // is it a string? number?
   let myToken = localStorage.getItem('token');
-  axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
+  axios.get('/subscriptions?token=' + myToken, {
+    user: podcasts
+  }).then(function(response) {
     dispatch(fetchUserSubscriptionSuccess(response.data))
   // dispatch? something that changed thedstate?
   }).catch(function(error) {
