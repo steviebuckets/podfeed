@@ -72,15 +72,19 @@ export const newSubscription = podcastKeyImage => dispatch => {
   })
 }
 
+//I want to use an ID now, not a key
 // Delete Podcast Subscription
 export const unSubscribe = podcastId => dispatch => {
-  // console.log(podcastId, 'my cast')
+  // console.log(podcastId, 'my stuff')
   //whats in here? find the key and assign it to target
   let myToken = localStorage.getItem('token');
-  // let target = podcast.key
+  // let target = podcast.key;
+  // let id = target;
+  // podcast._id;
+
 
   axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
-    // subscription: podcasts.key
+    // subscription: podcast._id
   }).then(function(response) {
     console.log("You have un-subscribed!", response.data);
   }).catch(function(error) {
@@ -92,7 +96,7 @@ export const unSubscribe = podcastId => dispatch => {
 
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
-  // is it a string? number?
+  console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
   axios.get('/subscriptions?token=' + myToken, {
     user: podcasts

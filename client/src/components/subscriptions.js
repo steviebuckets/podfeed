@@ -20,7 +20,16 @@ export class Subscriptions extends React.Component {
 
   deletePodcast(event) {
     event.preventDefault()
-    this.props.unSubscribe(event.target.id);
+    this.props.audio.podcastReducer.map(podcast => {
+      let id = podcast._id;
+      event.target.id = id;
+      this.props.unSubscribe(id)
+    })
+
+    // console.log(this.props.audio.podcastReducer[0]._id, "my delete props")
+    // // this.props.unSubscribe(event.target.id);
+    // // let _id = this.props.podcast._id
+    // this.props.unSubscribe(this.props.podcast._id);
     // this.changeColor(event.target.id);
   }
 
@@ -31,7 +40,7 @@ export class Subscriptions extends React.Component {
         <div>"loadding....."</div>
       )
     } else {
-      console.log(this.props.audio.podcastReducer[0], 'podcast');
+      // console.log(this.props.audio.podcastReducer[0], 'podcast');
 
       return (
         <div className='podcast-list-conatiner'>

@@ -162,7 +162,6 @@ app.delete('/subscriptions/:id', (req, res) => {
       res.status(404).json({message: "Not found!"});
     }
 
-
     //
     // parent.children.id(_id).remove();
     // // Equivalent to `parent.child = null`
