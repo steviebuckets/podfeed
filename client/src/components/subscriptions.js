@@ -23,7 +23,8 @@ export class Subscriptions extends React.Component {
     this.props.audio.podcastReducer.map(podcast => {
       let id = podcast._id;
       event.target.id = id;
-      this.props.unSubscribe(id)
+      this.props.unSubscribe(id); 
+      location.reload();
     })
   }
 
@@ -40,14 +41,12 @@ export class Subscriptions extends React.Component {
 
   render() {
     (this.props.user, "my pops")
-    //  console.log('is this working?')
-    // if (this.props.audio.podcastReducer.length === !0) { /// check that the array is not zero elemnts!!!!
-    //   return (
-    //     <div>"You Have No Podcast Subscriptions"</div>
-    //   )
-    // } else {
-    //   // console.log(this.props.audio.podcastReducer[0], 'podcast');
-    //   console.log("You got subscriptions")
+    if (this.props.audio.podcastReducer.length === !0) { /// check that the array is not zero elemnts!!!!
+      return (
+        <div>"You Have No Podcast Subscriptions"</div>
+      )
+    } else {
+      console.log("You got subscriptions")
 
       return (
         <div className='podcast-list-conatiner'>
@@ -92,6 +91,7 @@ export class Subscriptions extends React.Component {
           </Masonry>
         </div>
       )
+    }
     }
   }
 
