@@ -70,9 +70,12 @@ export class Subscriptions extends React.Component {
 
           <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
             {this.props.audio.podcastReducer.map(podcast => {
+              // let artist = this.props.podcast.user.username + "%2F";
+              // let title = this.props.podcast.slug;
+              // let audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+
 
               let id = `${podcast._id}`;
-
               return (
                 <span key={id} className='podcast__item'>
 

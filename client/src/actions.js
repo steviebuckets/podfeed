@@ -60,10 +60,12 @@ export const newSubscription = podcastKeyImage => dispatch => {
   let myToken = localStorage.getItem('token');
   const podcastKey = podcastKeyImage.split(",")[0]
   const image = podcastKeyImage.split(",")[1]
+  const url = podcastKeyImage.split(",")[2]
 
   axios.post('/subscribe?token=' + myToken, {
     key: podcastKey,
-    image: image
+    image: image,
+    url: url
   }).then(function(response) {
     //?? feeedback generation
     console.log('you have subscribed!', response.data);

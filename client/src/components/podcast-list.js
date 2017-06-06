@@ -57,15 +57,22 @@ export class PodcastList extends React.Component {
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcastReducer.map(podcast => {
+            console.log(podcast.url, 'my url')
             let imgUrl = "";
+            let url = "";
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
+
             } else {
               imgUrl = podcast.image;
             }
 
-            let id = `${podcast.key},${imgUrl}`;
+            if(podcast) {
+              url = podcast.url;
+            }
+
+            let id = `${podcast.key},${imgUrl},${url}`;
 
             return (
               <span key={id} className='podcast__item'>

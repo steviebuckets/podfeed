@@ -126,7 +126,7 @@ app.post('/subscribe', (req, res) => {
   // or User.find({key: req.params.key})
   User.findById(req.decoded.id, (err, user) => {
     user.podcasts.push({
-      key: req.body.key, image: req.body.image
+      key: req.body.key, image: req.body.image, url: req.body.url
       // slug: req.body.slug,
       // username: req.body.username
     });

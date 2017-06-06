@@ -6,7 +6,8 @@ const podcastSchema = new mongoose.Schema({
   // "username": {type: String},
   // "slug": {type: String},
   "image": { type: String },
-  "key": { type: String, required: true, unique: true}
+  "key": { type: String, required: true, unique: true},
+  "url": { type: String }
 });
 
   // "key": { type: String, required: true, unique: true}

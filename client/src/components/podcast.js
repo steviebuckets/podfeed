@@ -18,9 +18,10 @@ export function Podcast(props) {
   if (props.podcast) {
     title = props.podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
     audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-  } else {
+  } else if (props.podcast !== undefined) {
     artist = props.podcast.user.username;
     title = props.podcast.slug;
+      audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
   }
 
   //do you need this anymore?
