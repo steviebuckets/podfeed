@@ -25,22 +25,29 @@ export class Subscriptions extends React.Component {
       event.target.id = id;
       this.props.unSubscribe(id)
     })
-
-    // console.log(this.props.audio.podcastReducer[0]._id, "my delete props")
-    // // this.props.unSubscribe(event.target.id);
-    // // let _id = this.props.podcast._id
-    // this.props.unSubscribe(this.props.podcast._id);
-    // this.changeColor(event.target.id);
   }
+
+  //   console.log(this.props.audio.podcastReducer[0]._id, "my delete props")
+  //   // this.props.unSubscribe(event.target.id);
+  //   // let _id = this.props.podcast._id
+  //   this.props.unSubscribe(this.props.podcast._id);
+  //   this.changeColor(event.target.id);
+  // }
+
+// this.props.audio.podcastReducer.map(podcast => { /\
+
 
 
   render() {
-    if (this.props.audio.podcastReducer.length === 0) { /// check that the array is not zero elemnts!!!!
-      return (
-        <div>"loadding....."</div>
-      )
-    } else {
-      // console.log(this.props.audio.podcastReducer[0], 'podcast');
+    (this.props.user, "my pops")
+    //  console.log('is this working?')
+    // if (this.props.audio.podcastReducer.length === !0) { /// check that the array is not zero elemnts!!!!
+    //   return (
+    //     <div>"You Have No Podcast Subscriptions"</div>
+    //   )
+    // } else {
+    //   // console.log(this.props.audio.podcastReducer[0], 'podcast');
+    //   console.log("You got subscriptions")
 
       return (
         <div className='podcast-list-conatiner'>
@@ -55,9 +62,14 @@ export class Subscriptions extends React.Component {
 
           <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
             {this.props.audio.podcastReducer.map(podcast => {
-              let artist = podcast.user.username + "%2F";
-              let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-              const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+              // let artist = podcast.user.username + "%2F";
+              // let title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+              // const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+
+              // let artist = "";
+              // let title = "";
+              // let audioPlayer = "";
+            // const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
 
               let imgUrl = "";
               if (podcast.pictures) {
@@ -66,14 +78,13 @@ export class Subscriptions extends React.Component {
                 imgUrl = podcast.image;
               }
 
-              let id = `${podcast.key},${imgUrl},{artist},{title}`;
+              let id = `${podcast.key},${imgUrl}`;
 
               return (
                 <span key={id} className='podcast__item'>
-                  <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
 
                   <Podcast podcast={podcast}/>
-                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={podcast._id} onClick={this.deletePodcast}></i>
+                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" onClick={this.deletePodcast}></i>
                 </span>
               )
             })
@@ -83,7 +94,8 @@ export class Subscriptions extends React.Component {
       )
     }
   }
-}
+
+
 
 //Todo
 // Add token to server route for deletion, need token to delete a cast

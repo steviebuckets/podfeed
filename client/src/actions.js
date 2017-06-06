@@ -96,7 +96,7 @@ export const unSubscribe = podcastId => dispatch => {
 
 //Retrieve User Podcasts
 export const userSubscriptions = podcasts => dispatch => {
-  console.log(podcasts, 'my stuff')
+  // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
   axios.get('/subscriptions?token=' + myToken, {
     user: podcasts

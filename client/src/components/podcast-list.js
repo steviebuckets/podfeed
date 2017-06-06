@@ -9,6 +9,7 @@ const style = {};
 export class PodcastList extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props, 'my dumb props!')
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.state = {
@@ -55,11 +56,11 @@ export class PodcastList extends React.Component {
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcastReducer.map(podcast => { /// mixcloud!!
-
+            //
             let imgUrl = "";
-            let artist = "";
-            let title = "";
-            let audioPlayer = "";
+            // let artist = "";
+            // let title = "";
+            // let audioPlayer = "";
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
@@ -67,22 +68,23 @@ export class PodcastList extends React.Component {
               imgUrl = podcast.image;
             }
 
-            if (podcast.user) {
-              artist = podcast.user.username + "%2F";
-            }
-            if (podcast) {
-              title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-              audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-            } else {
-              artist = podcast.user.username;
-              title = podcast.slug;
-            }
+            // if (podcast.user) {
+            //   artist = podcast.user.username + "%2F";
+            // }
+            // if (podcast) {
+            //   title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+            //   audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+            // } else {
+            //   artist = podcast.user.username;
+            //   title = podcast.slug;
+            // }
 
-            let id = `${podcast.key},${imgUrl},${artist},${title},{audioPlayer}`;
+            let id = `${podcast.key},${imgUrl}`;
 
+              // <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
             return (
               <span key={id} className='podcast__item'>
-                <iframe width="100%" height="80" className="audio-widget" src={audioPlayer}></iframe>
+
 
                 <Podcast podcast={podcast}/>
 
