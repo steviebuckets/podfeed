@@ -3,6 +3,12 @@
   transform-origin: center top;
 }*/
 
+.alert{
+  /*color: #e9e9e9;*/
+  color: #a6a6a6;
+  text-align: center;
+  margin-top: 175px;
+}
 .audio-widget {
  padding-top: 20px;
   border: 0;
@@ -414,11 +420,11 @@ a:link {
 .featured-header {
   /*margin-left: 1332px;*/
   text-align: center;
-  margin-right: 148px;
+  margin-right: 145px;
 }
 .featured-header a {
   display: inline-block;
-  margin-left: 10px;
+  /*margin-left: 10px;*/
   margin-right: 1px;
   padding-right: 2px;
   padding-left: 2px;
