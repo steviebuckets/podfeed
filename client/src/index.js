@@ -1,9 +1,10 @@
 require('babel-polyfill');
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
 // import { render } from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
+import ReduxPromise from 'redux-promise';
 import {Provider} from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -13,7 +14,7 @@ import reducer from './reducers/index';
 import {LandingPage} from './components/landing-page';
 
 import App from './components/app';
-import {Router} from 'react-router';
+// import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 
 import {Podcast} from './containers/podcast-container';
@@ -22,12 +23,12 @@ import Register from './containers/register-container';
 import SignIn from './containers/login-container';
 import Subscriptions from './containers/user-subscriptions-container';
 import Auth from './modules/Auth';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 
 //remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(ReduxPromise));
 
 const routes = {
     component: App,
@@ -46,7 +47,15 @@ const routes = {
             }
         }, {
             path: '/signin',
-            component: SignIn
+            getComponent: (location, callback) => {
+                if (Auth.isUserAuthenticated()) {
+                    console.log('auth')
+                    callback(null, PodcastList, Podcast);
+                } else {
+                    console.log('not auth')
+                    callback(null, SignIn);
+                }
+            }
         }, {
             path: '/register',
             component: Register

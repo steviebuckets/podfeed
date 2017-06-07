@@ -14,12 +14,27 @@ export class PodcastList extends React.Component {
     this.state = {
       color_blue: true
     }
+
   }
 
   componentDidMount() {
-    this.props.addPodcast('Interview')
+    console.log(this.props.audio, 'props');
+    // localStorage.setItem('token')
+    // possible storing of the token can happen!
+    this.props.addPodcast('interview')
 
   }
+
+  // .then(function(response) {
+  // //
+  // //     let myToken = response.data.token;
+  // //     localStorage.setItem('token', myToken);
+  // //     location.replace('/');
+  // //
+  // //   }).catch(function(error) {
+  // //     console.log('User already exists', error);
+  // //   })
+
 
   changeColor() {
     this.setState({
@@ -37,7 +52,7 @@ export class PodcastList extends React.Component {
     let bgColor = this.state.color_blue
       ? "#03A9F4"
       : "#f44336";
-    if (!this.props.audio.podcastReducer) {
+    if (!this.props.audio.podcasts) {
       return (
         <div>Loading</div>
       )
@@ -56,10 +71,13 @@ export class PodcastList extends React.Component {
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
-          {this.props.audio.podcastReducer.map(podcast => {
-            console.log(podcast.url, 'my url')
+          {this.props.audio.podcasts.map(podcast => {
+            // console.log(podcast.url, 'my url')
             let imgUrl = "";
             let url = "";
+            let artist = "";
+            let title = "";
+            let audioPlayer = "";
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
@@ -68,16 +86,25 @@ export class PodcastList extends React.Component {
               imgUrl = podcast.image;
             }
 
-            if(podcast) {
+            if(podcast.url) {
               url = podcast.url;
             }
 
-            let id = `${podcast.key},${imgUrl},${url}`;
+            if (podcast.user) {
+              artist = podcast.user.username;
+            }
+
+            if (podcast) {
+              title = podcast.slug;
+            }
+            if (podcast && podcast.user) {
+              audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+            }
+
+            let id = `${podcast.key},${imgUrl},${url},${artist},${title},${audioPlayer}`;
 
             return (
               <span key={id} className='podcast__item'>
-
-
                 <Podcast podcast={podcast}/>
 
                 <i className="fa fa-plus-circle fa-2x" aria-hidden="true" style={{

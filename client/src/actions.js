@@ -2,81 +2,104 @@ import axios from 'axios';
 // import Auth from './modules/Auth';
 
 // Register User
-export const verifyUser = user => dispatch => {
+const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export function verifyUser(user) {
   // console.log('my user', user)
-  axios.post('/register', {
+  let request =  axios.post('/register', {
     email: user.email,
     password: user.password
-  }).then(function(response) {
-
-    let myToken = response.data.token;
-    localStorage.setItem('token', myToken);
-    location.replace('/');
-
-  }).catch(function(error) {
-    console.log('User already exists', error);
   })
+  return {
+    type: REGISTER_USER_SUCCESS,
+    payload: request
+  }
+//   .then(function(response) {
+//
+//     let myToken = response.data.token;
+//     localStorage.setItem('token', myToken);
+//     location.replace('/');
+//
+//   }).catch(function(error) {
+//     console.log('User already exists', error);
+//   })
 }
 
 // Sign In User
-export const identifyUser = user => dispatch => {
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export function identifyUser(user){
 
-  axios.post('/login', {
+  let request = axios.post('/login', {
     email: user.email,
     password: user.password
-  }).then(function(response) {
-
-    let myToken = response.data.token;
-    localStorage.setItem('token', myToken);
-    location.replace('/');
-
-  }).catch(function(error) {
-    console.log('User not found', error);
   })
+  return {
+    type: LOGIN_SUCCESS,
+    payload: request
+  }
+  // .then(function(response) {
+  //
+  //   let myToken = response.data.token;
+  //   localStorage.setItem('token', myToken);
+  //   location.replace('/');
+  //
+  // }).catch(function(error) {
+  //   console.log('User not found', error);
+  // })
 }
 
 // Returns Podcast Data From API
-export const fetchDescriptionSuccess = (podcast, description) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcast, description});
+export const fetchDescriptionSuccess = (podcastName, podcasts) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts});
 
 export const fetchUserSubscriptionSuccess = (data) => ({type: 'FETCH_USER_SUBSCRIPTION_SUCCESS', data});
 
 
 // Search For Podcast
-export const addPodcast = podcast => dispatch => {
-  console.log("inside addPodcast", podcast)
-  const url = `/search?q=${encodeURI(podcast)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
-  console.log('url', url);
-  return axios.get(url).then(function(data) {
-    console.log(data, 'data');
-    dispatch(fetchDescriptionSuccess(podcast, data))
-  }).catch(function(error) {
-    console.log(error)
-  })
+export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
+export function addPodcast(podcastName) {
+  const url = `/search?q=${encodeURI(podcastName)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
+  const request = axios.get(url);
+  return {
+    type: FETCH_DESCRIPTION_SUCCESS,
+    payload: request
+  }
 }
+// {artist},${title}`
 
 // New Podcast Subscription
-export const newSubscription = podcastKeyImage => dispatch => {
-  console.log("my image", podcastKeyImage)
+// export const
+export function newSubscription(podcastKeyImage){
+  // console.log("my image", podcastKeyImage)
   let myToken = localStorage.getItem('token');
   const podcastKey = podcastKeyImage.split(",")[0]
   const image = podcastKeyImage.split(",")[1]
   const url = podcastKeyImage.split(",")[2]
+  const artist = podcastKeyImage.split(",")[3]
+  const title = podcastKeyImage.split(",")[4]
 
-  axios.post('/subscribe?token=' + myToken, {
+  let request = axios.post('/subscribe?token=' + myToken, {
     key: podcastKey,
     image: image,
-    url: url
-  }).then(function(response) {
-    //?? feeedback generation
-    console.log('you have subscribed!', response.data);
-  }).catch(function(error) {
-    console.log('oops, you did not subscribe', error)
-  })
+    url: url,
+    artist: artist,
+    title: title
+  });
+  return {
+    type: FETCH_DESCRIPTION_SUCCESS,
+    payload: request
+  }
+
+
+  // .then(function(response) {
+  //   //?? feeedback generation
+  //   console.log('you have subscribed!', response.data);
+  // }).catch(function(error) {
+  //   console.log('oops, you did not subscribe', error)
+  // })
 }
 
 //I want to use an ID now, not a key
 // Delete Podcast Subscription
-export const unSubscribe = podcastId => dispatch => {
+export function unSubscribe(podcastId){
   // console.log(podcastId, 'my stuff')
   //whats in here? find the key and assign it to target
   let myToken = localStorage.getItem('token');
@@ -85,27 +108,39 @@ export const unSubscribe = podcastId => dispatch => {
   // podcast._id;
 
 
-  axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
+
+  let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
     // subscription: podcast._id
-  }).then(function(response) {
-    console.log("You have un-subscribed!", response.data);
-  }).catch(function(error) {
-    console.log('Oops, something went wrong', error)
-  })
+  });
+  return {
+    type: FETCH_DESCRIPTION_SUCCESS,
+    payload: request
+  }
 }
 
-
-
+export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS";
 //Retrieve User Podcasts
-export const userSubscriptions = podcasts => dispatch => {
+export function userSubscriptions(podcasts){
   // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
-  axios.get('/subscriptions?token=' + myToken, {
+  let artist="";
+  let title = "";
+  let request = axios.get('/subscriptions?token=' + myToken, {
     user: podcasts
-  }).then(function(response) {
-    dispatch(fetchUserSubscriptionSuccess(response.data))
-  // dispatch? something that changed thedstate?
-  }).catch(function(error) {
-    console.log("Sorry, no podcasts here", error)
   })
+  return {
+    type: FETCH_USER_SUBSCRIPTION_SUCCESS,
+    payload: request
+  }
+
+  // .then(function(response) {
+  //   dispatch(fetchUserSubscriptionSuccess(response.data))
+  //   console.log(response.data, "my data back from server")
+  //   //  artist = artist + "%2F";
+  //   //  title = response.title + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+  //   //  console.log(artist, "my artist data")
+  // // dispatch? something that changed thedstate?
+  // }).catch(function(error) {
+  //   console.log("Sorry, no podcasts here", error)
+  // })
 }

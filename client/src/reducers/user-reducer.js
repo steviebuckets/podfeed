@@ -1,17 +1,21 @@
-//user reducer
-// import * as actions from './actions';
-// const initialUserState = {};
+import {LOGIN_SUCCESS} from '../actions';
 
-// export default function userReducer(state = initialUserState, action) {
-//   if(action.type === actions.VERIFY_USER) {
-//       return [...state, {
-//         email: '',
-//         password: ''
-//       }];
-//
-//     return state;
-//
-// }
+
+export default function userReducer(state = {}, action) {
+  switch (action.type) {
+    case 'LOGIN_SUCCESS':
+      console.log('actoin', action);
+      let token = action.payload.data.token;
+      localStorage.setItem('token', token);
+      return Object.assign({}, state, {
+        token: token
+      })
+
+  }
+    return state
+  }
+
+
 
 // create object for user reducer
 // const init = {};
