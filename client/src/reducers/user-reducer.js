@@ -10,7 +10,11 @@ export default function userReducer(state = {}, action) {
       return Object.assign({}, state, {
         token: token
       })
+<<<<<<< HEAD
       default:
+=======
+      default: 
+>>>>>>> 2b51ebb334c49ed58abfb231e5ef5c3c05f3feaa
         return state;
   }
 
