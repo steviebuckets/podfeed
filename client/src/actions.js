@@ -24,6 +24,8 @@ export function verifyUser(user) {
   //   })
 }
 
+
+
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export function identifyUser(user) {
@@ -134,6 +136,7 @@ export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS"
 export function userSubscriptions(podcasts) {
   // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
+
   // let artist = "";
   // let title = "";
   let request = axios.get('/subscriptions?token=' + myToken, {
@@ -142,8 +145,10 @@ export function userSubscriptions(podcasts) {
   console.log(request, "hi")
   return {
     type: FETCH_USER_SUBSCRIPTION_SUCCESS,
-    payload: request.data
+    payload: request
   }
+
+
 
 //   //Retrieve User Podcasts
 // export const userSubscriptions = podcasts => dispatch => {

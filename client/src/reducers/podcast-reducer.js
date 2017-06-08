@@ -1,6 +1,6 @@
 let init = [];
-let state = {};
-import {FETCH_DESCRIPTION_SUCCESS, REGISTER_USER_SUCCESS, FETCH_STILL_LOADING} from '../actions';
+// let state = {};
+import {FETCH_DESCRIPTION_SUCCESS, FETCH_STILL_LOADING} from '../actions';
 // create object for user
 // another for podcasts
 // create another red
