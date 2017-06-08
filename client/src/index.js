@@ -1,7 +1,7 @@
 require('babel-polyfill');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import {Router, browserHistory} from 'react-router';
 // import { render } from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import ReduxPromise from 'redux-promise';
@@ -31,73 +31,72 @@ injectTapEventPlugin();
 const store = createStore(reducer, applyMiddleware(ReduxPromise));
 
 const routes = {
-    component: App,
-    childRoutes: [
+  component: App,
+  childRoutes: [
 
-        {
-            path: '/',
-            getComponent: (location, callback) => {
-                if (Auth.isUserAuthenticated()) {
-                    console.log('auth')
-                    callback(null, PodcastList, Podcast);
-                } else {
-                    console.log('not auth')
-                    callback(null, LandingPage);
-                }
-            }
-        }, {
-            path: '/signin',
-            getComponent: (location, callback) => {
-                if (Auth.isUserAuthenticated()) {
-                    console.log('auth')
-                    callback(null, PodcastList, Podcast);
-                } else {
-                    console.log('not auth')
-                    callback(null, SignIn);
-                }
-            }
-        }, {
-          path: '/register',
-          getComponent: (location, callback) => {
-              if (Auth.isUserAuthenticated()) {
-                  console.log('auth')
-                  callback(null, PodcastList, Podcast);
-              } else {
-                  console.log('not auth')
-                  callback(null, Register);
-              }
-          }
-        },
-        {  path: '/podcast',
-           component: Podcast
-        },
-        {  path: '/podcast-list',
-           component: PodcastList
-
-        },
-        {  path: '/subscriptions',
-           component: Subscriptions
-
-        },
-         {
-
-            path: '/logout',
-            onEnter: (nextState, replace) => {
-                Auth.deauthenticateUser();
-
-                //changes the current URL to /
-                replace('/');
-            }
+    {
+      path: '/',
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, PodcastList, Podcast);
+        } else {
+          console.log('not auth')
+          callback(null, LandingPage);
         }
-    ]
+      }
+    }, {
+      path: '/signin',
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, PodcastList, Podcast);
+        } else {
+          // console.log('not auth')
+          callback(null, SignIn);
+        }
+      }
+    }, {
+      path: '/register',
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, PodcastList, Podcast);
+        } else {
+          console.log('not auth')
+          callback(null, Register);
+        }
+      }
+    }, {
+      path: '/podcast',
+      component: Podcast
+    }, {
+      path: '/podcast-list',
+      component: PodcastList
+
+    }, {
+      path: '/subscriptions',
+      component: Subscriptions
+
+    }, {
+
+      path: '/logout',
+      onEnter: (nextState, replace) => {
+        Auth.deauthenticateUser();
+
+        //changes the current URL to /
+        replace('/');
+      }
+    }
+  ]
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
+  ReactDOM.render(
 
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Provider store={store}>
-            <Router history={browserHistory} routes={routes}/>
-        </Provider>
-    </MuiThemeProvider>, document.getElementById('app'));
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <Provider store={store}>
+      <Router history={browserHistory} routes={routes}/>
+    </Provider>
+  </MuiThemeProvider>, document.getElementById('app'));
 });

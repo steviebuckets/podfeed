@@ -18,7 +18,7 @@ export class PodcastList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.audio, 'props');
+    // console.log(this.props.audio, 'props');
     // localStorage.setItem('token')
     // possible storing of the token can happen!
     this.props.addPodcast('interview')

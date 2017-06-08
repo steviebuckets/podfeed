@@ -4,7 +4,8 @@ import axios from 'axios';
 // Register User
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export function verifyUser(user) {
-  // console.log('my user', user)
+
+  console.log('my user', user)
   let request = axios.post('/register', {
     email: user.email,
     password: user.password
@@ -23,7 +24,6 @@ export function verifyUser(user) {
   //     console.log('User already exists', error);
   //   })
 }
-
 
 
 // Sign In User
@@ -62,7 +62,7 @@ export function addPodcast(podcastName) {
   const token = localStorage.getItem('token');
   if (token) {
     const url = `/search?q=${encodeURI(podcastName)}&token=${token}` // backend request.query['q'] ?key=value&key2=value2
-    console.log(url, 'url');
+    // console.log(url, 'url');
     const request = axios.get(url);
     return {
       type: FETCH_DESCRIPTION_SUCCESS,

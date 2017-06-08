@@ -14,7 +14,7 @@ componentDidMount() {
   console.log(this.props, "inside")
 }
   handleSubmit(event) {
-    console.log(this.props, 'inside signin')
+    // console.log(this.props, 'inside signin')
 
     event.preventDefault();
     // console.log('my identifyUser', this)

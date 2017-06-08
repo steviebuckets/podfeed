@@ -1,11 +1,9 @@
 let init = [];
 // let state = {};
 import {FETCH_DESCRIPTION_SUCCESS, FETCH_STILL_LOADING} from '../actions';
-// create object for user
-// another for podcasts
-// create another red
+
 export default function podcastReducer(podcasts = init, action) {
-  console.log('what does action', podcasts);
+  // console.log('what does action', podcasts);
   switch (action.type) {
     case 'ADD_PODCAST':
       console.log(action, 'add');
