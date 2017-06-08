@@ -5,7 +5,7 @@ import axios from 'axios';
 const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export function verifyUser(user) {
   // console.log('my user', user)
-  let request =  axios.post('/register', {
+  let request = axios.post('/register', {
     email: user.email,
     password: user.password
   })
@@ -13,20 +13,20 @@ export function verifyUser(user) {
     type: REGISTER_USER_SUCCESS,
     payload: request
   }
-//   .then(function(response) {
-//
-//     let myToken = response.data.token;
-//     localStorage.setItem('token', myToken);
-//     location.replace('/');
-//
-//   }).catch(function(error) {
-//     console.log('User already exists', error);
-//   })
+  //   .then(function(response) {
+  //
+  //     let myToken = response.data.token;
+  //     localStorage.setItem('token', myToken);
+  //     location.replace('/');
+  //
+  //   }).catch(function(error) {
+  //     console.log('User already exists', error);
+  //   })
 }
 
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export function identifyUser(user){
+export function identifyUser(user) {
 
   let request = axios.post('/login', {
     email: user.email,
@@ -48,26 +48,37 @@ export function identifyUser(user){
 }
 
 // Returns Podcast Data From API
-export const fetchDescriptionSuccess = (podcastName, podcasts) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts});
+export const fetchDescriptionSuccess = (podcastName, podcasts) => ({ type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts });
 
-export const fetchUserSubscriptionSuccess = (data) => ({type: 'FETCH_USER_SUBSCRIPTION_SUCCESS', data});
+export const fetchUserSubscriptionSuccess = (data) => ({ type: 'FETCH_USER_SUBSCRIPTION_SUCCESS', data });
 
 
 // Search For Podcast
 export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
+export const FETCH_STILL_LOADING = 'FETCH_STILL_LOADING'
 export function addPodcast(podcastName) {
-  const url = `/search?q=${encodeURI(podcastName)}&token=${localStorage.getItem('token')}` // backend request.query['q'] ?key=value&key2=value2
-  const request = axios.get(url);
-  return {
-    type: FETCH_DESCRIPTION_SUCCESS,
-    payload: request
+  const token = localStorage.getItem('token');
+  if (token) {
+    const url = `/search?q=${encodeURI(podcastName)}&token=${token}` // backend request.query['q'] ?key=value&key2=value2
+    console.log(url, 'url');
+    const request = axios.get(url);
+    return {
+      type: FETCH_DESCRIPTION_SUCCESS,
+      payload: request
+    }
+  } else {
+    return {
+      type: FETCH_STILL_LOADING,
+      payload: null
+    }
   }
+
 }
 // {artist},${title}`
 
 // New Podcast Subscription
 // export const
-export function newSubscription(podcastKeyImage){
+export function newSubscription(podcastKeyImage) {
   // console.log("my image", podcastKeyImage)
   let myToken = localStorage.getItem('token');
   const podcastKey = podcastKeyImage.split(",")[0]
@@ -99,7 +110,7 @@ export function newSubscription(podcastKeyImage){
 
 //I want to use an ID now, not a key
 // Delete Podcast Subscription
-export function unSubscribe(podcastId){
+export function unSubscribe(podcastId) {
   // console.log(podcastId, 'my stuff')
   //whats in here? find the key and assign it to target
   let myToken = localStorage.getItem('token');
@@ -120,10 +131,10 @@ export function unSubscribe(podcastId){
 
 export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS";
 //Retrieve User Podcasts
-export function userSubscriptions(podcasts){
+export function userSubscriptions(podcasts) {
   // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
-  let artist="";
+  let artist = "";
   let title = "";
   let request = axios.get('/subscriptions?token=' + myToken, {
     user: podcasts
