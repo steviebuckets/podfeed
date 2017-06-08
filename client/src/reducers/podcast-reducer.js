@@ -11,11 +11,6 @@ export default function podcastReducer(podcasts = init, action) {
       return [action.payload, ...podcasts]
     case FETCH_DESCRIPTION_SUCCESS:
       return  [...podcasts, ...action.payload.data.data]; // double spread operators do the trick
-<<<<<<< HEAD
-      // return action.payload.data.data;
-=======
-      // return action.payload.data.data;          
->>>>>>> 2b51ebb334c49ed58abfb231e5ef5c3c05f3feaa
     case FETCH_STILL_LOADING:
       return podcasts    // this being empty we can get that lovely "spinner action"
     default:
