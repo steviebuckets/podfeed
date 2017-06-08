@@ -25,17 +25,6 @@ export class PodcastList extends React.Component {
 
   }
 
-  // .then(function(response) {
-  // //
-  // //     let myToken = response.data.token;
-  // //     localStorage.setItem('token', myToken);
-  // //     location.replace('/');
-  // //
-  // //   }).catch(function(error) {
-  // //     console.log('User already exists', error);
-  // //   })
-
-
   changeColor() {
     this.setState({
       color_blue: !this.state.color_blue

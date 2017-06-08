@@ -57,8 +57,16 @@ const routes = {
                 }
             }
         }, {
-            path: '/register',
-            component: Register
+          path: '/register',
+          getComponent: (location, callback) => {
+              if (Auth.isUserAuthenticated()) {
+                  console.log('auth')
+                  callback(null, PodcastList, Podcast);
+              } else {
+                  console.log('not auth')
+                  callback(null, Register);
+              }
+          }
         },
         {  path: '/podcast',
            component: Podcast

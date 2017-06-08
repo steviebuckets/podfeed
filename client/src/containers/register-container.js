@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {verifyUser} from '../actions';
+import {bindActionCreators} from 'redux';
 import * as components from '../components/register';
 
 const mapStateToProps = (state) => {
@@ -8,11 +9,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        verifyUser: emailPasswordObject => dispatch(verifyUser(emailPasswordObject))
-    }
+    return bindActionCreators({
+      verifyUser
+    }, dispatch)
+    // return {
+    //     verifyUser: emailPasswordObject => dispatch(verifyUser(emailPasswordObject))
+    // }
 }
 
-const Register = connect(mapStateToProps, mapDispatchToProps)(components.Register)
-
-export default Register
+export default connect(mapStateToProps, mapDispatchToProps)(components.Register)

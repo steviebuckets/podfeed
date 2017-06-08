@@ -4,24 +4,17 @@ import {LOGIN_SUCCESS} from '../actions';
 export default function userReducer(state = {}, action) {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      console.log('actoin', action);
+      console.log('action', action);
       let token = action.payload.data.token;
       localStorage.setItem('token', token);
       return Object.assign({}, state, {
         token: token
       })
-<<<<<<< HEAD
       default:
-=======
-      default: 
->>>>>>> 2b51ebb334c49ed58abfb231e5ef5c3c05f3feaa
         return state;
   }
 
   }
-
-
-
 
 
   // let init = [];

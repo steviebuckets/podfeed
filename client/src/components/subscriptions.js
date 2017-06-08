@@ -15,6 +15,7 @@ export class Subscriptions extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props, 'ksksk')
     this.props.userSubscriptions();
   }
 

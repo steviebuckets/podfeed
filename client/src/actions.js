@@ -2,7 +2,7 @@ import axios from 'axios';
 // import Auth from './modules/Auth';
 
 // Register User
-const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export function verifyUser(user) {
   // console.log('my user', user)
   let request = axios.post('/register', {
@@ -134,20 +134,27 @@ export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS"
 export function userSubscriptions(podcasts) {
   // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
-<<<<<<< HEAD
-  // let artist="";
+  // let artist = "";
   // let title = "";
-=======
-  let artist = "";
-  let title = "";
->>>>>>> 2b51ebb334c49ed58abfb231e5ef5c3c05f3feaa
   let request = axios.get('/subscriptions?token=' + myToken, {
     user: podcasts
   })
+  console.log(request, "hi")
   return {
     type: FETCH_USER_SUBSCRIPTION_SUCCESS,
-    payload: request
+    payload: request.data
   }
+
+//   //Retrieve User Podcasts
+// export const userSubscriptions = podcasts => dispatch => {
+//   let myToken = localStorage.getItem('token');
+//   axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
+//     dispatch(fetchUserSubscriptionSuccess(response.data))
+//   // dispatch? something that changed thed state?
+//   }).catch(function(error) {
+//     console.log("Sorry, no podcasts here", error)
+//   })
+// }
 
   // .then(function(response) {
   //   dispatch(fetchUserSubscriptionSuccess(response.data))
