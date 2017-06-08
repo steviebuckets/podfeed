@@ -1,5 +1,5 @@
 let init = [];
-import {FETCH_DESCRIPTION_SUCCESS, LOGIN_SUCCESS} from '../actions';
+import {FETCH_DESCRIPTION_SUCCESS, LOGIN_SUCCESS, FETCH_STILL_LOADING} from '../actions';
 // create object for user
 // another for podcasts
 // create another red
@@ -10,12 +10,10 @@ export default function podcastReducer(podcasts = init, action) {
       console.log(action, 'add');
       return [action.payload, ...podcasts]
     case FETCH_DESCRIPTION_SUCCESS:
-      // console.log('what?', action.podcast,action.description.data);
-      // podcasts = action.description.data.data;
-      // return  [action.payload.data.data, ...podcasts];
-      return action.payload.data.data;
-    // case 'FETCH_USER_SUBSCRIPTION_SUCCESS':
-    
+      return  [...podcasts, ...action.payload.data.data]; // double spread operators do the trick
+      // return action.payload.data.data;
+    case FETCH_STILL_LOADING:
+      return podcasts    // this being empty we can get that lovely "spinner action"
     default:
       return podcasts;
   }

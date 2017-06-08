@@ -123,8 +123,8 @@ export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS"
 export function userSubscriptions(podcasts){
   // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
-  let artist="";
-  let title = "";
+  // let artist="";
+  // let title = "";
   let request = axios.get('/subscriptions?token=' + myToken, {
     user: podcasts
   })

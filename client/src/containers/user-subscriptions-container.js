@@ -1,17 +1,15 @@
 import {connect} from 'react-redux';
-import {userSubscriptions} from '../actions';
-import {unSubscribe} from '../actions';
+import {userSubscriptions, unSubscribe} from '../actions';
 import * as components from '../components/subscriptions';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => {
   return {audio: state}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    userSubscriptions: user => dispatch(userSubscriptions(user)),
-    unSubscribe: podcast => dispatch(unSubscribe(podcast))
-  }
+  return bindActionCreators ({userSubscriptions, unSubscribe}, dispatch)
+  
 }
 
 const Subscriptions = connect(mapStateToProps, mapDispatchToProps)(components.Subscriptions)
