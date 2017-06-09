@@ -10,9 +10,9 @@ export class SignIn extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-componentDidMount() {
-  console.log(this.props, "inside")
-}
+// componentDidMount() {
+//   console.log(this.props, "inside")
+// }
   handleSubmit(event) {
     // console.log(this.props, 'inside signin')
 

@@ -10,26 +10,24 @@ export class PodcastList extends React.Component {
   constructor(props) {
     super(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-    this.state = {
-      color_blue: true
-    }
+    // this.changeColor = this.changeColor.bind(this);
+    // this.state = {
+    //   color_blue: true
+    // }
 
   }
 
   componentDidMount() {
-    // console.log(this.props.audio, 'props');
+    console.log(this.props, 'props');
     // localStorage.setItem('token')
-    // possible storing of the token can happen!
     this.props.addPodcast('interview')
-
   }
 
-  changeColor() {
-    this.setState({
-      color_blue: !this.state.color_blue
-    });
-  }
+  // changeColor() {
+  //   this.setState({
+  //     color_blue: !this.state.color_blue
+  //   });
+  // }
 
   clickSubscribe(event) {
     event.preventDefault()
@@ -38,14 +36,14 @@ export class PodcastList extends React.Component {
   }
 
   render() {
-    let bgColor = this.state.color_blue
-      ? "#03A9F4"
-      : "#f44336";
-    if (!this.props.audio.podcasts) {
-      return (
-        <div>Loading</div>
-      )
-    }
+    // let bgColor = this.state.color_blue
+    //   ? "#03A9F4"
+    //   : "#f44336";
+    // if (!this.props.audio.podcasts) {
+    //   return (
+    //     <div>Loading</div>
+    //   )
+    // }
 
 // <a href={`/customer/${item._id}`} >{item.get('firstName')} {item.get('lastName')}</a>
 
@@ -62,42 +60,42 @@ export class PodcastList extends React.Component {
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcasts.map(podcast => {
             // console.log(podcast.url, 'my url')
-            let imgUrl = "";
-            let url = "";
-            let artist = "";
-            let title = "";
-            let audioPlayer = "";
+            // let imgUrl = "";
+            // let url = "";
+            // let artist = "";
+            // let title = "";
+            // let audioPlayer = "";
+            //
+            // if (podcast.pictures) {
+            //   imgUrl = podcast.pictures.large;
+            //
+            // } else {
+            //   imgUrl = podcast.image;
+            // }
+            //
+            // if(podcast.url) {
+            //   url = podcast.url;
+            // }
+            //
+            // if (podcast.user) {
+            //   artist = podcast.user.username;
+            // }
+            //
+            // if (podcast) {
+            //   title = podcast.slug;
+            // }
+            // if (podcast && podcast.user) {
+            //   audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
+            // }
 
-            if (podcast.pictures) {
-              imgUrl = podcast.pictures.large;
-
-            } else {
-              imgUrl = podcast.image;
-            }
-
-            if(podcast.url) {
-              url = podcast.url;
-            }
-
-            if (podcast.user) {
-              artist = podcast.user.username;
-            }
-
-            if (podcast) {
-              title = podcast.slug;
-            }
-            if (podcast && podcast.user) {
-              audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-            }
-
-            let id = `${podcast.key},${imgUrl},${url},${artist},${title},${audioPlayer}`;
+            let id = `${podcast.key}`;
 
             return (
               <span key={id} className='podcast__item'>
                 <Podcast podcast={podcast}/>
 
                 <i className="fa fa-plus-circle fa-2x" aria-hidden="true" style={{
-                  color: bgColor
+                  // color: bgColor
                 }} id={id} onClick={this.clickSubscribe}></i>
 
               </span>

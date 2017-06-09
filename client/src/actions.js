@@ -5,15 +5,12 @@ import axios from 'axios';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export function verifyUser(user) {
 
-  console.log('my user', user)
   let request = axios.post('/register', {
+    // console.log('my user', user)
     email: user.email,
     password: user.password
   })
-  return {
-    type: REGISTER_USER_SUCCESS,
-    payload: request
-  }
+  return {type: REGISTER_USER_SUCCESS, payload: request}
   //   .then(function(response) {
   //
   //     let myToken = response.data.token;
@@ -25,7 +22,6 @@ export function verifyUser(user) {
   //   })
 }
 
-
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export function identifyUser(user) {
@@ -34,10 +30,7 @@ export function identifyUser(user) {
     email: user.email,
     password: user.password
   })
-  return {
-    type: LOGIN_SUCCESS,
-    payload: request
-  }
+  return {type: LOGIN_SUCCESS, payload: request}
   // .then(function(response) {
   //
   //   let myToken = response.data.token;
@@ -50,10 +43,9 @@ export function identifyUser(user) {
 }
 
 // Returns Podcast Data From API
-export const fetchDescriptionSuccess = (podcastName, podcasts) => ({ type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts });
+export const fetchDescriptionSuccess = (podcastName, podcasts) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts});
 
-export const fetchUserSubscriptionSuccess = (data) => ({ type: 'FETCH_USER_SUBSCRIPTION_SUCCESS', data });
-
+export const fetchUserSubscriptionSuccess = (data) => ({type: 'FETCH_USER_SUBSCRIPTION_SUCCESS', data});
 
 // Search For Podcast
 export const FETCH_DESCRIPTION_SUCCESS = 'FETCH_DESCRIPTION_SUCCESS';
@@ -64,15 +56,9 @@ export function addPodcast(podcastName) {
     const url = `/search?q=${encodeURI(podcastName)}&token=${token}` // backend request.query['q'] ?key=value&key2=value2
     // console.log(url, 'url');
     const request = axios.get(url);
-    return {
-      type: FETCH_DESCRIPTION_SUCCESS,
-      payload: request
-    }
+    return {type: FETCH_DESCRIPTION_SUCCESS, payload: request}
   } else {
-    return {
-      type: FETCH_STILL_LOADING,
-      payload: null
-    }
+    return {type: FETCH_STILL_LOADING, payload: null}
   }
 
 }
@@ -96,11 +82,7 @@ export function newSubscription(podcastKeyImage) {
     artist: artist,
     title: title
   });
-  return {
-    type: FETCH_DESCRIPTION_SUCCESS,
-    payload: request
-  }
-
+  return {type: FETCH_DESCRIPTION_SUCCESS, payload: request}
 
   // .then(function(response) {
   //   //?? feeedback generation
@@ -120,15 +102,10 @@ export function unSubscribe(podcastId) {
   // let id = target;
   // podcast._id;
 
-
-
   let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
     // subscription: podcast._id
   });
-  return {
-    type: FETCH_DESCRIPTION_SUCCESS,
-    payload: request
-  }
+  return {type: FETCH_DESCRIPTION_SUCCESS, payload: request}
 }
 
 export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS";
@@ -139,27 +116,20 @@ export function userSubscriptions(podcasts) {
 
   // let artist = "";
   // let title = "";
-  let request = axios.get('/subscriptions?token=' + myToken, {
-    user: podcasts
-  })
+  let request = axios.get('/subscriptions?token=' + myToken, {user: podcasts})
   console.log(request, "hi")
-  return {
-    type: FETCH_USER_SUBSCRIPTION_SUCCESS,
-    payload: request
-  }
+  return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 
-
-
-//   //Retrieve User Podcasts
-// export const userSubscriptions = podcasts => dispatch => {
-//   let myToken = localStorage.getItem('token');
-//   axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
-//     dispatch(fetchUserSubscriptionSuccess(response.data))
-//   // dispatch? something that changed thed state?
-//   }).catch(function(error) {
-//     console.log("Sorry, no podcasts here", error)
-//   })
-// }
+  //   //Retrieve User Podcasts
+  // export const userSubscriptions = podcasts => dispatch => {
+  //   let myToken = localStorage.getItem('token');
+  //   axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
+  //     dispatch(fetchUserSubscriptionSuccess(response.data))
+  //   // dispatch? something that changed thed state?
+  //   }).catch(function(error) {
+  //     console.log("Sorry, no podcasts here", error)
+  //   })
+  // }
 
   // .then(function(response) {
   //   dispatch(fetchUserSubscriptionSuccess(response.data))

@@ -6,7 +6,7 @@ export default function podcastReducer(podcasts = init, action) {
   // console.log('what does action', podcasts);
   switch (action.type) {
     case 'ADD_PODCAST':
-      console.log(action, 'add');
+      console.log(action, 'add podcast fetch');
       return [action.payload, ...podcasts]
     case FETCH_DESCRIPTION_SUCCESS:
       return  [...podcasts, ...action.payload.data.data]; // double spread operators do the trick
