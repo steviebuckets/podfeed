@@ -69,15 +69,37 @@ const routes = {
       }
     }, {
       path: '/podcast',
-      component: Podcast
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, Podcast);
+        } else {
+          console.log('not auth')
+          callback(null, Podcast);
+        }
+      }
     }, {
       path: '/podcast-list',
-      component: PodcastList
-
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, PodcastList);
+        } else {
+          console.log('not auth')
+          callback(null, SignIn);
+        }
+      }
     }, {
       path: '/subscriptions',
-      component: Subscriptions
-
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          console.log('auth')
+          callback(null, Subscriptions);
+        } else {
+          console.log('not auth')
+          callback(null, SignIn);
+        }
+      }
     }, {
 
       path: '/logout',

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Podcast} from './podcast';
+import { browserHistory } from 'react-router'
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
 
@@ -10,6 +11,7 @@ export class PodcastList extends React.Component {
   constructor(props) {
     super(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
+    this.subscriptionsPage = this.subscriptionsPage.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.state = {
       color_blue: true
@@ -18,8 +20,6 @@ export class PodcastList extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props, 'props');
-    // localStorage.setItem('token')
     this.props.addPodcast('interview')
   }
 
@@ -34,6 +34,11 @@ export class PodcastList extends React.Component {
     event.preventDefault()
     this.props.newSubscription(event.target.id);
     this.changeColor(event.target.id);
+    browserHistory.push('/subscriptions')
+  }
+
+  subscriptionsPage() {
+    browserHistory.push('/subscriptions');
   }
 
   render() {
@@ -47,6 +52,7 @@ export class PodcastList extends React.Component {
     }
 
 // <a href={`/customer/${item._id}`} >{item.get('firstName')} {item.get('lastName')}</a>
+// browserHistory.push('/podcast-list');
 
     return (
       <div className='podcast-list-conatiner'>
@@ -55,7 +61,7 @@ export class PodcastList extends React.Component {
             <span href="#" className="current">FEATURED</span>
           </Link>
           <Link to="/subscriptions">
-            <span href="#">SUBSCRIBED</span>
+            <span onClick={this.subscriptionsPage} href="#">SUBSCRIBED</span>
           </Link>
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
@@ -91,6 +97,7 @@ export class PodcastList extends React.Component {
             // }
 
             let id = `${podcast.updated_time},${imgUrl},${url},${artist},${title}`;
+            // console.log(id, 'ID');
 
             return (
               <span key={id} className='podcast__item'>

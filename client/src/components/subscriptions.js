@@ -25,7 +25,7 @@ export class Subscriptions extends React.Component {
     location.reload();
   }
   render() {
-    if (this.props.audio.podcasts.length === 0) {
+    if (this.props.audio.podcasts.length === 1) {
       return (
         <div>
           <div className="featured-header">
@@ -58,6 +58,7 @@ export class Subscriptions extends React.Component {
 
 
               let id = `${podcast._id}`;
+              // let id = `${podcast._name}`
               return (
                 <span key={podcast.url} className='podcast__item'>
                   <Podcast podcast={podcast}/>
@@ -72,6 +73,3 @@ export class Subscriptions extends React.Component {
     }
   }
 }
-
-//Todo
-// Add token to server route for deletion, need token to delete a cast

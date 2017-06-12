@@ -4,7 +4,7 @@ import * as components from '../components/podcast-list';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => {
-  console.log(state, "my state")
+  // console.log(state, "my state")
   return {audio: state}
 }
 
@@ -17,5 +17,10 @@ const mapDispatchToProps = (dispatch) => {
   // }
 }
 
-const PodcastList = connect(mapStateToProps, mapDispatchToProps)(components.PodcastList)
-export default PodcastList;
+// export default connect(mapStateToProps, {addPodcast, newSubscription, userSubscriptions})(components.PodcastList)
+
+const PodcastList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(components.PodcastList)
+export default PodcastList
