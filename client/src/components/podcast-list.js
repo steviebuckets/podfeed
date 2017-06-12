@@ -12,10 +12,10 @@ export class PodcastList extends React.Component {
     super(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.subscriptionsPage = this.subscriptionsPage.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-    this.state = {
-      color_blue: true
-    }
+    // this.changeColor = this.changeColor.bind(this);
+    // this.state = {
+    //   color_blue: true
+    // }
 
   }
 
@@ -23,17 +23,17 @@ export class PodcastList extends React.Component {
     this.props.addPodcast('interview')
   }
 
-
-  changeColor() {
-    this.setState({
-      color_blue: !this.state.color_blue
-    });
-  }
+  // changeColor() {
+  //   this.setState({
+  //     // color_blue: !this.state.color_blue
+  //   });
+  // }
 
   clickSubscribe(event) {
     event.preventDefault()
     this.props.newSubscription(event.target.id);
-    this.changeColor(event.target.id);
+    alert("You Have Subscribed!")
+    // this.changeColor(event.target.id);
     browserHistory.push('/subscriptions')
   }
 
@@ -41,15 +41,22 @@ export class PodcastList extends React.Component {
     browserHistory.push('/subscriptions');
   }
 
+//   const uniqueNames = names.filter((val, id, array) => {
+//    return array.indexOf(val) == id;
+// });
+// Also, you won't even need a return statement if you use es6
+//
+// const uniqueNames = names.filter((val,id,array) => array.indexOf(val) == id);
+
   render() {
-    let bgColor = this.state.color_blue
-      ? "#03A9F4"
-      : "#f44336";
-    if (!this.props.audio.podcasts) {
-      return (
-        <div>Loading</div>
-      )
-    }
+    // let bgColor = this.state.color_blue
+    //   ? "#03A9F4"
+    //   : "#03A9F4";
+    // if (!this.props.audio.podcasts) {
+    //   return (
+    //     <div>Loading</div>
+    //   )
+    // }
 
 // <a href={`/customer/${item._id}`} >{item.get('firstName')} {item.get('lastName')}</a>
 // browserHistory.push('/podcast-list');
@@ -67,6 +74,7 @@ export class PodcastList extends React.Component {
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcasts.map(podcast => {
             // console.log(podcast.url, 'my url')
+            //To do, add a for loop or filter to remove duplicates
 
             let imgUrl = "";
             let url = "";
@@ -100,12 +108,14 @@ export class PodcastList extends React.Component {
             // console.log(id, 'ID');
 
             return (
+
               <span key={id} className='podcast__item'>
+
                 <Podcast podcast={podcast}/>
 
-                <i className="fa fa-plus-circle fa-2x" aria-hidden="true" style={{
-                  color: bgColor
-                }} id={id} onClick={this.clickSubscribe}></i>
+
+                <i className="fa fa-plus-circle fa-2x" aria-hidden="true"
+                id={id} onClick={this.clickSubscribe}></i>
 
               </span>
             )

@@ -95,7 +95,7 @@ export function userSubscriptions(podcasts) {
   let myToken = localStorage.getItem('token');
 
   let request = axios.get('/subscriptions?token=' + myToken, {user: podcasts})
-  console.log(request, "Hello Fom Action FETCH_DESCRIPTION_SUCCESS")
+  // console.log(request, "Hello Fom Action FETCH_DESCRIPTION_SUCCESS")
   return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 
   // return [...state, ...action.payload];
