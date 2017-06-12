@@ -19,7 +19,7 @@ export class PodcastList extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.addPodcast('interview')
   }
 

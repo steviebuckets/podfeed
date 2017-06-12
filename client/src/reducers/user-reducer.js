@@ -10,7 +10,9 @@ export default function userReducer(state = {}, action) {
       location.replace('/');
       return Object.assign({}, state, {token: token})
     case REGISTER_USER_SUCCESS:
-      // console.log(action.payload, "my payload")
+      console.log(action, '');
+      console.log(action.payload, "my payload")
+
       token = action.payload.data.token;
       localStorage.setItem('token', token);
       location.replace('/');

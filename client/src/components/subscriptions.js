@@ -23,6 +23,7 @@ export class Subscriptions extends React.Component {
 
   componentDidMount() {
     this.props.userSubscriptions();
+
   }
 
 
@@ -37,33 +38,6 @@ export class Subscriptions extends React.Component {
 
   }
   render() {
-    // console.log(this.props.audio.podcasts.title, "my damn props!")
-    // let artist = "";
-    // let title = "";
-    // let audioPlayer = "";
-    // // this.image = "";
-    // // this.key = "";
-    //
-    // if (this.props.audio.podcasts) {
-    //   // console.log(this.props.audio.podcasts, "show me");
-    //   // artist = this.props.podcast.artist + "%2F";
-    //   // console.log(props.podcast.user.username, "show me bad ones")
-    // }
-    // if (this.props.audio.podcasts) {
-    //   // key = props.podcast._created_time;
-    //   title = this.props.audio.podcasts.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-    //   audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-    // } else if (this.props.podcast.user.username === undefined) {
-    //   // artist = props.podcast.user.username;
-    //   // title = props.podcast.slug;
-    //   // audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-    //   alert('no audio')
-    // }
-
-  // https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/6/2/e/2/87fe-5bf7-4598-ab69-de9585def539.jpg,
-  // https://www.mixcloud.com/itssister/s-i-s-t-e-r-episode-2-chris-lorenzo-guestmix-alison-wonderland-interview/,
-  // itssister,s-i-s-t-e-r-episode-2-chris-lorenzo-guestmix-alison-wonderland-interview"></i>
-  //
 
     if (this.props.audio.podcasts.length === 0) {
       return (
@@ -80,7 +54,6 @@ export class Subscriptions extends React.Component {
         </div>
       )
     } else {
-      // console.log("You got subscriptions")
 
       return (
         <div className='podcast-list-conatiner'>
@@ -103,8 +76,8 @@ export class Subscriptions extends React.Component {
               // let id = `${podcast._name}`
               return (
                 <span key={podcast.url} className='podcast__item'>
-                <iframe width="100%" height="80" className="audio-widget" id={id} src={audioPlayer}></iframe>
-                  <Podcast podcast={podcast}/>
+
+                  <Podcast podcast={podcast} audioPlayer={audioPlayer}/>
                   <i className="fa fa-minus-circle fa-2x" id={id} aria-hidden="true" onClick={this.deletePodcast}></i>
                 </span>
               )
@@ -116,3 +89,5 @@ export class Subscriptions extends React.Component {
     }
   }
 }
+
+// <iframe width="100%" height="80" className="audio-widget-subscriptions" id={id} src={audioPlayer}></iframe>

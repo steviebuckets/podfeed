@@ -52,6 +52,7 @@ app.post('/login/', (req, res) => {
 
 //register route
 app.post('/register/', (req, res) => {
+  console.log('BODY', req.body);
   let user = new User();
   user.email = req.body.email;
   user.password = req.body.password;
@@ -124,10 +125,18 @@ app.post('/subscribe', (req, res) => {
   // User.find({_id: req.decoded.id})
   // or User.find({key: req.params.key})
   User.findById(req.decoded.id, (err, user) => {
-    user.podcasts.push({
-      key: req.body.key, image: req.body.image, url: req.body.url, artist: req.body.artist, title: req.body.title
+    console.log("URL", req.body.url);
+
+    user.podcasts.forEach((podcast) => {
+      if (podcast.url === req.body.url){
+        return res.status(503).json({message: "ALready exists"});
+      }
     });
-    console.log(user, "my user data from server");
+
+    user.podcasts.push({
+      image: req.body.image, url: req.body.url, artist: req.body.artist, title: req.body.title
+    });
+    // console.log(user, "my user data from server");
     user.save((err) => {
       if (err) {
         console.log(err);

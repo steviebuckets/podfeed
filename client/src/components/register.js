@@ -19,9 +19,9 @@ export class Register extends React.Component {
 
     event.preventDefault();
     // console.log('my identifyUser', this)
-    this.props.verifyUser({email: this.email, password: this.password});
-    browserHistory.push('/podcast-list');
-
+    this.props.verifyUser({email: this.email, password: this.password}, () => {
+        browserHistory.push('/podcast-list');
+    });
   }
 
   render() {

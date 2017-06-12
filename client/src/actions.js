@@ -3,13 +3,14 @@ import axios from 'axios';
 
 // Register User
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export function verifyUser(user) {
+export function verifyUser(user, callback) {
 
   let request = axios.post('/register', {
     // console.log('my user', user)
     email: user.email,
     password: user.password
   })
+  .then(() => callback());
   return {type: REGISTER_USER_SUCCESS, payload: request}
 }
 
