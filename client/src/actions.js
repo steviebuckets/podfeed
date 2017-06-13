@@ -10,7 +10,10 @@ export function verifyUser(user, callback) {
     email: user.email,
     password: user.password
   })
-  .then(() => callback());
+.then((response) => {
+  callback();
+  return response;
+});
   return {type: REGISTER_USER_SUCCESS, payload: request}
 }
 
@@ -57,7 +60,7 @@ export function newSubscription(podcastKeyImage) {
   const url = podcastKeyImage.split(",")[2]
   const artist = podcastKeyImage.split(",")[3]
   const title = podcastKeyImage.split(",")[4]
-  console.log([title, artist, url, image, podcastKey].length, "UNIQUE?");
+  // console.log([title, artist, url, image, podcastKey].length, "UNIQUE?");
 
   let request = axios.post('/subscribe?token=' + myToken, {
     key: podcastKey,
