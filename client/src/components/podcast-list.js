@@ -1,6 +1,6 @@
 import React from 'react';
 import {Podcast} from './podcast';
-import { browserHistory } from 'react-router'
+import {browserHistory} from 'react-router'
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
 
@@ -14,8 +14,12 @@ export class PodcastList extends React.Component {
     this.subscriptionsPage = this.subscriptionsPage.bind(this);
     // this.changeColor = this.changeColor.bind(this);
     // this.state = {
-    //   color_blue: true
+    //   color_faded: false
     // }
+    this.changeStatus = this.changeStatus.bind(this);
+    this.state = {
+      opacity: 0.9
+    }
 
   }
 
@@ -25,15 +29,21 @@ export class PodcastList extends React.Component {
 
   // changeColor() {
   //   this.setState({
-  //     // color_blue: !this.state.color_blue
+  //     color_faded: !this.state.color_faded
   //   });
   // }
+
+  changeStatus() {
+    this.setState = {
+      opacity: 0.3
+    }
+  }
 
   clickSubscribe(event) {
     event.preventDefault()
     this.props.newSubscription(event.target.id);
-    alert("You Have Subscribed!")
     // this.changeColor(event.target.id);
+    this.changeStatus(event.target.id);
     browserHistory.push('/subscriptions')
   }
 
@@ -41,25 +51,15 @@ export class PodcastList extends React.Component {
     browserHistory.push('/subscriptions');
   }
 
-//   const uniqueNames = names.filter((val, id, array) => {
-//    return array.indexOf(val) == id;
-// });
-// Also, you won't even need a return statement if you use es6
-//
-// const uniqueNames = names.filter((val,id,array) => array.indexOf(val) == id);
-
   render() {
     // let bgColor = this.state.color_blue
     //   ? "#03A9F4"
-    //   : "#03A9F4";
+    //   : "#f44336";
     // if (!this.props.audio.podcasts) {
     //   return (
     //     <div>Loading</div>
     //   )
     // }
-
-// <a href={`/customer/${item._id}`} >{item.get('firstName')} {item.get('lastName')}</a>
-// browserHistory.push('/podcast-list');
 
     return (
       <div className='podcast-list-conatiner'>
@@ -80,7 +80,6 @@ export class PodcastList extends React.Component {
             let url = "";
             let artist = "";
             let title = "";
-            // let audioPlayer = "";
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
@@ -89,7 +88,7 @@ export class PodcastList extends React.Component {
               imgUrl = podcast.image;
             }
 
-            if(podcast.url) {
+            if (podcast.url) {
               url = podcast.url;
             }
 
@@ -100,24 +99,20 @@ export class PodcastList extends React.Component {
             if (podcast) {
               title = podcast.slug;
             }
-            // if (podcast && podcast.user) {
-            //   audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
-            // }
 
             let id = `${podcast.updated_time},${imgUrl},${url},${artist},${title}`;
-            // console.log(id, 'ID');
 
             return (
 
               <span key={id} className='podcast__item'>
+                <div className="subscribed">
+                  <Podcast podcast={podcast}/>
 
-                <Podcast podcast={podcast}/>
-
-
-                <i className="fa fa-plus-circle fa-2x" aria-hidden="true"
-                id={id} onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={this.state} onClick={this.clickSubscribe}></i>
+                </div>
 
               </span>
+
             )
           })}
         </Masonry>

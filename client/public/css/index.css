@@ -1,20 +1,22 @@
-/*.animated {
-  animation-name: slideInUp;
-  transform-origin: center top;
+/*.subscribed {
+  opacity: .1;
 }*/
 
-.overlay {
-  /*display:none;*/
-    /*position: absolute;*/
-    /*width:100px;
-    height:100px;*/
-    /*background-color: gray;*/
-    /*top: 50px;
-    left: 50px;
-    padding: 10px;*/
-    color: black;
-    opacity: .2;
+.mui-col-md-12 {
+  text-align: center;
+  margin-top: 40px;
 }
+
+.container-image {
+ height: 76vh;
+/*margin-top: 10px;*/
+  background-image: url("/images/cover.png");
+  background-repeat: no-repeat;
+  opacity: .9;
+  margin-left: 62px;
+}
+
+
 
 .alert{
   /*color: #e9e9e9;*/
@@ -368,6 +370,7 @@ div.container .navbar {
   width: 100%;
   /*margin-left: 65px;*/
   margin-left: 58px;
+  /*margin-left: 5px;*/
 }
 
 .podcast__item {

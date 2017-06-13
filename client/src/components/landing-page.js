@@ -45,7 +45,13 @@ export class LandingPage extends React.Component {
 
                 </div>
             </div>
+            <div className="mui-col-md-12">
+            <p className="">Discover, Stream, & Subscribe</p>
+            <div className="container-image">
+            </div>
+              </div>
+
         </div>
-    )
+      )
   }
 }
