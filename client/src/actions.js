@@ -26,7 +26,6 @@ export function identifyUser(user, cb) {
     email: user.email,
     password: user.password
   }).then((response) => {
-    console.log(response, 'res');
     cb(); // run callback
     return response;
   })
