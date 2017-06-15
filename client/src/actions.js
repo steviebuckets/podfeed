@@ -73,6 +73,8 @@ export function newSubscription(podcastKeyImage) {
   // })
 }
 
+
+
 // Delete Podcast Subscription
 export function unSubscribe(podcastId) {
   let myToken = localStorage.getItem('token');
@@ -82,7 +84,7 @@ export function unSubscribe(podcastId) {
   let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
     // subscription: podcast._id
   });
-  return {type: FETCH_DESCRIPTION_SUCCESS, payload: request}
+  return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 }
 
 
