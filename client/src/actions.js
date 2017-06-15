@@ -21,10 +21,14 @@ export function verifyUser(user, callback) {
 
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export function identifyUser(user) {
+export function identifyUser(user, cb) {
   let request = axios.post('/login', {
     email: user.email,
     password: user.password
+  }).then((response) => {
+    console.log(response, 'res');
+    cb(); // run callback
+    return response;
   })
   return {type: LOGIN_SUCCESS, payload: request}
 }
