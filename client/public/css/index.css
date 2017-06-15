@@ -340,9 +340,10 @@ div.container .navbar {
 /*Podcast-List Component Styles*/
 
 .my-gallery-class .fa {
-  color: #03A9F4;
+  /*color: #03A9F4;*/
   padding-bottom: 10px;
   padding-top: 10px;
+
 }
 
 

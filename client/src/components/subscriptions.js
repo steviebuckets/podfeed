@@ -1,6 +1,6 @@
 import React from 'react';
 import {Podcast} from './podcast';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 const Masonry = require('react-masonry-component');
 import {Link} from 'react-router';
@@ -20,17 +20,16 @@ export class Subscriptions extends React.Component {
     // }
   }
 
-
   componentDidMount() {
     this.props.userSubscriptions();
+    console.log(this.props, "user subscriptions")
 
   }
-
 
   deletePodcast(event) {
     event.preventDefault()
     this.props.unSubscribe(event.target.id);
-    location.reload();
+    // location.reload();
   }
 
   featuredPage() {
@@ -44,7 +43,7 @@ export class Subscriptions extends React.Component {
         <div>
           <div className="featured-header">
             <Link to="/podcast-list">
-              <span onClick={this.featuredPage}href="#">FEATURED</span>
+              <span href="#" onClick={this.featuredPage}>FEATURED</span>
             </Link>
             <Link to="/subscriptions">
               <span href="#">SUBSCRIBED</span>
@@ -89,5 +88,3 @@ export class Subscriptions extends React.Component {
     }
   }
 }
-
-// <iframe width="100%" height="80" className="audio-widget-subscriptions" id={id} src={audioPlayer}></iframe>

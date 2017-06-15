@@ -4,7 +4,7 @@ import {FETCH_DESCRIPTION_SUCCESS, FETCH_USER_SUBSCRIPTION_SUCCESS, FETCH_STILL_
 
 export default function podcastReducer(podcasts = init, action) {
   // console.log('what does action', podcasts);
-  // console.log(action, 'action');
+  console.log(action, 'action');
   switch (action.type) {
       // console.log(action, 'url');
     //Performs a Podcast Search
