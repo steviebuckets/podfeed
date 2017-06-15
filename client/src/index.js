@@ -27,8 +27,8 @@ import Auth from './modules/Auth';
 
 //remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
-
-const store = createStore(reducer, applyMiddleware(ReduxPromise));
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStoreWithMiddleware(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const routes = {
   component: App,
