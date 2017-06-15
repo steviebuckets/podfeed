@@ -128,14 +128,12 @@ app.post('/subscribe', (req, res) => {
     console.log("URL", req.body.url);
 
     user.podcasts.forEach((podcast) => {
-      if (podcast.url === req.body.url){
+      if (podcast.url === req.body.url) {
         return res.status(503).json({message: "ALready exists"});
       }
     });
 
-    user.podcasts.push({
-      image: req.body.image, url: req.body.url, artist: req.body.artist, title: req.body.title
-    });
+    user.podcasts.push({image: req.body.image, surl: req.body.url, artist: req.body.artist, title: req.body.title});
     // console.log(user, "my user data from server");
     user.save((err) => {
       if (err) {
@@ -156,13 +154,13 @@ app.delete('/subscriptions/:id', (req, res) => {
 
     let subscription = user.podcasts.id(req.params.id); // id is s epcial method in mongoose to access a subdoc by _id
 
-    if (subscription){
+    if (subscription) {
       subscription.remove();
-      user.save(function(err){
+      user.save(function(err) {
         if (err)
           res.status(404).json({message: "Cannot save user"});
         else
-          res.status(200).json({message: 'you deleted'})
+          res.status(200).json(user.podcasts);
       });
     } else {
       res.status(404).json({message: "Not found!"});
@@ -176,7 +174,7 @@ app.delete('/subscriptions/:id', (req, res) => {
     //   if (err) return handleError(err);
     //   console.log('the subdocs were removed');
     // });
-      // you send back a response!!!
+    // you send back a response!!!
 
     // if (subscription) {
     //     subscription.remove();
@@ -202,23 +200,34 @@ app.get('/search', (req, res) => {
     Request.end(function(response) {
       let responseData = JSON.parse(response.body)
       // // # Dummy data
-      // /// what if you had a way tocheck the database, for the existings of the key
+      // /// what if you had a way to check the database, for an existing "URL!!!"
       // // 1. get the user (req.decoded.id)
-      // User.findById(req.decoded.id, (err, user) =>{
-      //   for (user) {
-      //       podcasts:
-      // [0]    [ { key: '/DjComplexion/the-future-beats-show-063-maximusmmc-interview/',
-      // [0]        image: 'https://thumbnailer.mixcloud.com/unsafe/300x300/extaudio/3/f/2/b/23ac-421d-4179-876d-16a7def9ec14',
-      // [0]        _id: 592f4fd96acaa072edac2b90 },
+      User.findById(req.decoded.id, (err, user) => {
+        // console.log("USER", user);
+        // check the URL against your podcasts url
+        // console.log(responseData);
+        // responseData.data -> ARRAY!!!
+        // first loop goes through the data from API mixcloud
+        for (var i = 0; i < responseData.data.length; i++) {
+          const {url} = responseData.data[i];
+          // second loop goes into our subscriptions
+          for (var j = 0; j < user.podcasts.length; j++) {
+            if (user.podcasts[j].surl == url) {
+              console.log('we are here!!')
+              responseData.data[i].subscribed = true; // introduce a property to an object
+              // lesson:
+              // var x = {name: 'something'};
+              // x.other = "This is a new property"
+              break; // /get out of the loop
+            }
+          }
+        }
 
-      //
-      //   }
-      // })
-      // responseData.data[0].subscribed = true; // making a change!! or introducing one
-      // console.log(responseData, 'We are here')
+        res.json(responseData);
 
-      /// change the contents of data in side responseData
-      res.json(responseData);
+      });
+
+
     });
   }
 })

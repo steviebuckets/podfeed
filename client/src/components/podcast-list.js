@@ -12,38 +12,28 @@ export class PodcastList extends React.Component {
     super(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.subscriptionsPage = this.subscriptionsPage.bind(this);
-    // this.changeColor = this.changeColor.bind(this);
-    // this.state = {
-    //   color_faded: false
-    // }
-    this.changeStatus = this.changeStatus.bind(this);
+    this.changeColor = this.changeColor.bind(this);
     this.state = {
-      opacity: 0.9
+      color_blue: true
     }
 
   }
 
   componentWillMount() {
     this.props.addPodcast('interview')
+    console.log("podcast data", this.props)
   }
 
-  // changeColor() {
-  //   this.setState({
-  //     color_faded: !this.state.color_faded
-  //   });
-  // }
-
-  changeStatus() {
-    this.setState = {
-      opacity: 0.3
-    }
+  changeColor() {
+    this.setState({
+      color_blue: !this.state.color_blue
+    });
   }
 
   clickSubscribe(event) {
     event.preventDefault()
     this.props.newSubscription(event.target.id);
-    // this.changeColor(event.target.id);
-    this.changeStatus(event.target.id);
+    this.changeColor(event.target.id);
     browserHistory.push('/subscriptions')
   }
 
@@ -52,15 +42,9 @@ export class PodcastList extends React.Component {
   }
 
   render() {
-    // let bgColor = this.state.color_blue
-    //   ? "#03A9F4"
-    //   : "#f44336";
-    // if (!this.props.audio.podcasts) {
-    //   return (
-    //     <div>Loading</div>
-    //   )
-    // }
-
+    let bgColor = this.state.color_blue
+      ? "#03A9F4"
+      : "#f44336";
     return (
       <div className='podcast-list-conatiner'>
         <div className="featured-header">
@@ -73,13 +57,15 @@ export class PodcastList extends React.Component {
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcasts.map(podcast => {
-            // console.log(podcast.url, 'my url')
+            console.log(podcast.subscribed, 'status?');
             //To do, add a for loop or filter to remove duplicates
 
             let imgUrl = "";
             let url = "";
             let artist = "";
             let title = "";
+            // let color = "";
+
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
@@ -107,8 +93,7 @@ export class PodcastList extends React.Component {
               <span key={id} className='podcast__item'>
                 <div className="subscribed">
                   <Podcast podcast={podcast}/>
-
-                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={this.state} onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}} onClick={this.clickSubscribe}></i>
                 </div>
 
               </span>

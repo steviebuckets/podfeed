@@ -6,11 +6,21 @@ export function Podcast(props) {
   let audioPlayer = "";
   let image = "";
   let key = "";
-
+// console.log(props, "From Podcast Component")
   // this.state = {
   //   color_faded: false
   // }
+// if(props.button) {
+//   alert("some shit")
+//   console.log("oh shit")
+// }
 
+//make another api call in my podlist component to my users subs.
+//catch it in a array or loo tgrough it
+//then use the data in that api to compare versus my other api call to mixcloud that takes the basic query.
+// if(props.podcast.url === props.podcast.surl) {
+//   alert("dups!")
+// }
 
   if (props.podcast.pictures) {
     image = props.podcast.pictures.large;
@@ -22,7 +32,7 @@ export function Podcast(props) {
 
     if (props.podcast.user) {
       artist = props.podcast.user.username + "%2F";
-      console.log('artist', artist);
+      // console.log('artist', artist);
     }
     if (props.podcast) {
       key = props.podcast._created_time;

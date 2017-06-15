@@ -9,15 +9,12 @@ export function verifyUser(user, callback) {
     // console.log('my user', user)
     email: user.email,
     password: user.password
-  })
-.then((response) => {
-  callback();
-  return response;
-});
+  }).then((response) => {
+    callback();
+    return response;
+  });
   return {type: REGISTER_USER_SUCCESS, payload: request}
 }
-
-
 
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -28,8 +25,6 @@ export function identifyUser(user) {
   })
   return {type: LOGIN_SUCCESS, payload: request}
 }
-
-
 
 // Returns Podcast Data From API
 export const fetchDescriptionSuccess = (podcastName, podcasts) => ({type: 'FETCH_DESCRIPTION_SUCCESS', podcastName, podcasts});
@@ -78,7 +73,6 @@ export function newSubscription(podcastKeyImage) {
   // })
 }
 
-
 // Delete Podcast Subscription
 export function unSubscribe(podcastId) {
   let myToken = localStorage.getItem('token');
@@ -102,27 +96,4 @@ export function userSubscriptions(podcasts) {
   // console.log(request, "Hello Fom Action FETCH_DESCRIPTION_SUCCESS")
   return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 
-  // return [...state, ...action.payload];
-
-  //   //Retrieve User Podcasts
-  // export const userSubscriptions = podcasts => dispatch => {
-  //   let myToken = localStorage.getItem('token');
-  //   axios.get('/subscriptions?token=' + myToken, {user: podcasts}).then(function(response) {
-  //     dispatch(fetchUserSubscriptionSuccess(response.data))
-  //   // dispatch? something that changed thed state?
-  //   }).catch(function(error) {
-  //     console.log("Sorry, no podcasts here", error)
-  //   })
-  // }
-
-  // .then(function(response) {
-  //   dispatch(fetchUserSubscriptionSuccess(response.data))
-  //   console.log(response.data, "my data back from server")
-  //   //  artist = artist + "%2F";
-  //   //  title = response.title + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-  //   //  console.log(artist, "my artist data")
-  // // dispatch? something that changed thedstate?
-  // }).catch(function(error) {
-  //   console.log("Sorry, no podcasts here", error)
-  // })
 }
