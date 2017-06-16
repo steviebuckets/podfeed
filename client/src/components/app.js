@@ -19,7 +19,7 @@ class App extends React.Component {
     if (isLongEnough) {
       this.refs.search.value = '';
       this.props.addPodcast(name);
-
+      console.log(this.props, 'from search')
     }
   };
 

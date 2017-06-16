@@ -30,6 +30,7 @@ export function Podcast(props) {
 
   if (!props.audioPlayer) {
 
+
     if (props.podcast.user) {
       artist = props.podcast.user.username + "%2F";
       // console.log('artist', artist);
