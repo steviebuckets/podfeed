@@ -94,6 +94,8 @@ export class PodcastList extends React.Component {
                 <div className="subscribed">
                   <Podcast podcast={podcast}/>
                   <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}} onClick={this.clickSubscribe}></i>
+
+                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'none'}} onClick={this.clickSubscribe}></i>
                 </div>
 
               </span>

@@ -14,15 +14,21 @@ export class Subscriptions extends React.Component {
     super(props)
     this.deletePodcast = this.deletePodcast.bind(this);
     this.featuredPage = this.featuredPage.bind(this);
+
     // this.changeColor = this.changeColor.bind(this);
     // this.state = {
     //   color_red: true
     // }
   }
 
+
+componentDidUpdate() {
+  console.log(this.props, 'from subby')
+}
   componentDidMount() {
     this.props.userSubscriptions();
-    console.log(this.props, "user subscriptions")
+    // console.log(action.payload.data, "user subscriptions")
+
 
   }
 
@@ -69,10 +75,23 @@ export class Subscriptions extends React.Component {
             {this.props.audio.podcasts.map(podcast => {
               let artist = podcast.artist + "%2F";
               let title = podcast.title + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+
               const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
 
+
+
+                //   if (!audioPlayer) {
+                //     artist = podcast.user.username + "%2F";
+                //     // console.log('artist', artist);
+                //   }
+                //   if (!audioPlayer) {
+                //     // key = props.podcast._created_time;
+                //     title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
+                // }
+
+
+
               let id = `${podcast._id}`;
-              // let id = `${podcast._name}`
               return (
                 <span key={podcast.url} className='podcast__item'>
 
