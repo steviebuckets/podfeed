@@ -18,8 +18,10 @@ export class SignIn extends React.Component {
 
     event.preventDefault();
     // console.log('my identifyUser', this)
-    this.props.identifyUser({email: this.email, password: this.password});
-    browserHistory.push('/podcast-list');
+    this.props.identifyUser({email: this.email, password: this.password}, () => {
+      browserHistory.push('/podcast-list');
+    });
+    
 
   }
 
