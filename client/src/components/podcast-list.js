@@ -12,6 +12,7 @@ export class PodcastList extends React.Component {
     super(props)
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this.subscriptionsPage = this.subscriptionsPage.bind(this);
+    this.deletePodcast = this.deletePodcast.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.state = {
       color_blue: true
@@ -35,6 +36,12 @@ export class PodcastList extends React.Component {
     this.props.newSubscription(event.target.id);
     this.changeColor(event.target.id);
     browserHistory.push('/subscriptions')
+  }
+
+  deletePodcast(event) {
+    event.preventDefault()
+    browserHistory.push('/subscriptions');
+    // location.reload();
   }
 
   subscriptionsPage() {
@@ -95,7 +102,7 @@ export class PodcastList extends React.Component {
                   <Podcast podcast={podcast}/>
                   <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}} onClick={this.clickSubscribe}></i>
 
-                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'none'}} onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'none'}} onClick={this.deletePodcast}></i>
                 </div>
 
               </span>

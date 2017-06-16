@@ -483,4 +483,9 @@ a:link {
     width: 100%;
     margin-left: 2px;
   }
+  .container-image {
+    width: 100%;
+    margin: auto;
+    margin-left: 176px;
+  }
 }
