@@ -33,9 +33,11 @@ export class PodcastList extends React.Component {
 
   clickSubscribe(event) {
     event.preventDefault()
-    this.props.newSubscription(event.target.id);
+    this.props.newSubscription(event.target.id, () => {
+      browserHistory.push('/subscriptions')
+    });
     this.changeColor(event.target.id);
-    browserHistory.push('/subscriptions')
+
   }
 
   deletePodcast(event) {
@@ -100,9 +102,18 @@ export class PodcastList extends React.Component {
               <span key={id} className='podcast__item'>
                 <div className="subscribed">
                   <Podcast podcast={podcast}/>
-                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}} onClick={this.clickSubscribe}></i>
+                  <i
+                    className="fa fa-plus-circle fa-2x"
+                    aria-hidden="true"
+                    id={id}
+                    style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}}
+                    onClick={this.clickSubscribe}></i>
 
-                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'none'}} onClick={this.deletePodcast}></i>
+                  <i className="fa fa-minus-circle fa-2x"
+                    aria-hidden="true"
+                    id={id}
+                    style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'None'}}
+                    onClick={this.clickSubscribe}></i>
                 </div>
 
               </span>

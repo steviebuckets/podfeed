@@ -10,11 +10,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import reducer from './reducers/index';
-// import {SignIn} from './components/signin';
 import {LandingPage} from './components/landing-page';
 
 import App from './components/app';
-// import {Router} from 'react-router';
 import PodcastList from './containers/podcast-list-container';
 
 import {Podcast} from './containers/podcast-container';
@@ -23,12 +21,11 @@ import Register from './containers/register-container';
 import SignIn from './containers/login-container';
 import Subscriptions from './containers/user-subscriptions-container';
 import Auth from './modules/Auth';
-// import {browserHistory} from 'react-router';
 
 //remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
-
-const store = createStore(reducer, applyMiddleware(ReduxPromise));
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStoreWithMiddleware(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const routes = {
   component: App,

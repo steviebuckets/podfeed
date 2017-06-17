@@ -18,10 +18,13 @@ export function verifyUser(user, callback) {
 
 // Sign In User
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export function identifyUser(user) {
+export function identifyUser(user, cb) {
   let request = axios.post('/login', {
     email: user.email,
     password: user.password
+  }).then((response) => {
+    cb(); // run callback
+    return response;
   })
   return {type: LOGIN_SUCCESS, payload: request}
 }
@@ -47,7 +50,7 @@ export function addPodcast(podcastName) {
 
 // New Podcast subscriptions
 export const SUBSCRIBED_SUCCESS = 'SUBSCRIBED_SUCCESS';
-export function newSubscription(podcastKeyImage) {
+export function newSubscription(podcastKeyImage, callback) {
   // console.log("my image", podcastKeyImage)
   let myToken = localStorage.getItem('token');
   const podcastKey = podcastKeyImage.split(",")[0]
@@ -63,6 +66,9 @@ export function newSubscription(podcastKeyImage) {
     url: url,
     artist: artist,
     title: title
+  }).then((response) => {
+    callback();
+    return response;
   });
   return {type: SUBSCRIBED_SUCCESS, payload: request}
   // .then(function(response) {
