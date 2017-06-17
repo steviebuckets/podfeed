@@ -12,6 +12,7 @@ const style = {};
 export class Subscriptions extends React.Component {
   constructor(props) {
     super(props)
+    this.clickSubscribe = this.clickSubscribe.bind(this);
     this.deletePodcast = this.deletePodcast.bind(this);
     this.featuredPage = this.featuredPage.bind(this);
 
@@ -29,7 +30,13 @@ componentDidUpdate() {
     this.props.userSubscriptions();
     // console.log(action.payload.data, "user subscriptions")
 
+  }
 
+  clickSubscribe(event) {
+    event.preventDefault()
+    this.props.newSubscription(event.target.id);
+    // this.changeColor(event.target.id);
+    // browserHistory.push('/subscriptions')
   }
 
   deletePodcast(event) {
@@ -96,7 +103,9 @@ componentDidUpdate() {
                 <span key={podcast.url} className='podcast__item'>
 
                   <Podcast podcast={podcast} audioPlayer={audioPlayer}/>
-                  <i className="fa fa-minus-circle fa-2x" id={id} aria-hidden="true" onClick={this.deletePodcast}></i>
+                  <i className="fa fa-minus-circle fa-2x" id={id} aria-hidden="true" style={{display: podcast._id ? 'block' : 'none'}}onClick={this.deletePodcast}></i>
+                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#03A9F4", display: podcast._id ? 'none' : 'block'}} onClick={this.clickSubscribe}></i>
+
                 </span>
               )
             })
@@ -107,3 +116,6 @@ componentDidUpdate() {
     }
   }
 }
+
+
+  // <i className="fa fa-plus-circle fa-2x" id={id} aria-hidden="true" onClick={this.clickSubscribe}></i>
