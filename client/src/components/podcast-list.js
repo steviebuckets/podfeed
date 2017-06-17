@@ -21,7 +21,15 @@ export class PodcastList extends React.Component {
   }
 
   componentWillMount() {
-    this.props.addPodcast('interview')
+    /// check to see that the "name" that we stored in localStorage is there
+    let searchName =  localStorage.getItem('name')
+    if (searchName) {
+      this.props.addPodcast(searchName);
+      localStorage.removeItem('name');
+    } else {
+      this.props.addPodcast('interview')
+    }
+
     console.log("podcast data", this.props)
   }
 

@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {addPodcast} from '../actions';
 import {userSubscriptions} from '../actions';
+import { browserHistory } from 'react-router';
 
 import Auth from '../modules/Auth';
 
@@ -18,8 +19,11 @@ class App extends React.Component {
     const isLongEnough = name.length > 0;
     if (isLongEnough) {
       this.refs.search.value = '';
-      this.props.addPodcast(name);
-      console.log(this.props, 'from search')
+      // this.props.addPodcast(name);
+      // store the name in localStorage
+      localStorage.setItem('name', name);
+      browserHistory.push('/podcast-list')
+      // console.log(this.props, 'from search')
     }
   };
 

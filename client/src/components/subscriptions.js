@@ -12,7 +12,6 @@ const style = {};
 export class Subscriptions extends React.Component {
   constructor(props) {
     super(props)
-    this.clickSubscribe = this.clickSubscribe.bind(this);
     this.deletePodcast = this.deletePodcast.bind(this);
     this.featuredPage = this.featuredPage.bind(this);
 
@@ -32,12 +31,16 @@ componentDidUpdate() {
 
   }
 
-  clickSubscribe(event) {
-    event.preventDefault()
-    this.props.newSubscription(event.target.id);
-    // this.changeColor(event.target.id);
-    // browserHistory.push('/subscriptions')
-  }
+  // clickSubscribe(event) {
+  //   event.preventDefault()
+  //   /// Storre the searched key word in the localStorage
+  //
+  //
+  //   //then redirect/pushed to the podcastList
+  //   this.props.newSubscription(event.target.id);
+  //   // this.changeColor(event.target.id);
+  //   // browserHistory.push('/subscriptions')
+  // }
 
   deletePodcast(event) {
     event.preventDefault()
@@ -99,12 +102,14 @@ componentDidUpdate() {
 
 
               let id = `${podcast._id}`;
+              console.log(id, 'wont exist');
               return (
                 <span key={podcast.url} className='podcast__item'>
 
                   <Podcast podcast={podcast} audioPlayer={audioPlayer}/>
-                  <i className="fa fa-minus-circle fa-2x" id={id} aria-hidden="true" style={{display: podcast._id ? 'block' : 'none'}}onClick={this.deletePodcast}></i>
-                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{color: "#03A9F4", display: podcast._id ? 'none' : 'block'}} onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-minus-circle fa-2x"
+                    id={id} aria-hidden="true" style={{display: podcast._id ? 'block' : 'none'}}
+                    onClick={this.deletePodcast}></i>
 
                 </span>
               )

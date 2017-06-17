@@ -119,16 +119,18 @@ app.get('/podcasts', (req, res) => {
 
 //New Podcast Subscription
 app.post('/subscribe', (req, res) => {
+  console.log('body', req.body);
   // const required = 'key';
   // const required = ['key', 'image';
   // console.log('body', req.body);
   // User.find({_id: req.decoded.id})
   // or User.find({key: req.params.key})
   User.findById(req.decoded.id, (err, user) => {
-    console.log("URL", req.body.url);
+    // console.log("URL", req.body.url);
 
     user.podcasts.forEach((podcast) => {
-      if (podcast.url === req.body.url) {
+      if (podcast.surl === req.body.url) {
+
         return res.status(503).json({message: "ALready exists"});
       }
     });
