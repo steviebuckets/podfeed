@@ -46,13 +46,13 @@ export class LandingPage extends React.Component {
                 </div>
             </div>
             <div className="mui-col-md-12">
-            <p className="">Discover, Stream, & Subscribe</p>
+            <p className="image-header">Discover, Stream, & Subscribe</p>
             <div className="container-image">
             </div>
               </div>
               <div className="mui-col-md-12">
               <p className="video-demo">Video Demo</p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/sIGbuqXsbWM?rel=0" frameborder="0" allowfullscreen></iframe>
+              <iframe width="680" className="video" height="435" src="https://www.youtube.com/embed/sIGbuqXsbWM?rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
 
         </div>
