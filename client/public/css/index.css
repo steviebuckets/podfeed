@@ -1,15 +1,10 @@
-/*.subscribed {
-  opacity: .1;
-}*/
-
 .mui-col-md-12 {
   text-align: center;
   margin-top: 40px;
 }
 
 .container-image {
- height: 76vh;
-/*margin-top: 10px;*/
+  height: 76vh;
   background-image: url("/images/cover.png");
   background-repeat: no-repeat;
   opacity: .9;
@@ -17,23 +12,11 @@
   /*margin-left: 152px;*/
 }
 
-
-
-.alert{
-  /*color: #e9e9e9;*/
-  color: #a6a6a6;
-  text-align: center;
-  margin-top: 175px;
-}
-
 .audio-widget {
   padding-top: 20px;
-   border: 0;
+  border: 0;
 }
 
-.user-stuff {
-  display: none;
-}
 
 /*Styles for App Component (Navbar)*/
 
@@ -157,7 +140,6 @@ div.container .navbar {
 }
 
 
-
 /*Landing Page Component Styles*/
 
 .landing-content h1 {
@@ -172,12 +154,9 @@ div.container .navbar {
 
 .landing-container {
   width: 100%;
-  /*background-color: #f44336;*/
-  /*background-color: #fafafa;*/
 }
 
 .mui-col-md-4 p {
-  /*background-color: black;*/
   margin-left: 120px;
   margin-right: 120px;
 }
@@ -210,7 +189,7 @@ div.container .navbar {
   margin-bottom: -100px;
 }
 
-.mui-col-md-12 .video{
+.mui-col-md-12 .video {
   text-align: center;
   margin-bottom: 80px;
 }
@@ -227,12 +206,12 @@ div.container .navbar {
     text-align: center;
     padding-bottom: 50px;
   }
-  .mui-col-md-12 .video{
+  .mui-col-md-12 .video {
     text-align: center;
     width: 100%;
     padding-top: -200px;
   }
-  .mui-col-md-12 .video-demo{
+  .mui-col-md-12 .video-demo {
     text-align: center;
     margin-top: -100px;
   }
@@ -242,7 +221,6 @@ div.container .navbar {
   .mui-col-md-12 .container-image {
     display: none;
   }
-
 }
 
 
@@ -265,7 +243,6 @@ div.container .navbar {
   line-height: 28px;
   margin: 0 0 10px;
   letter-spacing: 0.5px;
-
 }
 
 .container-signin .secondary {
@@ -356,10 +333,7 @@ div.container .navbar {
   .container-signin .form {
     width: 100%;
   }
-  .container-signin .form p {
-    /*margin-left: -130px;
-    margin-right: -130px;*/
-  }
+  .container-signin .form p {}
 }
 
 
@@ -370,7 +344,6 @@ div.container .navbar {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-
 
 .landing-container, .mui-col-md-4 h2 {
   font-size: 20px;
@@ -407,25 +380,17 @@ div.container .navbar {
   /*margin-left: 50px;*/
 }
 
-.podcast img {
-  /*border: 1px solid #e9e9e9;*/
-  /*border-radius: 3px;*/
-  /*vertical-align: middle;*/
-  /*text-align: center;*/
-}
-
-
-.podcast-list-conatiner .featured-header a:visited a:active a:hover a:link{
-    text-decoration: underline;
+.podcast-list-conatiner .featured-header a:visited a:active a:hover a:link {
+  text-decoration: underline;
 }
 
 
 /*Media Styles for Podcast List Component*/
+
 @media only screen and (max-width: 400px) {
   .podcast-list-conatiner .my-gallery-class {
     margin-left: -37px;
   }
-
   .podcast-list-conatiner .featured-header {
     /*text-align: center;*/
     margin-left: 72px;
@@ -441,30 +406,18 @@ div.container .navbar {
     text-align: center;
     /*color: #262626;*/
   }
-
-
 }
 
 .podcast-list-container .featured-header .current {
   color: yellow;
 }
 
-
-
-
-/*a:visited {
-  color: grey;
-}
-
-a:link {
-  color: yellow;
-}*/
-
 .featured-header {
   /*margin-left: 1332px;*/
   text-align: center;
   margin-right: 145px;
 }
+
 .featured-header a {
   display: inline-block;
   /*margin-left: 10px;*/
@@ -476,17 +429,10 @@ a:link {
   color: #262626;
 }
 
-
-/*.podcast__item a {
-  text-align: center;
-  width: 2px;
-}*/
-
 .podcast .fa {
   color: #343a3e;
   padding-top: 10px;
 }
-
 
 
 /*Media Styles for Big Screens*/
