@@ -5,19 +5,34 @@ const bcrypt = require('bcrypt-nodejs');
 const podcastSchema = new mongoose.Schema({
   // "username": {type: String},
   // "slug": {type: String},
-  "image": { type: String },
+  "image": {
+    type: String
+  },
   // "key": { type: String, required: true, unique: true },
-  "surl": { type: String },
-  "artist": { type: String },
-  "title": { type: String }
+  "surl": {
+    type: String
+  },
+  "artist": {
+    type: String
+  },
+  "title": {
+    type: String
+  }
 });
 
-
-  // "key": { type: String, required: true, unique: true}
 //user schema
 const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true, index: true },
-  password: { type: String, select: false, required: true},
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    index: true
+  },
+  password: {
+    type: String,
+    select: false,
+    required: true
+  },
   podcasts: [podcastSchema] // One User has Many Podcasts
 });
 
@@ -26,16 +41,16 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', function(next) {
   var user = this;
 
-  if (!user.isModified('password')) return next(); // means that if the password is not changed, just go to the next part and save the user
-
+  if (!user.isModified('password'))
+    return next(); // means that if the password is not changed, just go to the next part and save the user
 
   bcrypt.hash(user.password, null, null, function(err, hash) {
-    if(err) return next(err);
+    if (err)
+      return next(err);
     user.password = hash;
     next();
   });
 });
-
 
 //compare password
 userSchema.methods.comparePassword = function(password) {

@@ -1,12 +1,10 @@
 import axios from 'axios';
-// import Auth from './modules/Auth';
 
 // Register User
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export function verifyUser(user, callback) {
 
   let request = axios.post('/register', {
-    // console.log('my user', user)
     email: user.email,
     password: user.password
   }).then((response) => {
@@ -51,14 +49,12 @@ export function addPodcast(podcastName) {
 // New Podcast subscriptions
 export const SUBSCRIBED_SUCCESS = 'SUBSCRIBED_SUCCESS';
 export function newSubscription(podcastKeyImage, callback) {
-  // console.log("my image", podcastKeyImage)
   let myToken = localStorage.getItem('token');
   const podcastKey = podcastKeyImage.split(",")[0]
   const image = podcastKeyImage.split(",")[1]
   const url = podcastKeyImage.split(",")[2]
   const artist = podcastKeyImage.split(",")[3]
   const title = podcastKeyImage.split(",")[4]
-  // console.log([title, artist, url, image, podcastKey].length, "UNIQUE?");
 
   let request = axios.post('/subscribe?token=' + myToken, {
     key: podcastKey,
@@ -71,34 +67,22 @@ export function newSubscription(podcastKeyImage, callback) {
     return response;
   });
   return {type: SUBSCRIBED_SUCCESS, payload: request}
-  // .then(function(response) {
-  //   //?? feeedback generation
-  //   console.log('you have subscribed!', response.data);
-  // }).catch(function(error) {
-  //   console.log('oops, you did not subscribe', error)
-  // })
 }
-
 
 //Retrieve User Podcasts
 export const FETCH_USER_SUBSCRIPTION_SUCCESS = "FETCH_USER_SUBSCRIPTION_SUCCESS";
 export function userSubscriptions(podcasts) {
-  // console.log(podcasts, 'my stuff')
   let myToken = localStorage.getItem('token');
 
   let request = axios.get('/subscriptions?token=' + myToken, {user: podcasts})
-  // console.log(request, "Hello Fom Action FETCH_DESCRIPTION_SUCCESS")
   return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 
 }
-
 
 // Delete Podcast Subscription
 export function unSubscribe(podcastId) {
   let myToken = localStorage.getItem('token');
 
-  let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
-  
-  });
+  let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {});
   return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 }

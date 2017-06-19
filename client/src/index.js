@@ -2,7 +2,6 @@ require('babel-polyfill');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, browserHistory} from 'react-router';
-// import { render } from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import ReduxPromise from 'redux-promise';
 import {Provider} from 'react-redux';
@@ -35,10 +34,10 @@ const routes = {
       path: '/',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, PodcastList, Podcast);
         } else {
-          console.log('not auth')
+          // console.log('not auth')
           callback(null, LandingPage);
         }
       }
@@ -46,7 +45,7 @@ const routes = {
       path: '/signin',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, PodcastList, Podcast);
         } else {
           // console.log('not auth')
@@ -57,10 +56,10 @@ const routes = {
       path: '/register',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, PodcastList, Podcast);
         } else {
-          console.log('not auth')
+          // console.log('not auth')
           callback(null, Register);
         }
       }
@@ -68,10 +67,10 @@ const routes = {
       path: '/podcast',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, Podcast);
         } else {
-          console.log('not auth')
+          // console.log('not auth')
           callback(null, Podcast);
         }
       }
@@ -79,10 +78,10 @@ const routes = {
       path: '/podcast-list',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, PodcastList);
         } else {
-          console.log('not auth')
+          // console.log('not auth')
           callback(null, SignIn);
         }
       }
@@ -90,10 +89,10 @@ const routes = {
       path: '/subscriptions',
       getComponent: (location, callback) => {
         if (Auth.isUserAuthenticated()) {
-          console.log('auth')
+          // console.log('auth')
           callback(null, Subscriptions);
         } else {
-          console.log('not auth')
+          // console.log('not auth')
           callback(null, SignIn);
         }
       }

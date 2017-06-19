@@ -52,20 +52,17 @@ app.post('/login/', (req, res) => {
 
 //register route
 app.post('/register/', (req, res) => {
-  console.log('BODY', req.body);
   let user = new User();
   user.email = req.body.email;
   user.password = req.body.password;
   user.save((err) => {
     if (err) {
-      console.log(err);
       return res.status(500).json({message: "User already exists here!"})
     }
     let myToken = jwt.sign({
       email: user.email,
       id: user._id
     }, secret, {expiresIn: "24h"});
-    console.log("my response in server!")
     res.json({
       success: true,
       message: "User successfully registered!" + myToken,
@@ -97,7 +94,6 @@ app.use((req, res, next) => {
 app.get('/subscriptions', (req, res) => {
   User.findById(req.decoded.id, (err, user) => {
     if (err) {
-      console.log(err);
       return res.status(404).json({message: 'Sorry, no podcasts found'});
     } else {
       res.status(200).json(user.podcasts);
@@ -108,7 +104,6 @@ app.get('/subscriptions', (req, res) => {
 //if user show me podcasts
 app.get('/podcasts', (req, res) => {
   User.findById(req.decoded.id, (err, user) => {
-    console.log(err)
     res.json(user.podcasts.sort((prev, next) => {
       return new Date(next.created) - new Date(prev.created);
     }));
@@ -119,14 +114,8 @@ app.get('/podcasts', (req, res) => {
 
 //New Podcast Subscription
 app.post('/subscribe', (req, res) => {
-  console.log('body', req.body);
-  // const required = 'key';
-  // const required = ['key', 'image';
-  // console.log('body', req.body);
-  // User.find({_id: req.decoded.id})
-  // or User.find({key: req.params.key})
+
   User.findById(req.decoded.id, (err, user) => {
-    // console.log("URL", req.body.url);
 
     user.podcasts.forEach((podcast) => {
       if (podcast.surl === req.body.url) {
@@ -136,11 +125,9 @@ app.post('/subscribe', (req, res) => {
     });
 
     user.podcasts.push({image: req.body.image, surl: req.body.url, artist: req.body.artist, title: req.body.title});
-    // console.log(user, "my user data from server");
     user.save((err) => {
       if (err) {
-        console.log(err);
-        return res.status(404).json({message: 'Failed to subscribe'}); // this is an aer
+        return res.status(404).json({message: 'Failed to subscribe'});
       }
       res.status(200).json(user.podcasts);
     })
@@ -150,11 +137,9 @@ app.post('/subscribe', (req, res) => {
 
 //Delete Podcast Subscription
 app.delete('/subscriptions/:id', (req, res) => {
-  //  /:ha/:blah --> req.params.ha ,or req.params.blah
-  console.log("my subscriptions")
   User.findById(req.decoded.id, (err, user) => {
 
-    let subscription = user.podcasts.id(req.params.id); // id is s epcial method in mongoose to access a subdoc by _id
+    let subscription = user.podcasts.id(req.params.id);
 
     if (subscription) {
       subscription.remove();
@@ -163,30 +148,11 @@ app.delete('/subscriptions/:id', (req, res) => {
           res.status(404).json({message: "Cannot save user"});
         else
           res.status(200).json(user.podcasts);
-      });
+        }
+      );
     } else {
       res.status(404).json({message: "Not found!"});
     }
-
-    //
-    // parent.children.id(_id).remove();
-    // // Equivalent to `parent.child = null`
-    // parent.child.remove();
-    // parent.save(function (err) {
-    //   if (err) return handleError(err);
-    //   console.log('the subdocs were removed');
-    // });
-    // you send back a response!!!
-
-    // if (subscription) {
-    //     subscription.remove();
-    //     user.save((err) => {
-    //         if (err) return res.status(404).json({ message: 'Error, Could not delete' });
-    //         res.json({});
-    //     });
-    // } else {
-    //     res.status(404).json({ message: 'Error, not located' });
-    // }
 
   });
 });
@@ -195,15 +161,11 @@ app.delete('/subscriptions/:id', (req, res) => {
 app.get('/search', (req, res) => {
   if (req.query) {
     const search = req.query['q'];
-    // your unirest stuff
     var unirest = require('unirest');
     var podcast = encodeURI(req.query['q']);
     var Request = unirest.get(`https://api.mixcloud.com/search/?q=/${podcast}/&type=cloudcast`);
     Request.end(function(response) {
       let responseData = JSON.parse(response.body)
-      // // # Dummy data
-      // /// what if you had a way to check the database, for an existing "URL!!!"
-      // // 1. get the user (req.decoded.id)
       User.findById(req.decoded.id, (err, user) => {
         // console.log("USER", user);
         // check the URL against your podcasts url
@@ -217,9 +179,7 @@ app.get('/search', (req, res) => {
             if (user.podcasts[j].surl == url) {
               console.log('we are here!!')
               responseData.data[i].subscribed = true; // introduce a property to an object
-              // lesson:
-              // var x = {name: 'something'};
-              // x.other = "This is a new property"
+
               break; // /get out of the loop
             }
           }
@@ -228,7 +188,6 @@ app.get('/search', (req, res) => {
         res.json(responseData);
 
       });
-
 
     });
   }
@@ -247,7 +206,7 @@ app.use('*', function(req, res) {
 
 let server;
 
-//this function connects to our databse, then starts server
+//connects to our databse, then starts server
 function runServer() {
   return new Promise((resolve, reject) => {
 
@@ -256,7 +215,6 @@ function runServer() {
         return reject(err);
       }
       server = app.listen(3001, () => {
-        /* console.log(`Your app is listening on port ${PORT}`);*/
         resolve();
       }).on('error', err => {
         mongoose.disconnect();
