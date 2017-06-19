@@ -461,3 +461,5 @@ div.container .navbar {
     margin-left: 176px;
   }
 }
+
+mongoimport --db podfeed-db --collection podfeed --drop --file ~volumes/tardisk/projects/thinkful/react/react-capstone/podfeed --host ds131742.mlab.com --port 31742  -u sbuckets33 -p eagleone23

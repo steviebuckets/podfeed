@@ -18,7 +18,7 @@ if (process.env.NODE_ENV == 'production') {
 
 const Podcasts = require('./models').Podcasts;
 const User = require('./models').User;
-const bcrypt = require('bcrypt-nodejs');
+// const bcrypt = require('bcrypt-nodejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
