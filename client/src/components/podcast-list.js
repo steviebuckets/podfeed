@@ -20,6 +20,9 @@ export class PodcastList extends React.Component {
 
   }
 
+// componentDidUpdate() {
+//     this.props.addPodcast('interview')
+// }
   componentWillMount() {
     /// check to see that the "name" that we stored in localStorage is there
     let searchName =  localStorage.getItem('name')
@@ -74,8 +77,6 @@ export class PodcastList extends React.Component {
         </div>
         <Masonry className={'my-gallery-class'} style={style} onClick={this.handleClick} options={masonryOptions} elementType={'ul'}>
           {this.props.audio.podcasts.map(podcast => {
-            console.log(podcast.subscribed, 'status?');
-            //To do, add a for loop or filter to remove duplicates
 
             let imgUrl = "";
             let url = "";

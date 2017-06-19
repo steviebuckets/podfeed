@@ -22,9 +22,6 @@ export class Subscriptions extends React.Component {
   }
 
 
-componentDidUpdate() {
-  console.log(this.props, 'from subby')
-}
   componentDidMount() {
     this.props.userSubscriptions();
     // console.log(action.payload.data, "user subscriptions")

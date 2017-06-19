@@ -19,10 +19,11 @@ class App extends React.Component {
     const isLongEnough = name.length > 0;
     if (isLongEnough) {
       this.refs.search.value = '';
-      // this.props.addPodcast(name);
+      this.props.addPodcast(name);
       // store the name in localStorage
       localStorage.setItem('name', name);
       browserHistory.push('/podcast-list')
+      // location.reload()
       // console.log(this.props, 'from search')
     }
   };

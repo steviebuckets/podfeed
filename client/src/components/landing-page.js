@@ -24,7 +24,7 @@ export class LandingPage extends React.Component {
 
                         </div>
                         <h2>Discover New Favorites</h2>
-                        <p>Amazing podcasts are released almost every day. We help you find the best ones.</p>
+                        <p>Discover new favorites or search for trending content and much more.</p>
                     </div>
 
                     <div className="mui-col-md-4">
@@ -32,7 +32,7 @@ export class LandingPage extends React.Component {
                             <i className="fa fa-play-circle fa-3x" aria-hidden="true"></i>
                         </div>
                         <h2>Full Playback</h2>
-                        <p>Play, pause, or rewind. All your favorite podcasts are available to stream on the web.</p>
+                        <p>Play, pause, or rewind. All your favorite podcasts available to stream on the web.</p>
                     </div>
 
                     <div className="mui-col-md-4">
@@ -49,6 +49,10 @@ export class LandingPage extends React.Component {
             <p className="">Discover, Stream, & Subscribe</p>
             <div className="container-image">
             </div>
+              </div>
+              <div className="mui-col-md-12">
+              <p className="video-demo">Video Demo</p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/sIGbuqXsbWM?rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
 
         </div>
