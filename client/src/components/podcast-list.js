@@ -20,20 +20,14 @@ export class PodcastList extends React.Component {
 
   }
 
-// componentDidUpdate() {
-//     this.props.addPodcast('interview')
-// }
   componentWillMount() {
-    /// check to see that the "name" that we stored in localStorage is there
-    let searchName =  localStorage.getItem('name')
+    let searchName = localStorage.getItem('name')
     if (searchName) {
       this.props.addPodcast(searchName);
       localStorage.removeItem('name');
     } else {
       this.props.addPodcast('interview')
     }
-
-    console.log("podcast data", this.props)
   }
 
   changeColor() {
@@ -54,7 +48,6 @@ export class PodcastList extends React.Component {
   deletePodcast(event) {
     event.preventDefault()
     browserHistory.push('/subscriptions');
-    // location.reload();
   }
 
   subscriptionsPage() {
@@ -82,8 +75,6 @@ export class PodcastList extends React.Component {
             let url = "";
             let artist = "";
             let title = "";
-            // let color = "";
-
 
             if (podcast.pictures) {
               imgUrl = podcast.pictures.large;
@@ -111,22 +102,22 @@ export class PodcastList extends React.Component {
               <span key={id} className='podcast__item'>
                 <div className="subscribed">
                   <Podcast podcast={podcast}/>
-                  <i
-                    className="fa fa-plus-circle fa-2x"
-                    aria-hidden="true"
-                    id={id}
-                    style={{color: bgColor, display: podcast.subscribed ? 'None' : 'block'}}
-                    onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true" id={id} style={{
+                    color: bgColor,
+                    display: podcast.subscribed
+                      ? 'None'
+                      : 'block'
+                  }} onClick={this.clickSubscribe}></i>
 
-                  <i className="fa fa-minus-circle fa-2x"
-                    aria-hidden="true"
-                    id={id}
-                    style={{color: "#f44336", display: podcast.subscribed ? 'block' : 'None'}}
-                    onClick={this.clickSubscribe}></i>
+                  <i className="fa fa-minus-circle fa-2x" aria-hidden="true" id={id} style={{
+                    color: "#f44336",
+                    display: podcast.subscribed
+                      ? 'block'
+                      : 'None'
+                  }} onClick={this.deletePodcast}></i>
                 </div>
 
               </span>
-
             )
           })}
         </Masonry>

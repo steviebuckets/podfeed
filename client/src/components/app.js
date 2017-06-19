@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {addPodcast} from '../actions';
 import {userSubscriptions} from '../actions';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 import Auth from '../modules/Auth';
 
@@ -23,8 +23,6 @@ class App extends React.Component {
       // store the name in localStorage
       localStorage.setItem('name', name);
       browserHistory.push('/podcast-list')
-      // location.reload()
-      // console.log(this.props, 'from search')
     }
   };
 

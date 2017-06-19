@@ -1,5 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import {Link} from 'react-router';
 
 export class SignIn extends React.Component {
@@ -9,19 +9,14 @@ export class SignIn extends React.Component {
     this.password = "";
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-// componentDidMount() {
-//   console.log(this.props, "inside")
-// }
   handleSubmit(event) {
-    // console.log(this.props, 'inside signin')
-
     event.preventDefault();
-    // console.log('my identifyUser', this)
-    this.props.identifyUser({email: this.email, password: this.password}, () => {
+    this.props.identifyUser({
+      email: this.email,
+      password: this.password
+    }, () => {
       browserHistory.push('/podcast-list');
     });
-    
 
   }
 

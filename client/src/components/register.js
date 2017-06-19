@@ -1,7 +1,6 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import {Link} from 'react-router';
-
 
 export class Register extends React.Component {
   constructor(props) {
@@ -10,17 +9,14 @@ export class Register extends React.Component {
     this.password = "";
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-// componentDidMount() {
-//   console.log(this.props, "inside")
-// }
   handleSubmit(event) {
-    // console.log(this.props, 'inside register')
 
     event.preventDefault();
-    // console.log('my identifyUser', this)
-    this.props.verifyUser({email: this.email, password: this.password}, () => {
-        browserHistory.push('/podcast-list');
+    this.props.verifyUser({
+      email: this.email,
+      password: this.password
+    }, () => {
+      browserHistory.push('/podcast-list');
     });
   }
 
@@ -41,11 +37,11 @@ export class Register extends React.Component {
           </div>
 
           <div>
-              <button type='submit' className="btn-signin" label='Log in'>Register</button>
+            <button type='submit' className="btn-signin" label='Log in'>Register</button>
           </div>
 
           <Link to="/register">
-              <p className="secondary">Already have an account?</p>
+            <p className="secondary">Already have an account?</p>
           </Link>
         </form>
       </div>

@@ -14,35 +14,15 @@ export class Subscriptions extends React.Component {
     super(props)
     this.deletePodcast = this.deletePodcast.bind(this);
     this.featuredPage = this.featuredPage.bind(this);
-
-    // this.changeColor = this.changeColor.bind(this);
-    // this.state = {
-    //   color_red: true
-    // }
   }
-
 
   componentDidMount() {
     this.props.userSubscriptions();
-    // console.log(action.payload.data, "user subscriptions")
-
   }
-
-  // clickSubscribe(event) {
-  //   event.preventDefault()
-  //   /// Storre the searched key word in the localStorage
-  //
-  //
-  //   //then redirect/pushed to the podcastList
-  //   this.props.newSubscription(event.target.id);
-  //   // this.changeColor(event.target.id);
-  //   // browserHistory.push('/subscriptions')
-  // }
 
   deletePodcast(event) {
     event.preventDefault()
     this.props.unSubscribe(event.target.id);
-    // location.reload();
   }
 
   featuredPage() {
@@ -85,28 +65,16 @@ export class Subscriptions extends React.Component {
 
               const audioPlayer = (`https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2F${artist}${title}`);
 
-
-
-                //   if (!audioPlayer) {
-                //     artist = podcast.user.username + "%2F";
-                //     // console.log('artist', artist);
-                //   }
-                //   if (!audioPlayer) {
-                //     // key = props.podcast._created_time;
-                //     title = podcast.slug + "%2F&hide_cover=1&mini=1&hide_artwork=1&light=1";
-                // }
-
-
-
               let id = `${podcast._id}`;
-              console.log(id, 'wont exist');
               return (
                 <span key={podcast.url} className='podcast__item'>
 
                   <Podcast podcast={podcast} audioPlayer={audioPlayer}/>
-                  <i className="fa fa-minus-circle fa-2x"
-                    id={id} aria-hidden="true" style={{display: podcast._id ? 'block' : 'none'}}
-                    onClick={this.deletePodcast}></i>
+                  <i className="fa fa-minus-circle fa-2x" id={id} aria-hidden="true" style={{
+                    display: podcast._id
+                      ? 'block'
+                      : 'none'
+                  }} onClick={this.deletePodcast}></i>
 
                 </span>
               )
@@ -118,6 +86,3 @@ export class Subscriptions extends React.Component {
     }
   }
 }
-
-
-  // <i className="fa fa-plus-circle fa-2x" id={id} aria-hidden="true" onClick={this.clickSubscribe}></i>

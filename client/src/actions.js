@@ -96,11 +96,9 @@ export function userSubscriptions(podcasts) {
 // Delete Podcast Subscription
 export function unSubscribe(podcastId) {
   let myToken = localStorage.getItem('token');
-  // let target = podcast.key;
-  // let id = target;
-  // podcast._id;
+
   let request = axios.delete(`/subscriptions/${podcastId}?token=${myToken}`, {
-    // subscription: podcast._id
+  
   });
   return {type: FETCH_USER_SUBSCRIPTION_SUCCESS, payload: request}
 }
