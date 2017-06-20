@@ -1,13 +1,4 @@
-
-
-
 language: node_js
 node_js: node
-deploy:
-  provider: heroku
-  api_key:
-
-  app: pacific-sierra-89352
-
-  on:
-    repo: steviebuckets/podfeed
+services:
+- mongodb
