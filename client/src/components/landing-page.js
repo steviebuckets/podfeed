@@ -6,7 +6,7 @@ export class LandingPage extends React.Component {
       <div className="landing-container">
 
         <div className="landing-content">
-          <h1 className="animated lightSpeedIn">All your podcasts, right here on the web.</h1>
+          <h1 className="animated lightSpeedIn">All your Steve's!, right here on the web.</h1>
           <h2 className="animated lightSpeedIn">Available anytime, anywhere.</h2>
 
         </div>
