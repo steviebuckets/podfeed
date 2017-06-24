@@ -26,10 +26,10 @@
     "mongoose": "^4.9.2",
     "morgan": "^1.8.1",
     "redux-promise": "^0.5.3",
-    "unirest": "^0.5.1"
+    "unirest": "^0.5.1",
+      "concurrently": "^3.4.0"
   },
   "devDependencies": {
-    "concurrently": "^3.4.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
