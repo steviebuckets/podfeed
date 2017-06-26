@@ -1,8 +1,8 @@
 <h1>Pod Feed</h1>
 
-<h2>Created using: React, Redux, Nodejs, MongoDB, Animate.css, Axios.</h2>
+<h3>Created using: React, Redux, Nodejs, MongoDB, Animate.css, Axios.</h3>
 
-<h1>About</h1>
+<h3>About</h3>
 Pod Feed is a futty
 
 Landing Page
