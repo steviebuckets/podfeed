@@ -6,7 +6,7 @@
 Pod Feed is a fully featured podcast application made for the browser. Pod Feed allows users to stream, subscribe and search for poodcasts and audio collections. Pod Feed works with the Mixcloud API to search their databse for audio collections and artists. Pod Feed support full audio playback, play, pause and rewind.
 
 
-Landing Page
+<h3>Landing Page</h3>
 ![screen shot 2017-06-26 at 12 02 27 pm](https://user-images.githubusercontent.com/10752805/27556272-c5bb9db6-5a69-11e7-8d4c-d46307ccf6f3.png)
 
 Subscriptions
