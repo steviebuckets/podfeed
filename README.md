@@ -11,7 +11,7 @@ Created using: React, Redux, Nodejs, MongoDB, Animate.css, Axios.
 <p>Pod Feed is a fully featured podcast application made for the web. Pod Feed allows users to stream, subscribe and search for podcasts and audio collections. Pod Feed works with the Mixcloud API to pull from their library of audio collections and artists. Pod Feed supports full audio playback, play, pause and rewind. Users can discover new podcasts in the featured/trending section or search and subscribe to their favorites.</p>
 
 <h3>Future Improvements</h3>
-<p>Performance imporvements for load times and search. UI tweaks for rendering on mobile devices and various screen resolutions. React Native.</p>
+<p>Performance improvements for load times and search. UI tweaks for rendering on mobile devices and various screen resolutions. React Native.</p>
 
 
 
